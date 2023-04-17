@@ -41,9 +41,17 @@ function LoginForm() {
                 />
             </div>
 
-            <Button variant="primary" type="submit">
-                Login
-            </Button>
+            <Form.Group as={Form.Row}>
+                <Button variant="primary" type="submit">
+                    Login
+                </Button>
+            </Form.Group>
+
+            <Form.Group as={Form.Row} className="register-link">
+                <Form.Text>
+                    Don't have an account? <a href="/register">Register here</a>
+                </Form.Text>
+            </Form.Group>
         </Form>
     );
 }

@@ -8,7 +8,7 @@ function NoPage() {
         <div style={{ display: 'flex' }}>
             <Sidebar />
             <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
-                <h1>Dashboard</h1>
+                <h1>Page not found</h1>
             </div>
         </div>
     );

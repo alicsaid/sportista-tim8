@@ -7,7 +7,9 @@ export default function Home() {
     return (
         <div>
             <Navbar />
-            <h1>Home</h1>
+            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                <h1>Home</h1>
+            </div>
         </div>
     );
 };
