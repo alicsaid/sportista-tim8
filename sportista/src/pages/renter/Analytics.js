@@ -1,17 +1,17 @@
 import React from 'react';
 
 //components
-import Sidebar from "../components/navigation/Sidebar";
+import Sidebar from "../../components/navigation/Sidebar";
 
-function Contact() {
+function Analytics() {
     return (
         <div style={{ display: 'flex' }}>
             <Sidebar />
             <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
-                <h1>Contact</h1>
+                <h1>Analytics</h1>
             </div>
         </div>
     );
 }
 
-export default Contact;
+export default Analytics;

@@ -1,12 +1,12 @@
 import React from 'react';
 
-//compoonents
-import Sidebar from "../components/navigation/Sidebar";
+//components
+import Navbar from "../components/navigation/Navbar";
 
 export default function Home() {
     return (
         <div>
-            <Sidebar />
+            <Navbar />
             <h1>Home</h1>
         </div>
     );

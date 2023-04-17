@@ -1,0 +1,25 @@
+.form-label {
+    font-weight: bold;
+}
+
+Form {
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    padding: 1rem;
+    margin-top: 5rem;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.radio-group label {
+    margin-right: 1rem;
+}
