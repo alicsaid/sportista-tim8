@@ -45,7 +45,7 @@ function RenterRegisterForm() {
     };
 
     return (
-        <Form>
+        <Form style={{width: '100%'}}>
             <Form.Group className="mb-3" controlId="registerSportsCenterName">
                 <Form.Label>Name of sports center</Form.Label>
                 <Form.Control

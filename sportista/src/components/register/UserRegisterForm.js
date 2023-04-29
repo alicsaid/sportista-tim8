@@ -54,7 +54,7 @@ function UserRegisterForm() {
     };
 
     return (
-        <Form>
+        <Form style={{width: '100%'}}>
             <Form.Group className="mb-3" controlId="registerFirstName">
                 <Form.Label>First name</Form.Label>
                 <Form.Control
