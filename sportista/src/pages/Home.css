@@ -1,0 +1,80 @@
+.mapped_image {
+    width : 75%;
+    height : auto
+}
+
+.basketball1{
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    width: 7%;
+    height: 35%;
+}
+
+.tennis1{
+    position: absolute;
+    left: 32%;
+    top: 5%;
+    width: 4%;
+    height: 40%;
+}
+
+.football1{
+    position: absolute;
+    left: 36%;
+    top: 9%;
+    width: 6%;
+    height: 36%;
+}
+
+.volleyball1{
+    position: absolute;
+    left: 42%;
+    top: 9%;
+    width: 5%;
+    height: 36%;
+}
+
+.tennis2{
+    position: absolute;
+    left: 47%;
+    top: 9%;
+    width: 5%;
+    height: 36%;
+}
+
+.handball{
+    position: absolute;
+    left: 52%;
+    top: 9%;
+    width: 6%;
+    height: 36%;
+}
+
+.basketball2{
+    position: absolute;
+    left: 58%;
+    top: 9%;
+    width: 5%;
+    height: 36%;
+}
+
+.football2{
+    position: absolute;
+    left: 63%;
+    top: 9%;
+    width: 5%;
+    height: 36%;
+}
+
+.volleyball2{
+    position: absolute;
+    left: 68%;
+    top: 9%;
+    width: 12%;
+    height: 36%;
+}
+
+.relative{
+    position: relative;
+}
