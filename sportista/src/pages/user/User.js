@@ -1,7 +1,9 @@
 import React from 'react';
+import "./User.css";
 
 //components
 import Sidebar from "../../components/navigation/Sidebar";
+import VenueCard from "./VenueCard";
 
 function Dashboard() {
     return (
@@ -9,6 +11,9 @@ function Dashboard() {
             <Sidebar />
             <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
                 <h1>Dashboard</h1>
+                <div className={"venueCards"}>
+                    <VenueCard />
+                </div>
             </div>
         </div>
     );

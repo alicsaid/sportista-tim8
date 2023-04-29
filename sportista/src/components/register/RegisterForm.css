@@ -1,0 +1,62 @@
+.form-label {
+    font-weight: bold;
+}
+
+.input {
+    border: 2.5px solid #ccc !important;
+    border-radius: 7px !important;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2) !important;
+}
+
+.register-form {
+    justify-content: left;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.radio-group {
+    justify-content: left;
+    text-align: left;
+    margin-left: 7px;
+    display: flex;
+    margin-bottom: 1px;
+}
+
+Form {
+    border: 3px solid #ccc;
+    border-radius: 7px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    padding: 2rem;
+    margin-top: 1rem;
+    width: 37%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left !important;
+    background-image: url('/public/sportista_logo_blur.png');
+}
+
+.gender {
+    padding-right: 9.5rem;
+}
+
+.date {
+    padding-right: 7.2rem;
+    margin-bottom: 7px;
+}
+
+.sport {
+    padding-right: 10rem;
+}
+
+.sportsInSportsCenter {
+    padding-right: 5.6rem;
+}
+
+
+
+
+
+
+
+
