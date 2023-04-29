@@ -4,9 +4,12 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css'; // ovo importa bootstrap
 
+import LoginForm from "./components/login/LoginForm";
+import RegisterForm from "./components/register/RegisterForm";
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RegisterForm />
   </React.StrictMode>
 );
