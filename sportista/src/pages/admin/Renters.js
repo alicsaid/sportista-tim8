@@ -17,7 +17,7 @@ function Renters() {
 
     return (
         <div style={{ display: 'flex' }}>
-
+            <Sidebar />
             <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
                 <h1>Renters</h1>
 

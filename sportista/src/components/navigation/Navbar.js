@@ -1,20 +1,29 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import Button from "react-bootstrap/Button";
+import "./Navbar&Footer.css";
 
-function TextLinkExample() {
+function TopNavbar() {
     return (
-        <Navbar>
+        <Navbar className="bg-light">
             <Container>
-                <Navbar.Brand href="/">Navbar with text</Navbar.Brand>
+                <div className="col-4">
+                    <a href="/">
+                        <img src="/favicon.png" alt="logo" className="small_logo"/>
+                    </a>
+                </div>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        Signed in as: <a href="">Mark Otto</a>
-                    </Navbar.Text>
+                    <div className="offset-4 col-4">
+                        <div className="d-flex justify-content-end">
+                            <a href="/login"><Button className="m-4">Login</Button></a>
+                            <a href="/register"><Button className="m-4">Sign up</Button></a>
+                        </div>
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
     );
 }
 
-export default TextLinkExample;
+export default TopNavbar;
