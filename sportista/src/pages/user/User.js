@@ -3,16 +3,18 @@ import "./User.css";
 
 //components
 import Sidebar from "../../components/navigation/Sidebar";
-import VenueCard from "./VenueCard";
+import FieldCard from "./FieldCard";
 
 function Dashboard() {
     return (
         <div style={{ display: 'flex' }}>
-            <Sidebar />
+            <div style={{ position: 'fixed' }}>
+                <Sidebar />
+            </div>
             <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
                 <h1>Dashboard</h1>
-                <div className={"venueCards"}>
-                    <VenueCard />
+                <div className="fieldCards">
+                    <FieldCard />
                 </div>
             </div>
         </div>
