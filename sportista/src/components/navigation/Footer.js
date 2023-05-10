@@ -8,9 +8,9 @@ function Footer(){
                     <section className="">
                         <p className="d-flex justify-content-center align-items-center">
                             <span className="me-3">Login as admin</span>
-                            <button type="button" className="btn btn-outline-primary btn-rounded">
+                            <a href="/admin"><button type="button" className="btn btn-outline-primary btn-rounded">
                                 Login
-                            </button>
+                            </button></a>
                         </p>
                     </section>
                 </div>

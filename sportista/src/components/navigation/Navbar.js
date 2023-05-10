@@ -9,7 +9,7 @@ function TopNavbar() {
             <Container>
                 <div className="col-4">
                     <a href="/">
-                        <img src="/favicon.png" alt="logo" className="small_logo"/>
+                        <img src="/favicon.svg" alt="logo" className="small_logo"/>
                     </a>
                 </div>
                 <Navbar.Toggle />

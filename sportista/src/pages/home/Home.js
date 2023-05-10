@@ -10,16 +10,16 @@ function MappedImage(){
     return (
         <div className="relative container-fluid d-flex justify-content-center home_slika" >
             <img src="/home_image.svg" alt="logo" className="mapped_image"/>
-            <a href="/basketball"><div className="basketball"></div></a>
-            <a href="/paintball"><div className="paintball"></div></a>
-            <a href="/tennis"><div className="tennis"></div></a>
-            <a href="/ice_skating"><div className="ice_skating"></div></a>
-            <a href="/football"><div className="football"></div></a>
-            <a href="/volleyball"><div className="volleyball"></div></a>
-            <a href="/boxing"><div className="boxing"></div></a>
-            <a href="/handball"><div className="handball"></div></a>
-            <a href="/table_tennis"><div className="table_tennis"></div></a>
-            <a href="/hockey"><div className="hockey"></div></a>
+            <a href="/basketball"><div className="basketball" title="basketball"></div></a>
+            <a href="/paintball"><div className="paintball" title="paintball and airsoft"></div></a>
+            <a href="/tennis"><div className="tennis" title="tennis"></div></a>
+            <a href="/ice_skating"><div className="ice_skating" title="ice skating"></div></a>
+            <a href="/football"><div className="football" title="bfootball"></div></a>
+            <a href="/volleyball"><div className="volleyball" title="volleyball"></div></a>
+            <a href="/boxing"><div className="boxing" title="boxing"></div></a>
+            <a href="/handball"><div className="handball" title="handball"></div></a>
+            <a href="/table_tennis"><div className="table_tennis" title="table tennis"></div></a>
+            <a href="/hockey"><div className="hockey" title="hockey"></div></a>
         </div>
     );
 }
