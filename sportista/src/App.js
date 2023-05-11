@@ -12,6 +12,7 @@ import Users from "./pages/admin/Users";
 import Renter from './pages/renter/Renter';
 import MyFields from "./pages/renter/MyFields";
 import Analytics from "./pages/renter/Analytics";
+import RenterAccount from './pages/renter/RenterAccount';
 import User from './pages/user/User';
 import MyReservations from './pages/user/MyReservations';
 import Invites from './pages/user/Invites';
@@ -46,7 +47,7 @@ function App() {
           <Route path="/renter" element={<Renter />} />
           <Route path="/renter/my-fields" element={<MyFields />} />
           <Route path="/renter/analytics" element={<Analytics />} />
-          <Route path="/renter/account" element={<UserAccount />} />
+          <Route path="/renter/account" element={<RenterAccount />} />
           <Route path="/renter/contact" element={<Contact />} />
           <Route path="/user" element={<User />} />
           <Route path="/user/my-reservations" element={<MyReservations />} />
