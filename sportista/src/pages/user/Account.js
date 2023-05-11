@@ -3,7 +3,7 @@ import React from 'react';
 //components
 import Sidebar from "../../components/navigation/Sidebar";
 
-function Invites() {
+function Account() {
     return (
         <div style={{ display: 'flex' }}>
             <Sidebar />
@@ -14,4 +14,4 @@ function Invites() {
     );
 }
 
-export default Invites;
+export default Account;
