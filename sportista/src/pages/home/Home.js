@@ -10,16 +10,16 @@ function MappedImage(){
     return (
         <div className="relative container-fluid d-flex justify-content-center home_slika" >
             <img src="/home_image.svg" alt="logo" className="mapped_image"/>
-            <a href="/basketball"><div className="basketball" title="basketball"></div></a>
-            <a href="/paintball"><div className="paintball" title="paintball and airsoft"></div></a>
-            <a href="/tennis"><div className="tennis" title="tennis"></div></a>
-            <a href="/ice_skating"><div className="ice_skating" title="ice skating"></div></a>
-            <a href="/football"><div className="football" title="football"></div></a>
-            <a href="/volleyball"><div className="volleyball" title="volleyball"></div></a>
-            <a href="/boxing"><div className="boxing" title="boxing"></div></a>
-            <a href="/handball"><div className="handball" title="handball"></div></a>
-            <a href="/table_tennis"><div className="table_tennis" title="table tennis"></div></a>
-            <a href="/hockey"><div className="hockey" title="hockey"></div></a>
+            <a href="/sport/basketball"><div className="basketball" title="basketball"></div></a>
+            <a href="/sport/paintball"><div className="paintball" title="paintball and airsoft"></div></a>
+            <a href="/sport/tennis"><div className="tennis" title="tennis"></div></a>
+            <a href="/sport/ice_skating"><div className="ice_skating" title="ice skating"></div></a>
+            <a href="/sport/football"><div className="football" title="football"></div></a>
+            <a href="/sport/volleyball"><div className="volleyball" title="volleyball"></div></a>
+            <a href="/sport/boxing"><div className="boxing" title="boxing"></div></a>
+            <a href="/sport/handball"><div className="handball" title="handball"></div></a>
+            <a href="/sport/table_tennis"><div className="table_tennis" title="table tennis"></div></a>
+            <a href="/sport/hockey"><div className="hockey" title="hockey"></div></a>
         </div>
     );
 }

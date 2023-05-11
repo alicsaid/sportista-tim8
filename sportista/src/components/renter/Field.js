@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import EditFieldModal from '../../components/renter/EditFieldModal';
+import EditFieldModal from './EditFieldModal';
 import {useState} from "react";
 
 

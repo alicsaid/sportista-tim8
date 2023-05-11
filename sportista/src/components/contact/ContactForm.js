@@ -5,12 +5,12 @@ import "./Contact.css";
 function ContactForm() {
     return (
         <Form className="contact-form">
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicEmail5">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" name="email" placeholder="Enter email" required/>
             </Form.Group>
 
-            <Form.Group controlId="formSubject">
+            <Form.Group controlId="formSubject5">
                 <Form.Label>Subject</Form.Label>
                 <Form.Select name="subject" required>
                     <option value="">Select a subject</option>
@@ -20,7 +20,7 @@ function ContactForm() {
                 </Form.Select>
             </Form.Group>
 
-            <Form.Group controlId="formMessage">
+            <Form.Group controlId="formMessage5">
                 <Form.Label>Message</Form.Label>
                 <Form.Control as="textarea" name="message" rows={5} style={{ resize: "none" }} required/>
             </Form.Group>

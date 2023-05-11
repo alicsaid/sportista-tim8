@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 function Sidebar() {

@@ -3,7 +3,7 @@ import React from 'react';
 //components
 import Sidebar from "../../components/navigation/Sidebar";
 
-function Account() {
+function RenterAccount() {
     return (
         <div style={{ display: 'flex' }}>
             <Sidebar />
@@ -14,4 +14,4 @@ function Account() {
     );
 }
 
-export default Account;
+export default RenterAccount;
