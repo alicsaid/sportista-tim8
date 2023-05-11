@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
-import './Dashboard.css';
+import '../../pages/admin/Admin.css';
 
 function MostRentedFields() {
     const mostRentedFields = [

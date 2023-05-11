@@ -1,9 +1,10 @@
 import React from 'react';
+import "./Admin.css";
 
 //components
 import Sidebar from "../../components/navigation/Sidebar";
-import DashboardCharts from "./DashboardCharts";
-import MostRentedFields from "./MostRentedFields";
+import DashboardCharts from "../../components/admin/DashboardCharts";
+import MostRentedFields from "../../components/admin/MostRentedFields";
 
 function Dashboard() {
     return (

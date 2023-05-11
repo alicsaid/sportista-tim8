@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
-import "./Dashboard.css"
+import "../../pages/admin/Admin.css"
 
 function DashboardCharts() {
     // Ref to chart canvas and chart instance

@@ -14,7 +14,7 @@ function MappedImage(){
             <a href="/paintball"><div className="paintball" title="paintball and airsoft"></div></a>
             <a href="/tennis"><div className="tennis" title="tennis"></div></a>
             <a href="/ice_skating"><div className="ice_skating" title="ice skating"></div></a>
-            <a href="/football"><div className="football" title="bfootball"></div></a>
+            <a href="/football"><div className="football" title="football"></div></a>
             <a href="/volleyball"><div className="volleyball" title="volleyball"></div></a>
             <a href="/boxing"><div className="boxing" title="boxing"></div></a>
             <a href="/handball"><div className="handball" title="handball"></div></a>

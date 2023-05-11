@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import EditFieldModal from './EditFieldModal';
+import EditFieldModal from '../../components/renter/EditFieldModal';
 import {useState} from "react";
 
 
@@ -8,7 +8,7 @@ function Field() {
     const text = "This is a footbal field. Hahaha there is more info about this field isnt it cool?";
     const [showMore, setShowMore] = useState(false);
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem', marginTop: "5rem" }}>
             <Card.Img variant="top" src={require('../../resources/images/teren1.jpg')} alt={"teren"} />
             <Card.Body>
                 <Card.Title>Name of Field</Card.Title>

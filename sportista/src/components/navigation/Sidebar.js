@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 import "./Sidebar.css";
 
 function Sidebar() {
-        const [admin, setAdmin] = useState(true);
-        const [renter, setRenter] = useState(false);
+        const [admin, setAdmin] = useState(false);
+        const [renter, setRenter] = useState(true);
         const [user, setUser] = useState(false);
     return (
         <>
@@ -30,10 +30,10 @@ function Sidebar() {
                             <Link to={'/admin'} className='sidebar-link'>
                                 Dashboard
                             </Link>
-                            <Link to={'/renters'} className='sidebar-link'>
+                            <Link to={'/admin/renters'} className='sidebar-link'>
                                 Renters
                             </Link>
-                            <Link to={'/users'} className='sidebar-link'>
+                            <Link to={'/admin/users'} className='sidebar-link'>
                                 Users
                             </Link>
                         </div>
@@ -43,13 +43,16 @@ function Sidebar() {
                             <Link to={'/renter'} className='sidebar-link'>
                                 Dashboard
                             </Link>
-                            <Link to={'/my-fields'} className='sidebar-link'>
+                            <Link to={'/renter/my-fields'} className='sidebar-link'>
                                 My Fields
                             </Link>
-                            <Link to={'/analytics'} className='sidebar-link'>
+                            <Link to={'/renter/analytics'} className='sidebar-link'>
                                 Analytics
                             </Link>
-                            <Link to={'/contact'} className='sidebar-link'>
+                            <Link to={'/renter/account'} className='sidebar-link'>
+                                Account
+                            </Link>
+                            <Link to={'/renter/contact'} className='sidebar-link'>
                                 Contact
                             </Link>
                         </div>
@@ -59,13 +62,16 @@ function Sidebar() {
                             <Link to={'/user'} className='sidebar-link'>
                                 Dashboard
                             </Link>
-                            <Link to={'/my-reservations'} className='sidebar-link'>
+                            <Link to={'/user/my-reservations'} className='sidebar-link'>
                                 My Reservations
                             </Link>
-                            <Link to={'/invites'} className='sidebar-link'>
+                            <Link to={'/user/invites'} className='sidebar-link'>
                                 Invites
                             </Link>
-                            <Link to={'/contact'} className='sidebar-link'>
+                            <Link to={'/user/account'} className='sidebar-link'>
+                                Account
+                            </Link>
+                            <Link to={'/user/contact'} className='sidebar-link'>
                                 Contact
                             </Link>
                         </div>

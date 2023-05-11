@@ -23,13 +23,12 @@
     margin-bottom: 1px;
 }
 
-Form {
+.register-form {
     border: 3px solid #ccc;
     border-radius: 7px;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     padding: 2rem;
     margin-top: 1rem;
-    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: left !important;

@@ -14,6 +14,7 @@ import Analytics from "./pages/renter/Analytics";
 import User from './pages/user/User';
 import MyReservations from './pages/user/MyReservations';
 import Invites from './pages/user/Invites';
+import Account from './pages/user/Account';
 import Contact from './pages/Contact';
 import NoPage from './pages/NoPage';
 
@@ -26,15 +27,18 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/renters" element={<Renters />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/admin/renters" element={<Renters />} />
+          <Route path="/admin/users" element={<Users />} />
           <Route path="/renter" element={<Renter />} />
-          <Route path="/my-fields" element={<MyFields />} />
-          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/renter/my-fields" element={<MyFields />} />
+          <Route path="/renter/analytics" element={<Analytics />} />
+          <Route path="/renter/account" element={<Account />} />
+          <Route path="/renter/contact" element={<Contact />} />
           <Route path="/user" element={<User />} />
-          <Route path="/my-reservations" element={<MyReservations />} />
-          <Route path="/invites" element={<Invites />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/user/my-reservations" element={<MyReservations />} />
+          <Route path="/user/invites" element={<Invites />} />
+          <Route path="/user/account" element={<Account />} />
+          <Route path="/user/contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import Dropdown from 'react-bootstrap/Dropdown';
-import "./Renters.css";
+import "./Admin.css";
 
 //components
 import Sidebar from "../../components/navigation/Sidebar";
