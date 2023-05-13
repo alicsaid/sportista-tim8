@@ -1,7 +1,15 @@
-.fieldCards{
+.fieldCards {
    margin-top: 5rem;
    display: flex;
    justify-content: space-between;
    align-items: center;
    width: 100%;
+}
+
+.showMoreButton {
+   padding: 2px;
+   border: none;
+   background:none;
+   fontSize: 13px;
+   color: gray
 }

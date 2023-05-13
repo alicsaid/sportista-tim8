@@ -12,15 +12,18 @@ class App extends Component {
     render() {
         return (
             <>
-                <Button className="float-end" variant="primary" onClick={this.openModal}>Details</Button>
+                <Button variant="outline-primary" onClick={this.openModal}>Book now</Button>
                 <Modal show={this.state.isOpen} onHide={this.closeModal}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Teren 1</Modal.Title>
+                        <Modal.Title>Book your field!</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p>Adresa: ...</p>
-                        <p>Detalji: ...</p>
-                        <p>Posto u bazi nemamo vise podataka o terenu, ovdje mozemo dodati jos kad je koji dostupan</p>
+                        <input type="date" value="2017-06-01" style={{margin: "5px"}}/>
+                        <input type="time" />
+                        <div className="form-check form-switch form-check-reverse">
+                            <input className="form-check-input" type="checkbox" id="flexSwitchCheckReverse" />
+                                <label className="form-check-label" htmlFor="flexSwitchCheckReverse">Book weekly!</label>
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="primary">

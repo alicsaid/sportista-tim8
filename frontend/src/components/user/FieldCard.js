@@ -1,8 +1,11 @@
-import "./User.css";
+import "../../pages/user/User.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaStar } from 'react-icons/fa';
 import {useState} from "react";
+import BookFieldModal from "./BookFieldModal";
+import FieldDetailsModal from "./FieldDetailsModal";
+
 
 function FieldCard() {
     const ratingValue = 4;
@@ -20,7 +23,9 @@ function FieldCard() {
                         {showMore ? "Show less" : "Show more"}
                     </button>
                 </Card.Text>
-                <Button className="float-end" variant="primary">Details</Button>
+                <BookFieldModal />
+                <FieldDetailsModal />
+
             </Card.Body>
             <Card.Footer>
                 <div className="float-end">

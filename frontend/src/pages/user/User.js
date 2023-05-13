@@ -3,7 +3,7 @@ import "./User.css";
 
 //components
 import Sidebar from "../../components/navigation/Sidebar";
-import FieldCard from "./FieldCard";
+import FieldCard from "../../components/user/FieldCard";
 
 function Dashboard() {
     return (
