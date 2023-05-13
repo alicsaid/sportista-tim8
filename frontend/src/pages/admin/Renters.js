@@ -3,7 +3,6 @@ import Table from 'react-bootstrap/Table';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import "./Renters.css";
 
 //components
 import Sidebar from "../../components/navigation/Sidebar";
