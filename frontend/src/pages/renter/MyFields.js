@@ -1,14 +1,16 @@
 import React from 'react';
 
+
 //components
 import Sidebar from "../../components/navigation/Sidebar";
+import PokaznaStranica from "../../components/renter/PokaznaStranica";
 
 function MyFields() {
     return (
         <div style={{ display: 'flex' }}>
             <Sidebar />
             <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
-                <h1>My Fields</h1>
+                <PokaznaStranica />
             </div>
         </div>
     );
