@@ -1,9 +1,13 @@
+import "./User.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaStar } from 'react-icons/fa';
+import {useState} from "react";
 
 function FieldCard() {
     const ratingValue = 4;
+    const text = "Nedim you are wrong! This is NOT a footbal field. Hahaha there is more info about this field isnt it cool?";
+    const [showMore, setShowMore] = useState(false);
 
     return (
         <Card style={{ width: '18rem' }}>
@@ -11,8 +15,10 @@ function FieldCard() {
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                    {showMore ? text : `${text.substring(0, 50)}`+'...'}
+                    <button className="showMoreButton" onClick={()=>setShowMore(!showMore)}>
+                        {showMore ? "Show less" : "Show more"}
+                    </button>
                 </Card.Text>
                 <Button className="float-end" variant="primary">Details</Button>
             </Card.Body>
