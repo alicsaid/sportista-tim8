@@ -1,185 +1,416 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./RegisterForm.css";
 
 function UserRegisterForm() {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [gender, setGender] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [userSports, setSports] = useState([])
+    const [currentStep, setCurrentStep] = useState(1);
+    const [userFirstName, setUserFirstName] = useState('');
+    const [userLastName, setUserLastName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userPassword, setUserPassword] = useState('');
+    const [userGender, setUserGender] = useState('Male');
+    const [userDateOfBirth, setUserDateOfBirth] = useState('');
+    const [userBasketball, setUserBasketball] = useState(false);
+    const [userPaintball, setUserPaintball] = useState(false);
+    const [userAirsoft, setUserAirsoft] = useState(false);
+    const [userTennis, setUserTennis] = useState(false);
+    const [userIceSkating, setUserIceSkating] = useState(false);
+    const [userFootball, setUserFootball] = useState(false);
+    const [userVolleyball, setUserVolleyball] = useState(false);
+    const [userBoxing, setUserBoxing] = useState(false);
+    const [userHandball, setUserHandball] = useState(false);
+    const [userTableTennis, setUserTableTennis] = useState(false);
+    const [userHockey, setUserHockey] = useState(false);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    const [termsAccepted, setTermsAccepted] = useState(false);
+    const [emailError, setEmailError] = useState('');
 
-    const handleFirstNameChange = (event) => {
+    const handleUserFirstNameChange = (event) => {
         const inputText = event.target.value;
-        setFirstName(inputText.charAt(0).toUpperCase() + inputText.slice(1));
+        setUserFirstName(inputText.charAt(0).toUpperCase() + inputText.slice(1));
     };
 
-    const handleLastNameChange = (event) => {
+    const handleUserLastNameChange = (event) => {
         const inputText = event.target.value;
-        setLastName(inputText.charAt(0).toUpperCase() + inputText.slice(1));
+        setUserLastName(inputText.charAt(0).toUpperCase() + inputText.slice(1));
     };
 
-    const handleGenderChange = (event) => {
-        setGender(event.target.value);
+    const handleUserEmailChange = (event) => {
+        setUserEmail(event.target.value);
+    };
+
+    const handleUserPasswordChange = (event) => {
+        setUserPassword(event.target.value);
+    };
+
+    const handleUserGenderChange = (event) => {
+        setUserGender(event.target.value);
     }
 
-    const handleDateOfBirthChange = (event) => {
-        setDateOfBirth(event.target.value);
+    const handleUserDateOfBirthChange = (event) => {
+        setUserDateOfBirth(event.target.value);
     }
 
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-    };
-
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
-
-    const handleUserSportChange = (event) => {
-        const sport = event.target.value;
-
-        if (userSports.includes(sport)) {
-            setSports(userSports.filter(item => item !== sport));
+    const handleNextStep = () => {
+        if (currentStep === 1 && !userFirstName) {
+            alert('Please enter your first name.');
+        } else if (currentStep === 1 && !userLastName) {
+            alert('Please enter your last name.');
+        } else if (currentStep === 1 && !userEmail) {
+            alert('Please enter your email address.')
+        } else if (currentStep === 1 && !userPassword) {
+            alert('Please enter your password.');
+        } else if (currentStep === 2 && !userGender) {
+            alert('Please enter your gender.');
+        } else if (currentStep === 2 && !userDateOfBirth) {
+            alert('Please enter your date of birth.')
+        } else if (currentStep === 3 && !userBasketball && !userPaintball && !userAirsoft && !userTennis && !userIceSkating && !userFootball && !userVolleyball && !userBoxing && !userHandball && !userTableTennis && !userHockey) {
+            alert('Please select at least one sport');
         } else {
-            setSports([...userSports, sport]);
+            setCurrentStep(currentStep+1);
         }
+    };
+
+    const handlePrevStep = () => {
+        setCurrentStep(currentStep - 1);
+    };
+
+    const handleUserBasketballChange = (event) => {
+        setUserBasketball(true);
+    }
+
+    const handleUserPaintballChange = (event) => {
+        setUserPaintball(true);
+    }
+
+    const handleUserAirsoftChange = (event) => {
+        setUserAirsoft(true);
+    }
+
+    const handleUserTennisChange = (event) => {
+        setUserTennis(true);
+    }
+
+    const handleUserIceSkatingChange = (event) => {
+        setUserIceSkating(true);
+    }
+
+    const handleUserFootballChange = (event) => {
+        setUserFootball(true);
+    }
+
+    const handleUserVolleyballChange = (event) => {
+        setUserVolleyball(true);
+    }
+
+    const handleUserBoxingChange = (event) => {
+        setUserBoxing(true);
+    }
+
+    const handleUserHandballChange = (event) => {
+        setUserHandball(true);
+    }
+
+    const handleUserTableTennisChange = (event) => {
+        setUserTableTennis(true);
+    }
+
+    const handleUserHockeyChange = (event) => {
+        setUserHockey(true);
+    }
+
+    const handleTermsAcceptance = (event) => {
+        setTermsAccepted(event.target.checked);
+    };
+
+    useEffect(() => {
+        if (userEmail && !isValidEmail(userEmail)) {
+            setEmailError('Please enter a valid email address.');
+        } else {
+            setEmailError('');
+        }
+    }, [userEmail]);
+
+    const isValidEmail = (email) => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        return emailPattern.test(email);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // handle form submission
+        // Perform form submission logic here
+        if (!termsAccepted) {
+            alert('Please agree to the terms and conditions and privacy policy if you want to proceed.');
+            return;
+        }
+        setFormSubmitted(true);
+    };
+
+    const renderCurrentStepForm = () => {
+        switch (currentStep) {
+            case 1:
+                return (
+                    <>
+                        <Form.Group className="mb-3">
+                            <Form.Label>First name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="First name"
+                                value={userFirstName}
+                                onChange={handleUserFirstNameChange}
+                                required={true}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Last name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Last name"
+                                value={userLastName}
+                                onChange={handleUserLastNameChange}
+                                required={true}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control
+                                type="email"
+                                placeholder="E-mail"
+                                value={userEmail}
+                                onChange={handleUserEmailChange}
+                                required={true}
+                            />
+                            {emailError && <div className="error">{emailError}</div>}
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                className="input"
+                                type="password"
+                                placeholder="Password"
+                                value={userPassword}
+                                onChange={handleUserPasswordChange}
+                                required={true}
+                            />
+                        </Form.Group>
+
+                        <Button variant="primary" onClick={handleNextStep} className="nextButton">
+                            Next
+                        </Button>
+                    </>
+                );
+            case 2:
+                return (
+                    <>
+                        <Form.Group className="mb-3">
+                            <Form.Label className="gender">Gender</Form.Label>
+                            <Form.Select value={userGender} onChange={handleUserGenderChange} required>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </Form.Select>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label className="date">Date of birth</Form.Label>
+                            <Form.Control
+                                className="input"
+                                type="date"
+                                value={userDateOfBirth}
+                                onChange={handleUserDateOfBirthChange}
+                                required={true}
+                            />
+                        </Form.Group>
+
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px'}}>
+                            <Button variant="primary" onClick={handlePrevStep} className="previousButton">
+                                Previous
+                            </Button>
+                            <Button variant="primary" onClick={handleNextStep} className="nextButton">
+                                Next
+                            </Button>
+                        </div>
+                    </>
+                );
+            case 3:
+                return (
+                    <>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Which sports are you interested in?</Form.Label>
+                            <Form.Check
+                                label="Basketball"
+                                type="checkbox"
+                                value={userBasketball}
+                                onChange={handleUserBasketballChange}
+                            />
+
+                            <Form.Check
+                                label="Paintball"
+                                type="checkbox"
+                                value={userPaintball}
+                                onChange={handleUserPaintballChange}
+                            />
+
+                            <Form.Check
+                                label="Airsoft"
+                                type="checkbox"
+                                value={userAirsoft}
+                                onChange={handleUserAirsoftChange}
+                            />
+
+                            <Form.Check
+                                label="Basketball"
+                                type="checkbox"
+                                value={userBasketball}
+                                onChange={handleUserBasketballChange}
+                            />
+
+                            <Form.Check
+                                label="Tennis"
+                                type="checkbox"
+                                value={userTennis}
+                                onChange={handleUserTennisChange}
+                            />
+
+                            <Form.Check
+                                label="Ice skating"
+                                type="checkbox"
+                                value={userIceSkating}
+                                onChange={handleUserIceSkatingChange}
+                            />
+
+                            <Form.Check
+                                label="Football"
+                                type="checkbox"
+                                value={userFootball}
+                                onChange={handleUserFootballChange}
+                            />
+
+                            <Form.Check
+                                label="Volleyball"
+                                type="checkbox"
+                                value={userVolleyball}
+                                onChange={handleUserVolleyballChange}
+                            />
+
+                            <Form.Check
+                                label="Boxing"
+                                type="checkbox"
+                                value={userBoxing}
+                                onChange={handleUserBoxingChange}
+                            />
+
+                            <Form.Check
+                                label="Handball"
+                                type="checkbox"
+                                value={userHandball}
+                                onChange={handleUserHandballChange}
+                            />
+
+                            <Form.Check
+                                label="Table tennis"
+                                type="checkbox"
+                                value={userTableTennis}
+                                onChange={handleUserTableTennisChange}
+                            />
+
+                            <Form.Check
+                                label="Hockey"
+                                type="checkbox"
+                                value={userHockey}
+                                onChange={handleUserHockeyChange}
+                            />
+                        </Form.Group>
+
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
+                            <Button variant="primary" onClick={handlePrevStep} className="previousButton">
+                                Previous
+                            </Button>
+                            <Button variant="primary" onClick={handleNextStep} className="nextButton">
+                                Next
+                            </Button>
+                        </div>
+                    </>
+                );
+            case 4:
+                if (formSubmitted) {
+                    return (
+                        <Form.Group className="mb-3">
+                            <h2 style={{marginBottom: '35px'}}>Welcome to Sportista Field Rental!</h2>
+                            <h4>Thank you for registering.</h4>
+                        </Form.Group>
+                    );
+                } else {
+                    return (
+                        <>
+                            <Form.Group className="mb-3">
+                                <Form.Label>
+                                    <div className="terms-and-conditions">
+    <pre>
+      {`
+Terms and Conditions
+
+Welcome to Sportista Field Rental. 
+By using our platform, you agree to comply with the following terms and conditions:
+
+1. Use of the Platform
+   - You are responsible for maintaining the confidentiality of your account.
+   - You agree not to use the platform for any illegal or unauthorized purposes.
+
+2. Field Rental
+   - The platform facilitates the rental of sports fields.
+   - The availability and booking process may vary and are subject to specific terms outlined on the platform.
+   - Any disputes or issues regarding field rental are the responsibility of the field renter and user.
+
+3. Liability
+   - We are not responsible for any accidents, injuries, or damages that may occur during field rental.
+   - Users and renters are advised to establish their own agreements regarding liability and responsibilities.
+
+4. Privacy
+   - We collect and store user data in accordance with our privacy policy.
+   - We implement security measures to protect user information, but we cannot guarantee complete security.
+
+5. Disclaimer
+   - The platform is provided "as is" and we do not make any warranties or representations.
+   - We are not responsible for the accuracy or availability of the platform's content.
+
+By using our platform, you agree to these terms and conditions. 
+If you do not agree, please refrain from using the platform.
+      `}
+    </pre>
+                                    </div>
+                                </Form.Label>
+                            </Form.Group>
+
+
+                            <Form.Group className="mb-3">
+                                <Form.Label>
+                                    <Form.Check inline required={true} className="terms" onChange={handleTermsAcceptance}></Form.Check>
+                                    I agree to the terms and conditions and privacy policy
+                                </Form.Label>
+                            </Form.Group>
+
+                            <Form.Group as={Form.Row}>
+                                <Button variant="primary" type="button" onClick={handleSubmit} style={{float: 'right'}}>
+                                    Register
+                                </Button>
+                            </Form.Group>
+                        </>
+                    );
+                }
+            default:
+                return null;
+        }
     };
 
     return (
-        <Form style={{width: '100%'}}>
-            <Form.Group className="mb-3" controlId="registerFirstName">
-                <Form.Label>First name</Form.Label>
-                <Form.Control
-                    className="input"
-                    type="text"
-                    placeholder="First name"
-                    value={firstName}
-                    onChange={handleFirstNameChange}
-                    required={true}
-                />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="registerLastName">
-                <Form.Label>Last name</Form.Label>
-                <Form.Control
-                    className="input"
-                    type="text"
-                    placeholder="Last name"
-                    value={lastName}
-                    onChange={handleLastNameChange}
-                    required={true}
-                />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="registerGender">
-                <Form.Label className="gender">Gender</Form.Label>
-                <Form.Select value={gender} onChange={handleGenderChange}>
-                    <option>Male</option>
-                    <option>Female</option>
-                </Form.Select>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="registerDateOfBirth">
-                <Form.Label className="date">Date of birth</Form.Label>
-                <Form.Control
-                    className="input"
-                    type="date"
-                    value={dateOfBirth}
-                    onChange={handleDateOfBirthChange}
-                    required={true}
-                />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="registerEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                    className="input"
-                    type="email"
-                    placeholder="E-mail"
-                    value={email}
-                    onChange={handleEmailChange}
-                    required={true}
-                />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="registerPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    className="input"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    required={true}
-                />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="registerSport">
-                <Form.Label className="sport">Sports</Form.Label>
-                <Form.Check
-                    type="checkbox"
-                    label="Football"
-                    id="football"
-                    value="Football"
-                    checked={userSports.includes("Football")}
-                    onChange={handleUserSportChange}
-                />
-                <Form.Check
-                    type="checkbox"
-                    label="Basketball"
-                    id="basketball"
-                    value="Basketball"
-                    checked={userSports.includes("Basketball")}
-                    onChange={handleUserSportChange}
-                />
-                <Form.Check
-                    type="checkbox"
-                    label="Volleyball"
-                    id="volleyball"
-                    value="Volleyball"
-                    checked={userSports.includes("Volleyball")}
-                    onChange={handleUserSportChange}
-                />
-                <Form.Check
-                    type="checkbox"
-                    label="Handball"
-                    id="handball"
-                    value="Handball"
-                    checked={userSports.includes("Handball")}
-                    onChange={handleUserSportChange}
-                />
-                <Form.Check
-                    type="checkbox"
-                    label="Tennis"
-                    id="tennis"
-                    value="Tennis"
-                    checked={userSports.includes("Tennis")}
-                    onChange={handleUserSportChange}
-                />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="registerTerms">
-                <Form.Label>
-                    <Form.Check inline required={true}></Form.Check>
-                    I agree to the terms and conditions and privacy policy
-                </Form.Label>
-            </Form.Group>
-
-            <Form.Group as={Form.Row}>
-                <Button variant="primary" type="submit">
-                    Register
-                </Button>
-            </Form.Group>
-
-        </Form>
+        <div onSubmit={handleSubmit} style={{width: 'auto'}}>
+            {renderCurrentStepForm()}
+        </div>
     );
 }
 
