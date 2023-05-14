@@ -27,13 +27,13 @@ U nastavku će biti navedene detaljnije specifikacije za svaki tip korisnika.
 • Modul 1: Administrator
     o može brisati ili upozoriti korisnike i iznajmljivače;
     o ima uvid u sve tabele baze podataka;
-    o odobrava registracije novih iznajmljivača;
+    o odobrava registracije novih iznajmljivača; \n
 • Modul 2: Iznajmljivači
     o imaju mogućnost registracije na sistem;
     o odgovorni su za upravljanje i ažuriranje podataka o salama/terenima (cijena po satu, dostupnost, vrsta sporta za koji je sala/teren namijenjen itd.);
     o imaju mogućnost dodavanja nove sale/terena, te zaključavanja ili brisanja postojećih;
     o imaju mogućnost pregleda recenzija i ocjena svojih sala/terena;
-    o imaju mogućnost pregleda statistika o zaradi, broju rezervacija, najtraženijim salama/terminima itd.
+    o imaju mogućnost pregleda statistika o zaradi, broju rezervacija, najtraženijim salama/terminima itd. \n
 • Modul 3: Korisnici
     o imaju mogućnost registracije na sistem;
     o imaju mogućnost pregleda dostupnih terena, pretraživanje terena po lokaciji, sportu, cijeni i dostupnosti;
@@ -42,7 +42,7 @@ U nastavku će biti navedene detaljnije specifikacije za svaki tip korisnika.
     o imaju mogućnost postavljanja recenzija i ocjena za terene;
     o imaju mogućnost pronalaska osoba sa sličnim interesima;
     o statistika odigranih i neodigranih rezervacija;
-    o imaju mogućnost dobivanja pozivnice (notifikacije) kada je dostupan termin za odabrani sport;
+    o imaju mogućnost dobivanja pozivnice (notifikacije) kada je dostupan termin za odabrani sport; \n
 
 ## Tehnologije
 
