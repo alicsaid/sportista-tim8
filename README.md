@@ -18,7 +18,7 @@ Aplikacija se sastoji iz više modula, te je predviđena za korištenje različi
 
 Administrator sistema ima kontrolu nad svim dešavanjima u sistemu, dodaje se direktno kroz bazu podataka.\
 Iznajmljivači sportskih sala/terena su registrovani korisnici, te imaju mogućnost administracije svih podataka o terenima i terminima.\
-Korisnici sportskih terena su registrovani korisnici koji primarno imaju mogućnost rezervisanja terena/sala i termina.\
+Korisnici sportskih terena su registrovani korisnici koji primarno imaju mogućnost rezervisanja terena/sala i termina.
 
 ## Detaljne specifikacije
 
