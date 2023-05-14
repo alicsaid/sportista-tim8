@@ -9,12 +9,12 @@
 
 ## Uvod
 
-“Sportista" je aplikacija koja služi za iznajmljivanje sportskih terena i dogovaranje termina na lagan i brz način.\
+“Sportista" je aplikacija koja služi za iznajmljivanje sportskih terena i dogovaranje termina na lagan i brz način.
 
 Aplikacija se sastoji iz više modula, te je predviđena za korištenje različitim tipovima korisnika:\
     • administrator sistema\
     • iznajmljivači sportskih sala/terena\
-    • korisnici sportskih terena.\
+    • korisnici sportskih terena.
 
 Administrator sistema ima kontrolu nad svim dešavanjima u sistemu, dodaje se direktno kroz bazu podataka.\
 Iznajmljivači sportskih sala/terena su registrovani korisnici, te imaju mogućnost administracije svih podataka o terenima i terminima.\
@@ -22,7 +22,7 @@ Korisnici sportskih terena su registrovani korisnici koji primarno imaju mogućn
 
 ## Detaljne specifikacije
 
-U nastavku će biti navedene detaljnije specifikacije za svaki tip korisnika.\
+U nastavku će biti navedene detaljnije specifikacije za svaki tip korisnika.
 
 • Modul 1: Administrator\
     o može brisati ili upozoriti korisnike i iznajmljivače;\
@@ -42,15 +42,15 @@ U nastavku će biti navedene detaljnije specifikacije za svaki tip korisnika.\
     o imaju mogućnost postavljanja recenzija i ocjena za terene;\
     o imaju mogućnost pronalaska osoba sa sličnim interesima;\
     o statistika odigranih i neodigranih rezervacija;\
-    o imaju mogućnost dobivanja pozivnice (notifikacije) kada je dostupan termin za odabrani sport; \n\
+    o imaju mogućnost dobivanja pozivnice (notifikacije) kada je dostupan termin za odabrani sport; 
 
 ## Tehnologije
 
-Tehnologije koje će se koristiti za izradu aplikacije:\
+Tehnologije koje će se koristiti za izradu aplikacije:
 
 • Baza podataka:\
     o PostgreSQL\
 • Backend:\
     o Django\
 • Frontend:\
-    o ReactJS\
+    o ReactJS
