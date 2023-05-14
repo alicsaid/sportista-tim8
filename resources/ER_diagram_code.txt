@@ -1,105 +1,82 @@
-Table renters {
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Sports {
   id               integer [primary key]
   name             varchar(255)
-  email            varchar(255)
-  password         varchar(255)
-  city             varchar(255)
-  phone_number     varchar(255)
-  has_basketball   boolean                                            
-  has_paintball    boolean                                            
-  has_airsoft      boolean                                          
-  has_tennis       boolean                                          
-  has_ice_skating  boolean                                           
-  has_football     boolean                                            
-  has_volleyball   boolean                                           
-  has_boxing       boolean
-  has_handball     boolean
-  has_table_tennis boolean
-  has_hockey       boolean
 }
 
-Table fields {
+Table Renters {
+  id              integer [primary key]
+  name            varchar(255)
+  email           varchar(255)
+  password        varchar(255)
+  city            varchar(255)
+  phone_number    varchar(255)
+  has_sports      integer
+}
+
+Table Fields {
   id              integer [primary key]
   id_rentera      integer
   adress          varchar(255)
   details         varchar(1000)
   image           bytea
   starts          time                                             
-  ends            time    
-  is_basketball   boolean                                       
-  is_paintball    boolean                                        
-  is_airsoft      boolean                                       
-  is_tennis       boolean                                         
-  is_football     boolean                                           
-  is_volleyball   boolean                                         
-  is_boxing       boolean                                        
-  is_handball     boolean                                           
-  is_table_tennis boolean                                           
-  is_hockey       boolean                                           
-  is_ice_skating  boolean                                          
+  ends            time
+  is_sport        integer
+  grades          integer
+  has_teams       integer                                     
 }
 
-Table users {
+Table Users {
   id                 integer [primary key]
   email              varchar(255)                                        
   password           varchar(255)                                         
   first_name         varchar(255)                                        
   last_name          varchar(255)                                   
   gender             boolean                                           
-  date_of_birth      date                                                 
-  plays_basketball   boolean                                            
-  plays_paintball    boolean                                            
-  plays_airsoft      boolean                                            
-  plays_tennis       boolean                                            
-  plays_football     boolean                                            
-  plays_volleyball   boolean                                             
-  plays_boxing       boolean                                            
-  plays_handball     boolean
-  plays_table_tennis boolean                                             
-  plays_hockey       boolean   
+  date_of_birth      date
+  plays_sports       integer
+  favourite_fields   integer
 }
 
-Table teams {
-  id        integer [primary key]
-  id_leader integer                                          
-  name      varchar(255)                                     
-  sport     sport      
+Table Teams {
+  id                integer [primary key]
+  id_leader         integer                                          
+  name              varchar(255)                                     
+  plays_sport       integer    
 }
 
-Table user_is_in_team {
-  id      integer [primary key]
-  id_user integer
-  id_team integer
+
+Table TeamsRentsField {
+  id              integer [primary key]
+  id_team         integer 
+  id_field        integer
+  beginning       timestamp
+  ending          timestamp
 }
 
-Table team_rents_field {
-  id        integer [primary key]
-  id_team   integer 
-  id_field  integer
-  beginning timestamp
-  ending    timestamp
+Table UserGradesField {
+  id              integer [primary key]
+  id_user         integer
+  id_field        integer 
+  grade           integer
 }
 
-Table user_grades_field {
-  id       integer [primary key]
-  id_user  integer
-  id_field integer 
-  grade    integer
-}
+Ref: Renters.has_sports <> Sports.id
 
-Table user_favourites_field {
-  id       integer [primary key]
-  id_user  integer
-  id_field integer
-}
+Ref: Fields.is_sport <> Sports.id
 
-Ref: fields.id_rentera > renters.id
-Ref: teams.id_leader > users.id
-Ref: user_is_in_team.id_user > users.id
-Ref: user_is_in_team.id_team > teams.id
-Ref: team_rents_field.id_team > teams.id
-Ref: team_rents_field.id_field > fields.id
-Ref: user_grades_field.id_user > users.id
-Ref: user_grades_field.id_field > fields.id
-Ref: user_favourites_field.id_user > users.id
-Ref: user_favourites_field.id_field > fields.id
+Ref: UserGradesField.id_field > Fields.id
+Ref: UserGradesField.id_user > Users.id
+
+Ref: TeamsRentsField.id_team > Teams.id
+Ref: TeamsRentsField.id_field > Fields.id
+
+Ref: Users.plays_sports <> Sports.id
+
+Ref: Users.favourite_fields <> Fields.id
+
+Ref: Teams.plays_sport > Sports.id
+

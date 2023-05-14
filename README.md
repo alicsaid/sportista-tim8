@@ -49,7 +49,7 @@ U nastavku će biti navedene detaljnije specifikacije za svaki tip korisnika.
 Tehnologije koje će se koristiti za izradu aplikacije:
 
 • Baza podataka:\
-    o PostgreSQL\
+    o SQLite\
 • Backend:\
     o Django\
 • Frontend:\
