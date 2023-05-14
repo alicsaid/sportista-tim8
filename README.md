@@ -28,13 +28,13 @@ U nastavku će biti navedene detaljnije specifikacije za svaki tip korisnika.
     o može brisati ili upozoriti korisnike i iznajmljivače;\
     o ima uvid u sve tabele baze podataka;\
     o odobrava registracije novih iznajmljivača; \
-• Modul 2: Iznajmljivači\
+\• Modul 2: Iznajmljivači\
     o imaju mogućnost registracije na sistem;\
     o odgovorni su za upravljanje i ažuriranje podataka o salama/terenima (cijena po satu, dostupnost, vrsta sporta za koji je sala/teren namijenjen itd.);\
     o imaju mogućnost dodavanja nove sale/terena, te zaključavanja ili brisanja postojećih;\
     o imaju mogućnost pregleda recenzija i ocjena svojih sala/terena;\
     o imaju mogućnost pregleda statistika o zaradi, broju rezervacija, najtraženijim salama/terminima itd. \
-• Modul 3: Korisnici\
+\• Modul 3: Korisnici\
     o imaju mogućnost registracije na sistem;\
     o imaju mogućnost pregleda dostupnih terena, pretraživanje terena po lokaciji, sportu, cijeni i dostupnosti;\
     o imaju mogućnost rezervisanja termina;\
