@@ -77,15 +77,19 @@
     border: 2px solid black;
 }
 
+.terms-and-conditions {
+    font-size: 14px;
+}
+
 @media (max-width: 768px) {
     .terms-and-conditions {
-        font-size: 14px;
+        font-size: 12.5px;
     }
 }
 
 @media (max-width: 576px) {
     .terms-and-conditions {
-        font-size: 8.5px;
+        font-size: 10.5px;
     }
 }
 
@@ -97,5 +101,31 @@
     padding-right: 7.2rem;
     margin-bottom: 7px;
 }
+
+.login-button {
+    float: right;
+    margin-top: 7px;
+}
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.step.active {
+    background-color: black;
+}
+
+.steps {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
 
 

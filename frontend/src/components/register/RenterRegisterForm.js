@@ -156,11 +156,22 @@ function RenterRegisterForm() {
         setFormSubmitted(true);
     };
 
+    const handleLoginButtonClick = () => {
+        window.location.href = '/login';
+    };
+
     const renderCurrentStepForm = () => {
         switch (currentStep) {
             case 1:
                 return (
                     <>
+                        <div className="steps">
+                            <div className="step active"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                        </div>
+
                         <Form.Group className="mb-3">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
@@ -204,6 +215,12 @@ function RenterRegisterForm() {
             case 2:
                 return (
                     <>
+                        <div className="steps">
+                            <div className="step"></div>
+                            <div className="step active"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                        </div>
                         <Form.Group className="mb-3">
                             <Form.Label>City</Form.Label>
                             <Form.Control
@@ -240,6 +257,12 @@ function RenterRegisterForm() {
             case 3:
                 return (
                     <>
+                        <div className="steps">
+                            <div className="step"></div>
+                            <div className="step"></div>
+                            <div className="step active"></div>
+                            <div className="step"></div>
+                        </div>
                         <Form.Group className="mb-3">
                             <Form.Label>Which sports do you offer fields for?</Form.Label>
                             <Form.Check
@@ -261,13 +284,6 @@ function RenterRegisterForm() {
                                 type="checkbox"
                                 value={renterAirsoft}
                                 onChange={handleRenterAirsoftChange}
-                            />
-
-                            <Form.Check
-                                label="Basketball"
-                                type="checkbox"
-                                value={renterBasketball}
-                                onChange={handleRenterBasketballChange}
                             />
 
                             <Form.Check
@@ -340,14 +356,29 @@ function RenterRegisterForm() {
             case 4:
                 if (formSubmitted) {
                     return (
-                        <Form.Group className="mb-3">
-                            <h2 style={{marginBottom: '35px'}}>Welcome to Sportista Field Rental!</h2>
-                            <h4>Thank you for registering.</h4>
-                        </Form.Group>
+                        <>
+                            <Form.Group className="mb-3">
+                                <h3 style={{marginBottom: '35px'}}>Welcome to Sportista Field Rental!</h3>
+                                <h4 style={{marginBottom: '35px'}}>Thank you for registering.</h4>
+                                <h4>You can now login to your account.</h4>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Button variant="primary" onClick={handleLoginButtonClick} className="login-button">
+                                    Login
+                                </Button>
+                            </Form.Group>
+                        </>
                     );
                 } else {
                     return (
                         <>
+                            <div className="steps">
+                                <div className="step"></div>
+                                <div className="step"></div>
+                                <div className="step"></div>
+                                <div className="step active"></div>
+                            </div>
                             <Form.Group className="mb-3">
                                 <Form.Label>
                                     <div className="terms-and-conditions">
@@ -355,29 +386,39 @@ function RenterRegisterForm() {
       {`
 Terms and Conditions
 
-Welcome to Sportista Field Rental. 
-By using our platform, you agree to comply with the following terms and conditions:
+Welcome to Sportista Field Rental! 
+By using our platform, you agree to comply with the following terms and 
+conditions:
 
 1. Use of the Platform
-   - You are responsible for maintaining the confidentiality of your account.
-   - You agree not to use the platform for any illegal or unauthorized purposes.
+   - You are responsible for maintaining the confidentiality of your 
+   account.
+   - You agree not to use the platform for any illegal or unauthorized 
+   purposes.
 
 2. Field Rental
    - The platform facilitates the rental of sports fields.
-   - The availability and booking process may vary and are subject to specific terms outlined on the platform.
-   - Any disputes or issues regarding field rental are the responsibility of the field renter and user.
+   - The availability and booking process may vary and are subject to 
+   specific terms outlined on the platform.
+   - Any disputes or issues regarding field rental are the responsibility 
+   of the field renter and user.
 
 3. Liability
-   - We are not responsible for any accidents, injuries, or damages that may occur during field rental.
-   - Users and renters are advised to establish their own agreements regarding liability and responsibilities.
+   - We are not responsible for any accidents, injuries, or damages that 
+   may occur during field rental.
+   - Users and renters are advised to establish their own agreements 
+   regarding liability and responsibilities.
 
 4. Privacy
    - We collect and store user data in accordance with our privacy policy.
-   - We implement security measures to protect user information, but we cannot guarantee complete security.
+   - We implement security measures to protect user information, but we 
+   cannot guarantee complete security.
 
 5. Disclaimer
-   - The platform is provided "as is" and we do not make any warranties or representations.
-   - We are not responsible for the accuracy or availability of the platform's content.
+   - The platform is provided "as is" and we do not make any warranties or 
+   representations.
+   - We are not responsible for the accuracy or availability of the 
+   platform's content.
 
 By using our platform, you agree to these terms and conditions. 
 If you do not agree, please refrain from using the platform.
@@ -386,7 +427,6 @@ If you do not agree, please refrain from using the platform.
                                     </div>
                                 </Form.Label>
                             </Form.Group>
-
 
                             <Form.Group className="mb-3">
                                 <Form.Label>
@@ -409,7 +449,7 @@ If you do not agree, please refrain from using the platform.
     };
 
     return (
-        <div onSubmit={handleSubmit} style={{width: 'auto'}}>
+        <div className="container" style={{ alignItems: 'center', justifyContent: 'center' }} onSubmit={handleSubmit} >
             {renderCurrentStepForm()}
         </div>
     );

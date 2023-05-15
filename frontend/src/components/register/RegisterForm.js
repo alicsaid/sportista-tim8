@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import UserRegisterForm from './UserRegisterForm';
 import RenterRegisterForm from './RenterRegisterForm';
-import Button from 'react-bootstrap/Button';
+import "./RegisterForm.css";
 
 function RegisterForm() {
     const [registrationType, setRegistrationType] = useState('');
@@ -10,14 +10,7 @@ function RegisterForm() {
 
     const handleRegistrationTypeChange = (event) => {
         setRegistrationType(event.target.value);
-    };
-
-    const handleNextStep = () => {
-        if (registrationType === '') {
-            alert('Please select a registration type.');
-            return;
-        }
-        setCurrentStep(currentStep + 1);
+        setCurrentStep(2);
     };
 
     const renderCurrentStepForm = () => {
@@ -25,7 +18,7 @@ function RegisterForm() {
             return (
                 <Form.Group className="mb-3">
                     <Form.Label>
-                        <h4>Do you want to register as a renter or as a user?</h4>
+                        <h4 style={{marginTop: '20px', marginBottom: '80px', textAlign: 'center'}}>Do you want to register as a renter or as a user?</h4>
                     </Form.Label>
                     <div className="radio-group">
                         <Form.Check
@@ -47,9 +40,6 @@ function RegisterForm() {
                             onChange={handleRegistrationTypeChange}
                         />
                     </div>
-                    <Button variant="primary" onClick={handleNextStep} style={{float: 'right'}}>
-                        Next
-                    </Button>
                 </Form.Group>
             );
         } else if (currentStep === 2) {
@@ -63,9 +53,11 @@ function RegisterForm() {
     };
 
     return (
-        <Form className="registerForm" style={{width: 'auto'}} >
-            {renderCurrentStepForm()}
-        </Form>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Form className="registerForm" style={{ width: '600px' }}>
+                {renderCurrentStepForm()}
+            </Form>
+        </div>
     );
 }
 

@@ -25,6 +25,7 @@ function UserRegisterForm() {
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [emailError, setEmailError] = useState('');
+    const [userAvailability, setUserAvailability] = useState({});
 
     const handleUserFirstNameChange = (event) => {
         const inputText = event.target.value;
@@ -67,6 +68,8 @@ function UserRegisterForm() {
             alert('Please enter your date of birth.')
         } else if (currentStep === 3 && !userBasketball && !userPaintball && !userAirsoft && !userTennis && !userIceSkating && !userFootball && !userVolleyball && !userBoxing && !userHandball && !userTableTennis && !userHockey) {
             alert('Please select at least one sport');
+        } else if (currentStep === 4 && Object.keys(userAvailability).length === 0) {
+            alert('Please select at least one range of hours.');
         } else {
             setCurrentStep(currentStep+1);
         }
@@ -138,6 +141,21 @@ function UserRegisterForm() {
         return emailPattern.test(email);
     };
 
+    const handleUserAvailabilityChange = (day, startHour, endHour) => {
+        const updatedAvailability = { ...userAvailability };
+
+        if (!updatedAvailability[day]) {
+            updatedAvailability[day] = {};
+        }
+
+        updatedAvailability[day] = {
+            startHour,
+            endHour
+        };
+
+        setUserAvailability(updatedAvailability);
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // Perform form submission logic here
@@ -148,11 +166,22 @@ function UserRegisterForm() {
         setFormSubmitted(true);
     };
 
+    const handleLoginButtonClick = () => {
+        window.location.href = '/login';
+    };
+
     const renderCurrentStepForm = () => {
         switch (currentStep) {
             case 1:
                 return (
                     <>
+                        <div className="steps">
+                            <div className="step active"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                        </div>
                         <Form.Group className="mb-3">
                             <Form.Label>First name</Form.Label>
                             <Form.Control
@@ -207,6 +236,13 @@ function UserRegisterForm() {
             case 2:
                 return (
                     <>
+                        <div className="steps">
+                            <div className="step"></div>
+                            <div className="step active"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                        </div>
                         <Form.Group className="mb-3">
                             <Form.Label className="gender">Gender</Form.Label>
                             <Form.Select value={userGender} onChange={handleUserGenderChange} required>
@@ -239,6 +275,13 @@ function UserRegisterForm() {
             case 3:
                 return (
                     <>
+                        <div className="steps">
+                            <div className="step"></div>
+                            <div className="step"></div>
+                            <div className="step active"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                        </div>
                         <Form.Group className="mb-3">
                             <Form.Label>Which sports are you interested in?</Form.Label>
                             <Form.Check
@@ -260,13 +303,6 @@ function UserRegisterForm() {
                                 type="checkbox"
                                 value={userAirsoft}
                                 onChange={handleUserAirsoftChange}
-                            />
-
-                            <Form.Check
-                                label="Basketball"
-                                type="checkbox"
-                                value={userBasketball}
-                                onChange={handleUserBasketballChange}
                             />
 
                             <Form.Check
@@ -337,16 +373,99 @@ function UserRegisterForm() {
                     </>
                 );
             case 4:
+                const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                return (
+                    <>
+                        <div className="steps">
+                            <div className="step"></div>
+                            <div className="step"></div>
+                            <div className="step"></div>
+                            <div className="step active"></div>
+                            <div className="step"></div>
+                        </div>
+                        <Form.Label>When are you available?</Form.Label>
+                        <div style={{marginTop: '25px', marginBottom: '10px'}}>
+                            <Form.Label style={{marginLeft: '100px'}}>Start Hour</Form.Label>
+                            <Form.Label style={{marginLeft: '70px'}}>End Hour</Form.Label>
+                        </div>
+
+                        {daysOfWeek.map((day) => (
+                            <div key={day} className="d-flex align-items-center">
+                                <div className="col-2">
+                                    <Form.Label>{day}</Form.Label>
+                                </div>
+                                <div className="col">
+                                    <Form.Group className="mb-3">
+
+                                        <Form.Control
+                                            type="time"
+                                            style={{width: '100px', height: '30px', marginLeft: '35px', marginTop: '4px'}}
+                                            onChange={(e) =>
+                                                handleUserAvailabilityChange(
+                                                    day,
+                                                    e.target.value,
+                                                    userAvailability[day]?.endHour
+                                                )
+                                            }
+                                        />
+                                    </Form.Group>
+                                </div>
+                                <div className="col">
+                                    <Form.Group className="mb-3">
+
+                                        <Form.Control
+                                            type="time"
+                                            style={{width: '100px', height: '30px', marginTop: '4px'}}
+                                            onChange={(e) =>
+                                                handleUserAvailabilityChange(
+                                                    day,
+                                                    userAvailability[day]?.startHour,
+                                                    e.target.value
+                                                )
+                                            }
+                                        />
+                                    </Form.Group>
+                                </div>
+                            </div>
+                        ))}
+
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
+                            <Button variant="primary" onClick={handlePrevStep} className="previousButton">
+                                Previous
+                            </Button>
+                            <Button variant="primary" onClick={handleNextStep} className="nextButton">
+                                Next
+                            </Button>
+                        </div>
+                    </>
+                );
+            case 5:
                 if (formSubmitted) {
                     return (
-                        <Form.Group className="mb-3">
-                            <h2 style={{marginBottom: '35px'}}>Welcome to Sportista Field Rental!</h2>
-                            <h4>Thank you for registering.</h4>
-                        </Form.Group>
+                        <>
+                            <Form.Group className="mb-3">
+                                <h3 style={{marginBottom: '55px'}}>Welcome to Sportista Field Rental!</h3>
+                                <h4 style={{marginBottom: '35px'}}>Thank you for registering.</h4>
+                                <h4>You can now login to your account.</h4>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Button variant="primary" onClick={handleLoginButtonClick} className="login-button">
+                                    Login
+                                </Button>
+                            </Form.Group>
+                        </>
                     );
                 } else {
                     return (
                         <>
+                            <div className="steps">
+                                <div className="step"></div>
+                                <div className="step"></div>
+                                <div className="step"></div>
+                                <div className="step"></div>
+                                <div className="step active"></div>
+                            </div>
                             <Form.Group className="mb-3">
                                 <Form.Label>
                                     <div className="terms-and-conditions">
@@ -354,29 +473,39 @@ function UserRegisterForm() {
       {`
 Terms and Conditions
 
-Welcome to Sportista Field Rental. 
-By using our platform, you agree to comply with the following terms and conditions:
+Welcome to Sportista Field Rental! 
+By using our platform, you agree to comply with the following terms and 
+conditions:
 
 1. Use of the Platform
-   - You are responsible for maintaining the confidentiality of your account.
-   - You agree not to use the platform for any illegal or unauthorized purposes.
+   - You are responsible for maintaining the confidentiality of your 
+   account.
+   - You agree not to use the platform for any illegal or unauthorized 
+   purposes.
 
 2. Field Rental
    - The platform facilitates the rental of sports fields.
-   - The availability and booking process may vary and are subject to specific terms outlined on the platform.
-   - Any disputes or issues regarding field rental are the responsibility of the field renter and user.
+   - The availability and booking process may vary and are subject to 
+   specific terms outlined on the platform.
+   - Any disputes or issues regarding field rental are the responsibility 
+   of the field renter and user.
 
 3. Liability
-   - We are not responsible for any accidents, injuries, or damages that may occur during field rental.
-   - Users and renters are advised to establish their own agreements regarding liability and responsibilities.
+   - We are not responsible for any accidents, injuries, or damages that 
+   may occur during field rental.
+   - Users and renters are advised to establish their own agreements 
+   regarding liability and responsibilities.
 
 4. Privacy
    - We collect and store user data in accordance with our privacy policy.
-   - We implement security measures to protect user information, but we cannot guarantee complete security.
+   - We implement security measures to protect user information, but we 
+   cannot guarantee complete security.
 
 5. Disclaimer
-   - The platform is provided "as is" and we do not make any warranties or representations.
-   - We are not responsible for the accuracy or availability of the platform's content.
+   - The platform is provided "as is" and we do not make any warranties or 
+   representations.
+   - We are not responsible for the accuracy or availability of the 
+   platform's content.
 
 By using our platform, you agree to these terms and conditions. 
 If you do not agree, please refrain from using the platform.
@@ -408,7 +537,7 @@ If you do not agree, please refrain from using the platform.
     };
 
     return (
-        <div onSubmit={handleSubmit} style={{width: 'auto'}}>
+        <div className="container" style={{ alignItems: 'center', justifyContent: 'center' }} onSubmit={handleSubmit} >
             {renderCurrentStepForm()}
         </div>
     );
