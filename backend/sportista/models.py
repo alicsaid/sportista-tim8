@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 # Create your models here.
 
@@ -8,8 +9,6 @@ class Sports(models.Model):
 
 
 class Users(models.Model):
-    email = models.CharField(max_length=255, unique=True)
-    password = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     gender = models.BooleanField()
@@ -20,11 +19,34 @@ class Users(models.Model):
 
 class Renters(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    email = models.CharField(max_length=255, unique=True)
-    password = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
     has_sports = models.ManyToManyField(Sports)
+
+
+class UserAccountManager(BaseUserManager):
+    def create_user(self, email, city, password=None):
+        if not email:
+            raise ValueError("Users must have email address")
+        if not city:
+            raise ValueError("Users must specify city")
+        email = self.normalize_email(email)
+        user = self.model(email=email, city=city)
+        user.set_password(password)
+        user.save()
+
+        return user
+
+
+class UserAccount(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(max_length=255, unique=True)
+    city = models.CharField(max_length=255)
+    id_usera = models.ForeignKey(Users, null=True, blank=True, related_name="authenticate_user_set_user", on_delete=models.CASCADE)
+    id_rentera = models.ForeignKey(Renters, null=True, blank=True, related_name="authenticate_user_set_renter", on_delete=models.CASCADE)
+
+    objects = UserAccountManager()
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["city"]
 
 
 class Teams(models.Model):
