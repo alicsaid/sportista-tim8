@@ -6,12 +6,16 @@ import LoginForm from "../components/login/LoginForm";
 
 function Login() {
     return (
-        <div>
+        <div className={"fixed-top"}>
             <Navbar />
-            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                <h1>Login</h1>
-                <LoginForm/>
-            </div>
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '2rem'
+        }}>
+            <LoginForm/>
+        </div>
         </div>
     );
 }

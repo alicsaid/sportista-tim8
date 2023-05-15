@@ -36,7 +36,8 @@ export default function Home() {
         <div>
             <TopNavbar />
             <main className="align-items-center justify-content-center d-flex">
-                <h2 className="display-6 text-center m-5 fw-bold">Get ready for some sports! Book your favorite field in just a few clicks.</h2>
+                <h4 className="display-6 text-center m-3 fw-bold">Get ready for some sports!</h4>
+                <h4 className="display-6 text-center mb-5 fw-bold">Book your favorite field in just a few clicks.</h4>
                 <div className="justify-content-center d-flex">
                     <MappedImage />
                 </div>
