@@ -10,9 +10,9 @@ function Dashboard() {
             <Sidebar />
             <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
                 <h1>Dashboard</h1>
-                <Field />
+
             </div>
-            <AddFieldModal/>
+            
         </div>
     );
 }

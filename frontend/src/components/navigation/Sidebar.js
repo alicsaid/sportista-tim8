@@ -5,8 +5,8 @@ import "./Sidebar.css";
 
 function Sidebar() {
         const [admin, setAdmin] = useState(false);
-        const [renter, setRenter] = useState(false);
-        const [user, setUser] = useState(true);
+        const [renter, setRenter] = useState(true);
+        const [user, setUser] = useState(false);
     return (
         <>
             <Offcanvas show={true} backdrop={false}>
