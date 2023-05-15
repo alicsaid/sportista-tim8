@@ -1,9 +1,9 @@
 
-* {
+.all {
     box-sizing: border-box;
 }
 
-body {
+.loginbody {
     font-family: "Montserrat", sans-serif;
     background: #f6f5f7;
     display: flex;

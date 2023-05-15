@@ -6,7 +6,7 @@ import LoginForm from "../components/login/LoginForm";
 
 function Login() {
     return (
-        <div className={"fixed-top"}>
+        <div className={"fixed-top all body"}>
             <Navbar />
         <div style={{
             display: 'flex',
