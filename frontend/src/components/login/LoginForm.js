@@ -18,31 +18,31 @@ function LoginForm() {
         <div className={isRightPanelActive ? 'dowebok right-panel-active' : 'dowebok'} id="dowebok">
             <div className="form-container sign-up-container">
                 <form action="#">
-                    <h1>Hi user.</h1>
+                    <h1 className={"loginh1"}>Hi user.</h1>
                     <input type="email" placeholder="Email address"/>
                         <input type="password" placeholder="Password"/>
-                            <button>Login</button>
+                            <button className={"loginbutton"}>Login</button>
                 </form>
             </div>
             <div className="form-container sign-in-container">
                 <form action="#">
-                    <h1>Hi renter.</h1>
+                    <h1 className={"loginh1"}>Hi renter.</h1>
                     <input type="email" placeholder="Email address"/>
                         <input type="password" placeholder="Password"/>
-                            <button>Login</button>
+                            <button className={"loginbutton"}>Login</button>
                 </form>
             </div>
             <div className="overlay-container">
                 <div className="overlay">
                     <div className="overlay-panel overlay-left">
-                        <h1>Are you a renter?</h1>
-                        <p>Click here to login as renter.</p>
-                        <button id="signUser" className={"ghost"} onClick={handleRenterButtonClick}>Login</button>
+                        <h1 className={"loginh1"}>Are you a renter?</h1>
+                        <p className={"loginp"}>Click here to login as renter.</p>
+                        <button id="signUser" className={"loginbutton ghost"} onClick={handleRenterButtonClick}>Login</button>
                     </div>
                     <div className="overlay-panel overlay-right">
-                        <h1>Are you a user?</h1>
-                        <p>Click here to login as user.</p>
-                        <button id="signRenter" className={"ghost"} onClick={handleUserButtonClick}>Login</button>
+                        <h1 className={"loginh"}>Are you a user?</h1>
+                        <p className={"loginp"}>Click here to login as user.</p>
+                        <button id="signRenter" className={"loginbutton ghost"} onClick={handleUserButtonClick}>Login</button>
                     </div>
                 </div>
             </div>

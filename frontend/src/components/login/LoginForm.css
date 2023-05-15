@@ -14,23 +14,23 @@
     margin: -20px 0 50px;
 }
 
-h1 {
+.loginh1 {
     font-weight: bold;
     margin: 0;
 }
 
-p {
+.loginp {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
 }
 
-span {
+.loginspan {
     font-size: 12px;
 }
 
-a {
+.logina {
     color: #333;
     font-size: 14px;
     text-decoration: none;
@@ -87,7 +87,7 @@ a {
     outline: none;
 }
 
-button {
+.loginbutton {
     border-radius: 20px;
     border: 1px solid;
     background: #6e84b5;
@@ -101,15 +101,15 @@ button {
     cursor: pointer;
 }
 
-button:active {
+.loginbutton:active {
     transform: scale(0.95);
 }
 
-button:focus {
+.loginbutton:focus {
     outline: none;
 }
 
-button.ghost {
+.loginbutton.ghost {
     background: transparent;
     border-color: #fff;
 }
