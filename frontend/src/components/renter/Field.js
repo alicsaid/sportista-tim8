@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import EditFieldModal from './EditFieldModal';
+import DeleteConfirmation from './DeleteConfirmationModal'
 import {useState} from "react";
 
 
@@ -23,7 +24,8 @@ function Field() {
                     Reserved until?
                 </Card.Text>
                 <EditFieldModal />
-                <Button variant="outline-danger">Delete field</Button>
+                <DeleteConfirmation />
+
             </Card.Body>
         </Card>
     );
