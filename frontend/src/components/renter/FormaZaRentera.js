@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function Forma() {
+function Forma(props) {
     return (
         <Form>
             <Form.Group className="mb-1" controlId="formBasicSport">
@@ -31,7 +31,7 @@ function Forma() {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-                Submit
+                {props.dodaj}
             </Button>
         </Form>
     );

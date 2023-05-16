@@ -21,7 +21,7 @@ class App extends Component {
                 </Fab>
                 <Modal show={this.state.isOpen} onHide={this.closeModal}>
                     <Modal.Body>
-                        <Forma/>
+                        <Forma dodaj={"Add"}/>
                     </Modal.Body>
 
                 </Modal>
