@@ -24,8 +24,11 @@ class App extends Component {
                     </Modal.Header>
                     <Modal.Body>Popravim kasnije sta treba kad dodaje</Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.closeModal}>
+                        <Button variant="outline-secondary" onClick={this.closeModal}>
                             Close
+                        </Button>
+                        <Button variant="outline-success" onClick={this.closeModal}>
+                            Add
                         </Button>
                     </Modal.Footer>
                 </Modal>

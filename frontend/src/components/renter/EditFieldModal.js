@@ -20,8 +20,11 @@ class App extends Component {
                     </Modal.Header>
                     <Modal.Body>Popravim kasnije sta treba editovat</Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.closeModal}>
-                            Close
+                        <Button variant="outline-secondary" onClick={this.closeModal}>
+                            Cancle
+                        </Button>
+                        <Button variant="outline-success" onClick={this.closeModal}>
+                            Edit
                         </Button>
                     </Modal.Footer>
                 </Modal>
