@@ -18,7 +18,9 @@ class App extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title>Modal heading</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Popravim kasnije sta treba editovat</Modal.Body>
+                    <Modal.Body>
+                        Popravit će se
+                    </Modal.Body>
                     <Modal.Footer>
                         <Button variant="outline-secondary" onClick={this.closeModal}>
                             Cancle
