@@ -5,7 +5,7 @@ import "./Navbar&Footer.css";
 
 function TopNavbar() {
     return (
-        <Navbar className="bg-light">
+        <Navbar className="navbar">
             <Container>
                 <div className="col-4">
                     <a href="/">
