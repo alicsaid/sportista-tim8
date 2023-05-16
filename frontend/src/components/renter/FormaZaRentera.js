@@ -30,7 +30,7 @@ function Forma(props) {
                 <Form.Control as="textarea" rows={3} />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="outline-success" type="submit">
                 {props.dodaj}
             </Button>
         </Form>

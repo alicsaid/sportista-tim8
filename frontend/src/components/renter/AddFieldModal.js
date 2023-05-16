@@ -23,7 +23,9 @@ class App extends Component {
                     <Modal.Body>
                         <Forma dodaj={"Add"}/>
                     </Modal.Body>
-
+                    <Button variant="danger" onClick={this.closeModal}>
+                        Close
+                    </Button>
                 </Modal>
             </>
         );
