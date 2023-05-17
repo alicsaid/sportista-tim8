@@ -1,5 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+
+//components
 import Basketball from '../../components/sports/Basketball';
 import Paintball from '../../components/sports/Paintball';
 import Tennis from '../../components/sports/Tennis';
@@ -18,16 +20,16 @@ function SportsPage() {
     return (
         <div>
             <h1>Sports</h1>
-            {sport === 'basketball' && <Basketball/>}
-            {sport === 'paintball' && <Paintball/>}
-            {sport === 'tennis' && <Tennis/>}
-            {sport === 'ice_skating' && <IceSkating/>}
-            {sport === 'football' && <Football/>}
-            {sport === 'volleyball' && <Volleyball/>}
-            {sport === 'boxing' && <Boxing/>}
-            {sport === 'handball' && <Handball/>}
-            {sport === 'table_tennis' && <TableTennis/>}
-            {sport === 'hockey' && <Hockey/>}
+            {sport === 'basketball' && <Basketball header="Basketball" />}
+            {sport === 'paintball' && <Paintball header="Paintball" />}
+            {sport === 'tennis' && <Tennis header="Tennis" />}
+            {sport === 'ice_skating' && <IceSkating header="Ice Skating" />}
+            {sport === 'football' && <Football header="Football" />}
+            {sport === 'volleyball' && <Volleyball header="Volleyball" />}
+            {sport === 'boxing' && <Boxing header="Boxing" />}
+            {sport === 'handball' && <Handball header="Handball" />}
+            {sport === 'table_tennis' && <TableTennis header="Table Tennis" />}
+            {sport === 'hockey' && <Hockey header="Hockey" />}
         </div>
     );
 }

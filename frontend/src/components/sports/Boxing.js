@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Boxing() {
+function Boxing(props) {
     return (
         <div>
-            <h1>Boxing</h1>
+            <h1>{props.header}</h1>
         </div>
     );
 }

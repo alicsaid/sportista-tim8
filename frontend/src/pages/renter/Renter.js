@@ -10,7 +10,7 @@ function Dashboard() {
             <Sidebar />
             <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
                 <h1>Dashboard</h1>
-
+                <h3>ovdje mu treba prikazati tabelu idućih 10 zakazanih termina</h3>
             </div>
             
         </div>

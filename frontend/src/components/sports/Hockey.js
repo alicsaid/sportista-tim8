@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Hockey() {
+function Hockey(props) {
     return (
         <div>
-            <h1>Hockey</h1>
+            <h1>{props.header}</h1>
         </div>
     );
 }

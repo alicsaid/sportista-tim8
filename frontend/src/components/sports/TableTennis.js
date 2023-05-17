@@ -1,9 +1,9 @@
 import React from 'react';
 
-function TableTennis() {
+function TableTennis(props) {
     return (
         <div>
-            <h1>Table Tennis</h1>
+            <h1>{props.header}</h1>
         </div>
     );
 }

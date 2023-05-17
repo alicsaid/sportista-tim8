@@ -26,18 +26,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index path="/" element={<Home />} />
-          {
-            /*<Route path="/basketball" element={<Home />} />
-            <Route path="/paintball" element={<Home />} />
-            <Route path="/tennis" element={<Home />} />
-            <Route path="/ice_skating" element={<Home />} />
-            <Route path="/football" element={<Home />} />
-            <Route path="/volleyball" element={<Home />} />
-            <Route path="/boxing" element={<Home />} />
-            <Route path="/handball" element={<Home />} />
-            <Route path="/table_tennis" element={<Home />} />
-            <Route path="/hockey" element={<Home />} />*/
-          }
           <Route path="/sport/:sport" element={<SportsPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

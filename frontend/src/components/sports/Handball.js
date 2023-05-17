@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Handball() {
+function Handball(props) {
     return (
         <div>
-            <h1>Handball</h1>
+            <h1>{props.header}</h1>
         </div>
     );
 }

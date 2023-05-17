@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Paintball() {
+function Paintball(props) {
     return (
         <div>
-            <h1>Paintball</h1>
+            <h1>{props.header}</h1>
         </div>
     );
 }

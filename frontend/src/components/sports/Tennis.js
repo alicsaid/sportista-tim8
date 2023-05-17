@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Tennis() {
+function Tennis(props) {
     return (
         <div>
-            <h1>Tennis</h1>
+            <h1>{props.header}</h1>
         </div>
     );
 }

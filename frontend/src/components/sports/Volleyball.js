@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Volleyball() {
+function Volleyball(props) {
     return (
         <div>
-            <h1>Volleyball</h1>
+            <h1>{props.header}</h1>
         </div>
     );
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 
-function IceSkating() {
+function IceSkating(props) {
     return (
         <div>
-            <h1>Ice Skating</h1>
+            <h1>{props.header}</h1>
         </div>
     );
 }

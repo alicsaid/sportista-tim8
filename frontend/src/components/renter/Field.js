@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card';
 import EditFieldModal from './EditFieldModal';
 import {useState} from "react";
 
-
 function Field() {
     const text = "This is a footbal field. Hahaha there is more info about this field isnt it cool?";
     const [showMore, setShowMore] = useState(false);
