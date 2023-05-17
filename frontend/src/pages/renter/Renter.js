@@ -12,7 +12,7 @@ function Dashboard() {
                 <h1>Dashboard</h1>
                 <h3>ovdje mu treba prikazati tabelu idućih 10 zakazanih termina</h3>
             </div>
-            
+
         </div>
     );
 }

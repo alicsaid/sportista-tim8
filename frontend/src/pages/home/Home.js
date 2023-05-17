@@ -41,7 +41,12 @@ export default function Home() {
                 <div className="justify-content-center d-flex">
                     <MappedImage />
                 </div>
-                <h2 className="display-5 text-center m-5">Click the sport you want to see!</h2>
+                <div style={{width: '100%', marginTop: '10px'}}>
+                    <h2 className="display-5" style={{textAlign: 'center'}}>Click the sport you want to see!</h2>
+                    <div className="admin-login">
+                        <a href="../admin" className="admin-link">Login as admin</a>
+                    </div>
+                </div>
             </main>
             <Footer />
         </div>

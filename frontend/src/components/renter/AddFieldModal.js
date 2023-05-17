@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
 import AddIcon from "@mui/icons-material/Add";
 import {Fab} from "@mui/material";
+import Forma from "./FormaZaRentera";
 
 class App extends Component {
     state = {
@@ -19,15 +20,14 @@ class App extends Component {
                     <AddIcon />
                 </Fab>
                 <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Popravim kasnije sta treba kad dodaje</Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.closeModal}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
+                    <Modal.Body>
+                        <Forma dodaj={"Add"}/>
+                    </Modal.Body>
+                    <div style={{textAlign:"center",marginBottom:"2px"}}>
+                    <Button variant="danger" onClick={this.closeModal} style={{width:"50%"}}>
+                        Close
+                    </Button>
+                    </div>
                 </Modal>
             </>
         );

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
+import Forma from "./FormaZaRentera";
 
 class App extends Component {
     state = {
@@ -15,15 +16,15 @@ class App extends Component {
 
                 <Button variant="outline-secondary" style={{margin: '5px'}} onClick={this.openModal}>Edit field</Button>
                 <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Popravim kasnije sta treba editovat</Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.closeModal}>
+                    <Modal.Body>
+                        <Forma dodaj={"Edit"}/>
+                    </Modal.Body>
+                    <div style={{textAlign:"center",marginBottom:"2px"}}>
+                        <Button variant="danger" onClick={this.closeModal} style={{width:"50%"}}>
                             Close
                         </Button>
-                    </Modal.Footer>
+                    </div>
+
                 </Modal>
             </>
         );
