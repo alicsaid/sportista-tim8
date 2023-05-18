@@ -1,14 +1,16 @@
 import React from 'react';
 
 //components
-import Sidebar from "../../components/navigation/Sidebar";
+import RenterSidebar from "../../components/navigation/RenterSidebar";
 import Field from "../../components/renter/Field";
 import AddFieldModal from '../../components/renter/AddFieldModal';
+import 'boxicons';
+import {ProSidebarProvider} from "react-pro-sidebar";
 function Dashboard() {
     return (
         <div style={{ display: 'flex' }}>
-            <Sidebar />
-            <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
+            <RenterSidebar />
+            <div style={{ marginLeft: '10px'}}>
                 <h1>Dashboard</h1>
                 <h3>ovdje mu treba prikazati tabelu idućih 10 zakazanih termina</h3>
             </div>

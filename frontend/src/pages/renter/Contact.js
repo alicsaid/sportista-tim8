@@ -2,16 +2,18 @@ import React from 'react';
 
 //components
 import RenterSidebar from "../../components/navigation/RenterSidebar";
+import ContactForm from "../../components/contact/ContactForm";
 
-function Analytics() {
+function Contact() {
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
             <div style={{ marginLeft: '10px'}}>
-                <h1>Analytics</h1>
+                <h1>Contact</h1>
+                <ContactForm />
             </div>
         </div>
     );
 }
 
-export default Analytics;
+export default Contact;

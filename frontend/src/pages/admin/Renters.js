@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import "./Admin.css";
 
 //components
-import Sidebar from "../../components/navigation/Sidebar";
+import AdminSidebar from "../../components/navigation/AdminSidebar";
 
 function Renters() {
     const [renters, setRenters] = useState([
@@ -101,8 +101,8 @@ function Renters() {
 
     return (
         <div style={{display: 'flex'}}>
-            <Sidebar/>
-            <div style={{marginLeft: '27rem', marginTop: '2rem', marginBottom: '2rem', marginRight: '1rem', height: 'calc(100vh - 5rem)', overflowY: 'auto' }}>
+            <AdminSidebar/>
+            <div style={{marginLeft: '10px'}}>
                 <h1>Renters</h1>
 
                 <div className="table">

@@ -17,7 +17,8 @@ import User from './pages/user/User';
 import MyReservations from './pages/user/MyReservations';
 import Invites from './pages/user/Invites';
 import UserAccount from './pages/user/UserAccount';
-import Contact from './pages/Contact';
+import UserContact from './pages/user/Contact';
+import RenterContact from './pages/renter/Contact';
 import NoPage from './pages/NoPage';
 
 function App() {
@@ -36,12 +37,12 @@ function App() {
           <Route path="/renter/my-fields" element={<MyFields />} />
           <Route path="/renter/analytics" element={<Analytics />} />
           <Route path="/renter/account" element={<RenterAccount />} />
-          <Route path="/renter/contact" element={<Contact />} />
+          <Route path="/renter/contact" element={<RenterContact />} />
           <Route path="/user" element={<User />} />
           <Route path="/user/my-reservations" element={<MyReservations />} />
           <Route path="/user/invites" element={<Invites />} />
           <Route path="/user/account" element={<UserAccount />} />
-          <Route path="/user/contact" element={<Contact />} />
+          <Route path="/user/contact" element={<UserContact />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

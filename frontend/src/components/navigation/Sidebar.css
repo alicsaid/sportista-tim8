@@ -1,19 +1,4 @@
-.sidebar-link {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: #333;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.sidebar-link:hover {
-    background-color: #f5f5f5;
-    text-decoration: none;
-}
-
-.sidebarLogo {
-    height: 15rem;
-    width: 15rem;
-    margin-top: 0;
+.sticky-div {
+  position: sticky;
+  top: 0;
 }

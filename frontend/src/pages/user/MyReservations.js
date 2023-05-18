@@ -1,13 +1,13 @@
 import React from 'react';
 
 //components
-import Sidebar from "../../components/navigation/Sidebar";
+import UserSidebar from "../../components/navigation/UserSidebar";
 
 function MyReservations() {
     return (
         <div style={{ display: 'flex' }}>
-            <Sidebar />
-            <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
+            <UserSidebar />
+            <div style={{ marginLeft: '10px'}}>
                 <h1>My Reservations</h1>
             </div>
         </div>
