@@ -14,6 +14,14 @@ function LoginForm() {
         setRightPanelActive(false);
     };
 
+    const loginRenter = () => {
+        
+    }
+
+    const loginUser = () => {
+
+    }
+
     return (
         <div className={isRightPanelActive ? 'dowebok right-panel-active' : 'dowebok'} id="dowebok">
             <div className="form-container sign-up-container">
@@ -21,7 +29,7 @@ function LoginForm() {
                     <h1 className={"loginh1"}>Hi user.</h1>
                     <input type="email" placeholder="Email address"/>
                         <input type="password" placeholder="Password"/>
-                            <button className={"loginbutton"}>Login</button>
+                            <button className={"loginbutton"} onClick={loginUser}>Login</button>
                 </form>
             </div>
             <div className="form-container sign-in-container">
@@ -29,7 +37,7 @@ function LoginForm() {
                     <h1 className={"loginh1"}>Hi renter.</h1>
                     <input type="email" placeholder="Email address"/>
                         <input type="password" placeholder="Password"/>
-                            <button className={"loginbutton"}>Login</button>
+                            <button className={"loginbutton"} onClick={loginRenter}>Login</button>
                 </form>
             </div>
             <div className="overlay-container">

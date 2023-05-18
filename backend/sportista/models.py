@@ -26,11 +26,11 @@ class Renter(models.Model):
 
 
 class UserAccountManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra):
+    def create_user(self, email, is_user, is_renter, password=None):
         if not email:
             raise ValueError("Users must have email address")
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra)
+        user = self.model(email=email, is_user=is_user, is_renter=is_renter)
         user.set_password(password)
         user.save()
 
@@ -59,6 +59,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     objects = UserAccountManager()
 
     USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["is_user", "is_renter"]
 
     def __str__(self):
         return self.email

@@ -20,6 +20,8 @@ import UserAccount from './pages/user/UserAccount';
 import UserContact from './pages/user/Contact';
 import RenterContact from './pages/renter/Contact';
 import NoPage from './pages/NoPage';
+import Activate from './auth/Activate'
+import ResetPassword from './auth/ResetPassword'
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/sport/:sport" element={<SportsPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/activate/:uid/:token" element={<Activate />} />
+          <Route path="/reset_password/:uid/:token" element={<ResetPassword />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/renters" element={<Renters />} />
           <Route path="/admin/users" element={<Users />} />
