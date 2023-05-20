@@ -110,7 +110,10 @@ export const register = (email, password, is_user, is_renter, DATA) => async dis
             is_user:is_user,
             is_renter:is_renter
         })
+        console.log("Ovo je res od register")
         console.log(res)
+        //res.data.id ti treba biti id_logina u renteru ili sportuseru
+        //u DATA stavi sve kao JSON objekat ako hoces da ne bude funckija preduga i lahko mozes if(is_user)
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
