@@ -24,13 +24,7 @@ function MappedImage(){
     );
 }
 
-export default function Home() {
-    useEffect(() => {
-        const imageMapResize = () => {
-            // your imageMapResize code here
-        }
-        imageMapResize();
-    }, []);
+const Home = () => {
 
     return (
         <div>
@@ -52,3 +46,6 @@ export default function Home() {
         </div>
     );
 };
+
+export default Home
+

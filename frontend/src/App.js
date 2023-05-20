@@ -21,35 +21,46 @@ import UserContact from './pages/user/Contact';
 import RenterContact from './pages/renter/Contact';
 import NoPage from './pages/NoPage';
 import Activate from './auth/Activate'
-import ResetPassword from './auth/ResetPassword'
+import ResetPassword from "./auth/ResetPassword";
+import ResetPasswordConfirm from './auth/ResetPasswordConfirm'
+import Logout from './auth/Logout'
+import {Provider} from 'react-redux'
+import store from './store'
+import Authentification from "./auth/Authentification";
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route index path="/" element={<Home />} />
-          <Route path="/sport/:sport" element={<SportsPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/activate/:uid/:token" element={<Activate />} />
-          <Route path="/reset_password/:uid/:token" element={<ResetPassword />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/renters" element={<Renters />} />
-          <Route path="/admin/users" element={<Users />} />
-          <Route path="/renter" element={<Renter />} />
-          <Route path="/renter/my-fields" element={<MyFields />} />
-          <Route path="/renter/analytics" element={<Analytics />} />
-          <Route path="/renter/account" element={<RenterAccount />} />
-          <Route path="/renter/contact" element={<RenterContact />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/user/my-reservations" element={<MyReservations />} />
-          <Route path="/user/invites" element={<Invites />} />
-          <Route path="/user/account" element={<UserAccount />} />
-          <Route path="/user/contact" element={<UserContact />} />
-          <Route path="*" element={<NoPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Authentification>
+            <Routes>
+              <Route index path="/" element={<Home />} />
+              <Route path="/sport/:sport" element={<SportsPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/reset_password" element={<ResetPassword />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/activate/:uid/:token" element={<Activate />} />
+              <Route path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin/renters" element={<Renters />} />
+              <Route path="/admin/users" element={<Users />} />
+              <Route path="/renter" element={<Renter />} />
+              <Route path="/renter/my-fields" element={<MyFields />} />
+              <Route path="/renter/analytics" element={<Analytics />} />
+              <Route path="/renter/account" element={<RenterAccount />} />
+              <Route path="/renter/contact" element={<RenterContact />} />
+              <Route path="/user" element={<User />} />
+              <Route path="/user/my-reservations" element={<MyReservations />} />
+              <Route path="/user/invites" element={<Invites />} />
+              <Route path="/user/account" element={<UserAccount />} />
+              <Route path="/user/contact" element={<UserContact />} />
+              <Route path="*" element={<NoPage />} />
+            </Routes>
+          </Authentification>
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }

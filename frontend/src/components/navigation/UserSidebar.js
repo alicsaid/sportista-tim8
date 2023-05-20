@@ -50,7 +50,7 @@ const RenterSidebar = () => {
                         </NavLink>
                         <NavLink exact to="/logout">
                             <CDBSidebarMenuItem>
-                                Logout
+                                    Logout
                             </CDBSidebarMenuItem>
                         </NavLink>
                     </CDBSidebarMenu>

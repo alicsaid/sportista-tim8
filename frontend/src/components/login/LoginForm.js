@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import "./LoginForm.css";
+import {connect} from "react-redux";
+import {login} from "../../auth/Auth";
 
-function LoginForm() {
+
+function LoginForm({login}) {
     const [isRightPanelActive, setRightPanelActive] = useState(false);
+    const [renterEmail, setRenterEmail] = useState('');
+    const [renterPassword, setRenterPassword] = useState('');
 
     const handleUserButtonClick = () => {
         setRightPanelActive(true);
@@ -14,8 +17,16 @@ function LoginForm() {
         setRightPanelActive(false);
     };
 
+    const handleRenterEmail = (event)=>{
+        setRenterEmail(event.target.value);
+    }
+
+    const handleRenterPassword = (event)=>{
+        setRenterPassword(event.target.value);
+    }
+
     const loginRenter = () => {
-        
+        login(renterEmail, renterPassword)
     }
 
     const loginUser = () => {
@@ -35,8 +46,8 @@ function LoginForm() {
             <div className="form-container sign-in-container">
                 <form action="#">
                     <h1 className={"loginh1"}>Hi renter.</h1>
-                    <input type="email" placeholder="Email address"/>
-                        <input type="password" placeholder="Password"/>
+                    <input type="email" placeholder="Email address" onChange={handleRenterEmail}/>
+                        <input type="password" placeholder="Password" onChange={handleRenterPassword}/>
                             <button className={"loginbutton"} onClick={loginRenter}>Login</button>
                 </form>
             </div>
@@ -58,4 +69,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default connect(null, {login})(LoginForm);
