@@ -1,7 +1,7 @@
 from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from django.shortcuts import redirect
 
 from sportista.models import Field
@@ -25,4 +25,11 @@ def getListaUsera(request):
    res = serializers.serialize('json', list_of_users)
 
    return HttpResponse(res, content_type="text/json-comment-filtered")
+
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def dodajuBazu(request):
+    print("ok")
+    return HttpResponse("ovdje je okej")
 
