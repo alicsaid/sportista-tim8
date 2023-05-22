@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from sportista.models import Field
 
 
-from sportista.models import Fields, Sports
+from sportista.models import Field, Sport
 
 
 #from sportista.models import Users
@@ -19,7 +19,7 @@ def index(request):
     return HttpResponse("To je backend Sporiste hehe")
 
 
-<<<<<<< HEAD
+
    # return HttpResponse(res, content_type="text/json-comment-filtered")
 
 # @api_view(['GET'])
@@ -40,7 +40,7 @@ def index(request):
 #     res = serializers.serialize('json', list_of_basketball_fields)
 #
 #     return HttpResponse(res, content_type="text/json-comment-filtered")
-=======
+
 
 
 
@@ -58,4 +58,4 @@ def dodajuBazu(request):
     print("ok")
     return HttpResponse("ovdje je okej")
 
->>>>>>> bdc722cb032a9b5bde797015e959cd446171f473
+
