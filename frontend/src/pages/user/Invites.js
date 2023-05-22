@@ -1,13 +1,13 @@
 import React from 'react';
 
 //components
-import Sidebar from "../../components/navigation/Sidebar";
+import UserSidebar from "../../components/navigation/UserSidebar";
 
 function Invites() {
     return (
         <div style={{ display: 'flex' }}>
-            <Sidebar />
-            <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
+            <UserSidebar />
+            <div style={{ marginLeft: '10px'}}>
                 <h1>Invites</h1>
             </div>
         </div>

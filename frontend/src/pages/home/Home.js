@@ -24,13 +24,7 @@ function MappedImage(){
     );
 }
 
-export default function Home() {
-    useEffect(() => {
-        const imageMapResize = () => {
-            // your imageMapResize code here
-        }
-        imageMapResize();
-    }, []);
+const Home = () => {
 
     return (
         <div>
@@ -44,7 +38,7 @@ export default function Home() {
                 <div style={{width: '100%', marginTop: '10px'}}>
                     <h2 className="display-5" style={{textAlign: 'center'}}>Click the sport you want to see!</h2>
                     <div className="admin-login">
-                        <a href="../admin" className="admin-link">Login as admin</a>
+                        <a href="http://127.0.0.1:8000/admin/" className="admin-link">Login as admin</a>
                     </div>
                 </div>
             </main>
@@ -52,3 +46,6 @@ export default function Home() {
         </div>
     );
 };
+
+export default Home
+

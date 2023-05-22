@@ -3,6 +3,7 @@ import React from 'react';
 //components
 import Navbar from "../components/navigation/Navbar";
 import RegisterForm from "../components/register/RegisterForm";
+import axios from "axios";
 
 function Users() {
     return (

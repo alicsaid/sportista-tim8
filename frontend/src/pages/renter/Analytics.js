@@ -1,13 +1,13 @@
 import React from 'react';
 
 //components
-import Sidebar from "../../components/navigation/Sidebar";
+import RenterSidebar from "../../components/navigation/RenterSidebar";
 
 function Analytics() {
     return (
         <div style={{ display: 'flex' }}>
-            <Sidebar />
-            <div style={{ marginLeft: '27rem', marginTop: '2rem' }}>
+            <RenterSidebar />
+            <div style={{ marginLeft: '10px'}}>
                 <h1>Analytics</h1>
             </div>
         </div>
