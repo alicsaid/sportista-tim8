@@ -38,6 +38,7 @@ function RenterRegisterForm({register, verify}) {
             setHasSports(res.data)
             setGotData(true)
         })
+    console.log(hasSports)
 
 
     const handleNextStep = () => {

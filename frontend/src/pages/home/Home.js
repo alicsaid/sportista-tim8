@@ -5,6 +5,8 @@ import "./Home.css"
 //components
 import TopNavbar from "../../components/navigation/Navbar";
 import Footer from "../../components/navigation/Footer";
+import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
 
 function MappedImage(){
     return (
@@ -24,7 +26,12 @@ function MappedImage(){
     );
 }
 
-const Home = () => {
+const Home = ({user, isAuthenticated}) => {
+    if(isAuthenticated && user != null)
+        if(user.is_renter)
+            return (<Navigate to={"/renter"}/>)
+        else if(user.is_user)
+            return (<Navigate to={"/user"}/>)
 
     return (
         <div>
@@ -47,5 +54,8 @@ const Home = () => {
     );
 };
 
-export default Home
+const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated, user : state.auth.user});
+
+
+export default connect(mapStateToProps,null)(Home);
 
