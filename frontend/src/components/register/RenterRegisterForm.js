@@ -7,6 +7,15 @@ import {connect} from "react-redux";
 import axios from "axios";
 import {SERVER_URL} from "../../auth/Consts";
 
+function HasSportFrom(setSport, sport_id, sport_name){
+    return (
+        <Form.Check
+            label={sport_name}
+            type="checkbox"
+            onChange={(e) => setSport(sport_id, e)}
+        />
+    )
+}
 
 function RenterRegisterForm({register, verify}) {
     const [currentStep, setCurrentStep] = useState(1);
@@ -17,17 +26,7 @@ function RenterRegisterForm({register, verify}) {
     const [renterPhone, setRenterPhone] = useState('');
     const [hasSports, setHasSports] = useState([]);
     const [gotData, setGotData] = useState(false);
-    const [renterBasketball, setRenterBasketball] = useState(false);
-    const [renterPaintball, setRenterPaintball] = useState(false);
-    const [renterAirsoft, setRenterAirsoft] = useState(false);
-    const [renterTennis, setRenterTennis] = useState(false);
-    const [renterIceSkating, setRenterIceSkating] = useState(false);
-    const [renterFootball, setRenterFootball] = useState(false);
-    const [renterVolleyball, setRenterVolleyball] = useState(false);
-    const [renterBoxing, setRenterBoxing] = useState(false);
-    const [renterHandball, setRenterHandball] = useState(false);
-    const [renterTableTennis, setRenterTableTennis] = useState(false);
-    const [renterHockey, setRenterHockey] = useState(false);
+    const [chosenSports, setChosenSprots] = useState([]);
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [phoneError, setPhoneError] = useState('');
@@ -38,7 +37,11 @@ function RenterRegisterForm({register, verify}) {
             setHasSports(res.data)
             setGotData(true)
         })
-    console.log(hasSports)
+
+
+
+
+    //sport.pk, sport.fields.name
 
 
     const handleNextStep = () => {
@@ -52,7 +55,7 @@ function RenterRegisterForm({register, verify}) {
             alert('Please enter your city.');
         } else if (currentStep === 2 && !renterPhone) {
             alert('Please enter your phone number.')
-        } else if (currentStep === 3 && !renterBasketball && !renterPaintball && !renterAirsoft && !renterTennis && !renterIceSkating && !renterFootball && !renterVolleyball && !renterBoxing && !renterHandball && !renterTableTennis && !renterHockey) {
+        } else if (currentStep === 3 && chosenSports.length === 0) {
             alert('Please select at least one sport');
         } else {
             setCurrentStep(currentStep+1);
@@ -83,50 +86,6 @@ function RenterRegisterForm({register, verify}) {
 
     const handleRenterPhoneChange = (event) => {
         setRenterPhone(event.target.value);
-    }
-
-    const handleRenterBasketballChange = (event) => {
-        setRenterBasketball(true);
-    }
-
-    const handleRenterPaintballChange = (event) => {
-        setRenterPaintball(true);
-    }
-
-    const handleRenterAirsoftChange = (event) => {
-        setRenterAirsoft(true);
-    }
-
-    const handleRenterTennisChange = (event) => {
-        setRenterTennis(true);
-    }
-
-    const handleRenterIceSkatingChange = (event) => {
-        setRenterIceSkating(true);
-    }
-
-    const handleRenterFootballChange = (event) => {
-        setRenterFootball(true);
-    }
-
-    const handleRenterVolleyballChange = (event) => {
-        setRenterVolleyball(true);
-    }
-
-    const handleRenterBoxingChange = (event) => {
-        setRenterBoxing(true);
-    }
-
-    const handleRenterHandballChange = (event) => {
-        setRenterHandball(true);
-    }
-
-    const handleRenterTableTennisChange = (event) => {
-        setRenterTableTennis(true);
-    }
-
-    const handleRenterHockeyChange = (event) => {
-        setRenterHockey(true);
     }
 
     const handleTermsAcceptance = (event) => {
@@ -175,6 +134,17 @@ function RenterRegisterForm({register, verify}) {
     const handleLoginButtonClick = () => {
         window.location.href = '/login';
     };
+
+    const handleSportChange = (event) => {
+        if (event.target.checked)
+            chosenSports.push(event.target.value)
+        else{
+            const index = chosenSports.indexOf(event.target.value);
+            if (index > -1)
+                chosenSports.splice(index, 1);
+
+        }
+    }
 
     const renderCurrentStepForm = () => {
         switch (currentStep) {
@@ -281,82 +251,17 @@ function RenterRegisterForm({register, verify}) {
                         </div>
                         <Form.Group className="mb-3">
                             <Form.Label>Which sports do you offer fields for?</Form.Label>
-                            <Form.Check
-                                label="Basketball"
+                            {gotData &&
+                            hasSports.map((sport) => (
+                                <Form.Check
+                                    key={sport.pk}
+                                label={sport.fields.name}
                                 type="checkbox"
-                                value={renterBasketball}
-                                onChange={handleRenterBasketballChange}
-                            />
-
-                            <Form.Check
-                                label="Paintball"
-                                type="checkbox"
-                                value={renterPaintball}
-                                onChange={handleRenterPaintballChange}
-                            />
-
-                            <Form.Check
-                                label="Airsoft"
-                                type="checkbox"
-                                value={renterAirsoft}
-                                onChange={handleRenterAirsoftChange}
-                            />
-
-                            <Form.Check
-                                label="Tennis"
-                                type="checkbox"
-                                value={renterTennis}
-                                onChange={handleRenterTennisChange}
-                            />
-
-                            <Form.Check
-                                label="Ice skating"
-                                type="checkbox"
-                                value={renterIceSkating}
-                                onChange={handleRenterIceSkatingChange}
-                            />
-
-                            <Form.Check
-                                label="Football"
-                                type="checkbox"
-                                value={renterFootball}
-                                onChange={handleRenterFootballChange}
-                            />
-
-                            <Form.Check
-                                label="Volleyball"
-                                type="checkbox"
-                                value={renterVolleyball}
-                                onChange={handleRenterVolleyballChange}
-                            />
-
-                            <Form.Check
-                                label="Boxing"
-                                type="checkbox"
-                                value={renterBoxing}
-                                onChange={handleRenterBoxingChange}
-                            />
-
-                            <Form.Check
-                                label="Handball"
-                                type="checkbox"
-                                value={renterHandball}
-                                onChange={handleRenterHandballChange}
-                            />
-
-                            <Form.Check
-                                label="Table tennis"
-                                type="checkbox"
-                                value={renterTableTennis}
-                                onChange={handleRenterTableTennisChange}
-                            />
-
-                            <Form.Check
-                                label="Hockey"
-                                type="checkbox"
-                                value={renterHockey}
-                                onChange={handleRenterHockeyChange}
-                            />
+                                    value = {sport.pk}
+                                onChange={handleSportChange}
+                                />)
+                                )
+                            }
                         </Form.Group>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
