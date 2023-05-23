@@ -2,6 +2,7 @@ import React from 'react';
 
 //components
 import RenterSidebar from "../../components/navigation/RenterSidebar";
+import AccountForRenter from "../../components/renter/AccountForRenter";
 
 function RenterAccount() {
     return (
@@ -9,6 +10,7 @@ function RenterAccount() {
             <RenterSidebar />
             <div style={{ marginLeft: '10px'}}>
                 <h1>Account</h1>
+                <AccountForRenter/>
             </div>
         </div>
     );
