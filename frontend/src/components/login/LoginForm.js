@@ -50,7 +50,7 @@ function LoginForm({login}) {
                     <h1 className={"loginh1"}>Hi user.</h1>
                     <input type="email" placeholder="Email address" onChange={handleUserEmail}/>
                         <input type="password" placeholder="Password" onChange={handleUserPassword}/>
-                    <a href="http://localhost:3000/reset_password" style={{textDecoration:"none"}}>Zaboravili ste lozinku?</a>
+                    <a href="http://localhost:3000/reset_password" style={{textDecoration:"none"}}>Forgot password?</a>
                             <button className={"loginbutton"} onClick={loginUser}>Login</button>
                 </form>
             </div>
@@ -59,7 +59,7 @@ function LoginForm({login}) {
                     <h1 className={"loginh1"}>Hi renter.</h1>
                     <input type="email" placeholder="Email address" onChange={handleRenterEmail}/>
                         <input type="password" placeholder="Password" onChange={handleRenterPassword}/>
-                    <a href="http://localhost:3000/reset_password" style={{textDecoration:"none"}}>Zaboravili ste lozinku?</a>
+                    <a href="http://localhost:3000/reset_password" style={{textDecoration:"none"}}>Forgot password?</a>
                             <button className={"loginbutton"} onClick={loginRenter}>Login</button>
                 </form>
             </div>
