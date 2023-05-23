@@ -8,6 +8,8 @@ function LoginForm({login}) {
     const [isRightPanelActive, setRightPanelActive] = useState(false);
     const [renterEmail, setRenterEmail] = useState('');
     const [renterPassword, setRenterPassword] = useState('');
+    const [userEmail, setuserEmail] = useState('');
+    const [userPassword, setuserPassword] = useState('');
 
     const handleUserButtonClick = () => {
         setRightPanelActive(true);
@@ -25,12 +27,20 @@ function LoginForm({login}) {
         setRenterPassword(event.target.value);
     }
 
+    const handleUserEmail = (event) => {
+        setuserEmail(event.target.value)
+    }
+
+    const handleUserPassword = (event) => {
+        setuserPassword(event.target.value)
+    }
+
     const loginRenter = () => {
-        login(renterEmail, renterPassword)
+        login(renterEmail, renterPassword, false, true)
     }
 
     const loginUser = () => {
-
+        login(userEmail, userPassword, true, false)
     }
 
     return (
@@ -38,8 +48,8 @@ function LoginForm({login}) {
             <div className="form-container sign-up-container">
                 <form action="#">
                     <h1 className={"loginh1"}>Hi user.</h1>
-                    <input type="email" placeholder="Email address"/>
-                        <input type="password" placeholder="Password"/>
+                    <input type="email" placeholder="Email address" onChange={handleUserEmail}/>
+                        <input type="password" placeholder="Password" onChange={handleUserPassword}/>
                             <button className={"loginbutton"} onClick={loginUser}>Login</button>
                 </form>
             </div>

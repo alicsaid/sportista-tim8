@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import "./RegisterForm.css";
 import {verify, register} from "../../auth/Auth";
 import {connect} from "react-redux";
+import axios from "axios";
+import {SERVER_URL} from "../../auth/Consts";
 
 
 function RenterRegisterForm({register, verify}) {
@@ -13,6 +15,8 @@ function RenterRegisterForm({register, verify}) {
     const [renterPassword, setRenterPassword] = useState('');
     const [renterCity, setRenterCity] = useState('');
     const [renterPhone, setRenterPhone] = useState('');
+    const [hasSports, setHasSports] = useState([]);
+    const [gotData, setGotData] = useState(false);
     const [renterBasketball, setRenterBasketball] = useState(false);
     const [renterPaintball, setRenterPaintball] = useState(false);
     const [renterAirsoft, setRenterAirsoft] = useState(false);
@@ -28,6 +32,13 @@ function RenterRegisterForm({register, verify}) {
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [phoneError, setPhoneError] = useState('');
     const [emailError, setEmailError] = useState('');
+
+    if(!gotData)
+        axios.get( `${SERVER_URL}/daj_sportove`).then((res) => {
+            setHasSports(res.data)
+            setGotData(true)
+        })
+
 
     const handleNextStep = () => {
         if (currentStep === 1 && !renterName) {

@@ -81,19 +81,32 @@ export const load_user = () => async dispatch => {
     }
 };
 
-export const login = (email, password) => async dispatch => {
+export const login = (email, password, is_user, is_renter) => async dispatch => {
     try{
-        const res = await axios.post( `${SERVER_URL}/auth/jwt/create/`, {
+        const res1 = await axios.post( `${SERVER_URL}/auth/jwt/create/`, {
             email:email,
             password:password,
         })
-        console.log(res)
-        dispatch({
-            type: LOGIN_SUCCESS,
-            payload: res.data
+
+        const res2 = await axios.get( `${SERVER_URL}/auth/users/me/`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${res1.data.access}`,
+                'Accept': 'application/json'
+            }
         })
 
-        dispatch(load_user())
+        if((res2.data.is_user === true && is_user === true) || (res2.data.is_renter === true && is_renter === true)){
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: res1.data
+            })
+            dispatch(load_user())
+        }
+        else
+            dispatch({
+                type: LOGIN_FAIL
+            })
     } catch(err){
         console.log(err)
         dispatch({

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./RegisterForm.css";
+import {register} from "../../auth/Auth";
+import {connect} from "react-redux";
 
-function UserRegisterForm() {
+function UserRegisterForm({register}) {
     const [currentStep, setCurrentStep] = useState(1);
     const [userFirstName, setUserFirstName] = useState('');
     const [userLastName, setUserLastName] = useState('');
@@ -163,6 +165,7 @@ function UserRegisterForm() {
             alert('Please agree to the terms and conditions and privacy policy if you want to proceed.');
             return;
         }
+        register(userEmail, userPassword, true, false)
         setFormSubmitted(true);
     };
 
@@ -543,4 +546,4 @@ If you do not agree, please refrain from using the platform.
     );
 }
 
-export default UserRegisterForm;
+export default connect(null, {register})(UserRegisterForm);

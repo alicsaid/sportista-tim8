@@ -4,8 +4,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from django.shortcuts import redirect
 
-from sportista.models import Field
-
+from sportista.models import Field, Sport
 
 #from sportista.models import Users
 
@@ -15,7 +14,11 @@ from sportista.models import Field
 def index(request):
     return HttpResponse("To je backend Sporiste hehe")
 
-
+@api_view(['GET'])
+def dajSportove(request):
+    lista_sportova = Sport.objects.all()
+    res = serializers.serialize('json', lista_sportova)
+    return HttpResponse(res, content_type="text/json-comment-filtered")
 
 
 
