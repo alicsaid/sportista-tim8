@@ -6,8 +6,12 @@ import RenterSidebar from "../../components/navigation/RenterSidebar";
 import PokaznaStranica from "../../components/renter/PokaznaStranica";
 import Field from "../../components/renter/Field";
 import AddFieldModal from "../../components/renter/AddFieldModal";
+import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
 
-function MyFields() {
+function MyFields({isAuthenticated,user}) {
+    if(!isAuthenticated && user == null)
+        return (<Navigate to={"/"}/>)
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
@@ -19,4 +23,7 @@ function MyFields() {
     );
 }
 
-export default MyFields;
+const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated, user : state.auth.user});
+
+
+export default connect(mapStateToProps,null)(MyFields);

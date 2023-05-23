@@ -3,8 +3,12 @@ import React from 'react';
 //components
 import UserSidebar from "../../components/navigation/UserSidebar";
 import AccountForUser from "../../components/user/AccountForUser";
+import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
 
-function UserAccount() {
+function UserAccount({user, isAuthenticated}) {
+    if(!isAuthenticated && user == null)
+        return (<Navigate to={"/"}/>)
     return (
         <div style={{ display: 'flex' }}>
             <UserSidebar />
@@ -16,4 +20,7 @@ function UserAccount() {
     );
 }
 
-export default UserAccount;
+const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated, user : state.auth.user});
+
+
+export default connect(mapStateToProps,null)(UserAccount);

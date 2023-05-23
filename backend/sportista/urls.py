@@ -4,6 +4,7 @@ from sportista import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("renter/spremi", views.spremi, name="spremi"),
     path("daj_sportove", views.dajSportove),
 
 ]

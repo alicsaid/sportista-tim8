@@ -1,10 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
+import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
 
-function Forma(props) {
-
+function Forma(props,{user, isAuthenticated}) {
     const [sport,setSport] = useState("");
     const [name,setName] = useState("");
     const [location,setLocation] = useState("");
@@ -23,7 +24,7 @@ function Forma(props) {
         event.preventDefault();
         console.log(objekat);
 
-        await axios('http://127.0.0.1:8000/renter/daj', {
+        await axios('http://127.0.0.1:8000/renter/spremi', {
             method: 'POST',
             headers: {'Content-Type': 'text/plain'},
             body: JSON.stringify(objekat),
@@ -65,8 +66,10 @@ function Forma(props) {
         </Form>
     );
 }
+const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated, user : state.auth.user});
 
-export default Forma;
+
+export default connect(mapStateToProps,null)(Forma);
 
 
 

@@ -3,8 +3,12 @@ import React from 'react';
 //components
 import UserSidebar from "../../components/navigation/UserSidebar";
 import ContactForm from "../../components/contact/ContactForm";
+import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
 
-function Contact() {
+function Contact({user, isAuthenticated}) {
+    if(!isAuthenticated && user == null)
+        return (<Navigate to={"/"}/>)
     return (
         <div style={{ display: 'flex' }}>
             <UserSidebar />
@@ -16,4 +20,7 @@ function Contact() {
     );
 }
 
-export default Contact;
+const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated, user : state.auth.user});
+
+
+export default connect(mapStateToProps,null)(Contact);

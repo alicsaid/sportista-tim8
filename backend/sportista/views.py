@@ -29,3 +29,7 @@ def getListaUsera(request):
 
    return HttpResponse(res, content_type="text/json-comment-filtered")
 
+@api_view(['POST'])
+def spremi(request):
+
+   return HttpResponse("okej")
