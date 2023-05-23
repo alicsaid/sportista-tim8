@@ -39,7 +39,7 @@ const AdminSidebar = () => {
                             </CDBSidebarMenuItem>
                         </NavLink>
                         <NavLink exact to="/logout">
-                            <CDBSidebarMenuItem>
+                            <CDBSidebarMenuItem icon='sign-out-alt'>
                                 Logout
                             </CDBSidebarMenuItem>
                         </NavLink>

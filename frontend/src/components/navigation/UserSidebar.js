@@ -44,18 +44,17 @@ const RenterSidebar = () => {
                             </CDBSidebarMenuItem>
                         </NavLink>
                         <NavLink exact to="/user/contact" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
-                            <CDBSidebarMenuItem icon='file-signature'>
+                            <CDBSidebarMenuItem icon='phone'>
                                 Contact
                             </CDBSidebarMenuItem>
                         </NavLink>
                         <NavLink exact to="/logout">
-                            <CDBSidebarMenuItem>
+                            <CDBSidebarMenuItem icon='sign-out-alt'>
                                     Logout
                             </CDBSidebarMenuItem>
                         </NavLink>
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
-
 
                 <CDBSidebarFooter style={{ textAlign: 'center' }}>
                 </CDBSidebarFooter>
