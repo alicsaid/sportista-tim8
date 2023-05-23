@@ -39,8 +39,6 @@ function RenterRegisterForm({register, verify}) {
         })
 
 
-
-
     //sport.pk, sport.fields.name
 
 
@@ -127,7 +125,13 @@ function RenterRegisterForm({register, verify}) {
             alert('Please agree to the terms and conditions and privacy policy if you want to proceed.');
             return;
         }
-        register(renterEmail, renterPassword, false, true)
+        const DATA = {
+            name: renterName,
+            city: renterCity,
+            phone: renterPhone,
+            sports: chosenSports,
+        }
+        register(renterEmail, renterPassword, false, true, DATA)
         setFormSubmitted(true);
     };
 

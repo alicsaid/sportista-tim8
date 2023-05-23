@@ -7,6 +7,7 @@ urlpatterns = [
     path("", include('sportista.urls')),
     path("password/reset/confirm/<str:uid>/<str:token>", authentification.reset_password_confirm),
     path("activate/<str:uid>/<str:token>", authentification.activate_account),
+    path("add_renter/", authentification.add_renter),
     path("admin/", admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),

@@ -1,4 +1,11 @@
+from django.core import serializers
+from django.http import HttpResponse
+from django.shortcuts import render
+from rest_framework.decorators import api_view
 from django.shortcuts import redirect
+
+
+from sportista.models import Field, Sport
 
 
 def reset_password_confirm(request, uid, token):
@@ -7,3 +14,9 @@ def reset_password_confirm(request, uid, token):
 
 def activate_account(request, uid, token):
     return redirect('http://localhost:3000/activate/' + uid + "/" + token)
+
+
+@api_view(['POST'])
+def add_renter(request):
+    print("DOSAO", request)
+    return HttpResponse()

@@ -117,19 +117,27 @@ export const login = (email, password, is_user, is_renter) => async dispatch => 
 
 export const register = (email, password, is_user, is_renter, DATA) => async dispatch => {
     try{
-        const res = await axios.post( `${SERVER_URL}/auth/users/`, {
+        const res1 = await axios.post( `${SERVER_URL}/auth/users/`, {
             email:email,
             password:password,
             is_user:is_user,
             is_renter:is_renter
         })
-        console.log("Ovo je res od register")
-        console.log(res)
-        //res.data.id ti treba biti id_logina u renteru ili sportuseru
-        //u DATA stavi sve kao JSON objekat ako hoces da ne bude funckija preduga i lahko mozes if(is_user)
+        var res2 = null
+        if(is_renter)
+            res2 = await axios.post(`${SERVER_URL}/add_renter/`, {
+                ...DATA,
+                id_logina: res1.data.id
+            })
+        if(is_user)
+            res2 = await axios.post(`${SERVER_URL}/add_user/`, {
+                ...DATA,
+                id_logina: res1.data.id
+            })
+        console.log(res2)
         dispatch({
             type: REGISTER_SUCCESS,
-            payload: res.data
+            payload: res1.data
         })
 
 
