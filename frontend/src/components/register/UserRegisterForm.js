@@ -64,6 +64,8 @@ function UserRegisterForm({register}) {
             alert('Please enter your email address.')
         } else if (currentStep === 1 && !userPassword) {
             alert('Please enter your password.');
+        } else if (currentStep === 1 && (!/\d/.test(userPassword) || userPassword.length < 8)) {
+            alert('Please enter a password with at least 8 characters and containing numbers.')
         } else if (currentStep === 2 && !userGender) {
             alert('Please enter your gender.');
         } else if (currentStep === 2 && !userDateOfBirth) {
