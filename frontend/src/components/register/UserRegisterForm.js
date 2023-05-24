@@ -132,7 +132,7 @@ function UserRegisterForm({register}) {
             user_availability: userAvailability
         }
         register(userEmail, userPassword, true, false, DATA).then(() => {
-
+            setFormSubmitted(true)
         })
     };
 

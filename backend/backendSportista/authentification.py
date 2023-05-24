@@ -27,9 +27,6 @@ def add_renter(request):
     account = UserAccount.objects.get(id=data['id'])
     r = Renter(name=unquote(data['name']), id_logina=account, phone_number=data['phone'])
     r.save()
-    for element in data['sports']:
-        r.has_sports.add(int(element))
-    r.save()
     return HttpResponse()
 
 

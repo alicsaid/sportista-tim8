@@ -23,7 +23,7 @@ class Renter(models.Model):
     id_logina = models.ForeignKey("UserAccount", blank=True, related_name="renterts_loged_in_account", on_delete=models.CASCADE)
     name = models.CharField(max_length=255, unique=True)
     phone_number = models.CharField(max_length=255)
-    has_sports = models.ManyToManyField(Sport)
+
 
 
 class UserAccountManager(BaseUserManager):
@@ -48,6 +48,7 @@ class UserAccountManager(BaseUserManager):
         return user
 
 
+
 class UserAccount(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     city = models.CharField(max_length=255)
@@ -66,11 +67,13 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
+
 class Team(models.Model):
     id_leader = models.ForeignKey(SportistaUser, on_delete=models.CASCADE, related_name="teams_leader_set")
     name = models.CharField(max_length=255, unique=True)
     users = models.ManyToManyField(SportistaUser, related_name="teams_users_set", blank=True)
     plays_sport = models.ForeignKey(Sport, on_delete=models.CASCADE, related_name="teams_sport_set")
+
 
 
 class Field(models.Model):
