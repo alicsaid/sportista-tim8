@@ -49,7 +49,9 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
             alert('Please enter your email address.');
         } else if (currentStep === 1 && !renterPassword) {
             alert('Please enter your password.');
-        } else if (currentStep === 2 && !renterCity) {
+        } else if (currentStep === 1 && (!/\d/.test(renterPassword) || renterPassword.length < 8)) {
+            alert('Please enter a password with at least 8 characters and containing numbers.')
+        }else if (currentStep === 2 && !renterCity) {
             alert('Please enter your city.');
         } else if (currentStep === 2 && !renterPhone) {
             alert('Please enter your phone number.')
