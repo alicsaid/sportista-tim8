@@ -20,14 +20,19 @@ def dajSportove(request):
     res = serializers.serialize('json', lista_sportova)
     return HttpResponse(res, content_type="text/json-comment-filtered")
 
-
+# @api_view(['GET'])
+# def getListaUsera(request):
+#    list_of_users = Field.objects.filter(is_sport=1)
+#    res = serializers.serialize('json', list_of_users)
+#
+#    return HttpResponse(res, content_type="text/json-comment-filtered")
 
 @api_view(['GET'])
-def getListaUsera(request):
-   list_of_users = Field.objects.filter(is_sport = 1)
-   res = serializers.serialize('json', list_of_users)
+def getFields(request, params):
+    list_of_fields = Field.objects.filter(is_sport=params)
+    res = serializers.serialize('json', list_of_fields)
 
-   return HttpResponse(res, content_type="text/json-comment-filtered")
+    return HttpResponse(res, content_type="text/json-comment-filtered")
 
 @api_view(['POST'])
 def spremi(request):

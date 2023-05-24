@@ -78,6 +78,7 @@ class Team(models.Model):
 
 class Field(models.Model):
     id_rentera = models.ForeignKey(Renter, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, default="field_name")
     address = models.CharField(max_length=255)
     details = models.CharField(max_length=1000)
     image = models.ImageField(null=True)

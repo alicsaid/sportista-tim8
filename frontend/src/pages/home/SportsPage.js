@@ -12,14 +12,16 @@ import Boxing from '../../components/sports/Boxing';
 import Handball from '../../components/sports/Handball';
 import TableTennis from '../../components/sports/TableTennis';
 import Hockey from '../../components/sports/Hockey';
+import TopNavbar from "../../components/navigation/Navbar";
+import {Pagination} from "@mui/material";
 
 function SportsPage() {
 
     const { sport } = useParams();
 
     return (
-        <div>
-            <h1>Sports</h1>
+        <div className="sportsPage">
+            <TopNavbar />
             {sport === 'basketball' && <Basketball header="Basketball" />}
             {sport === 'paintball' && <Paintball header="Paintball" />}
             {sport === 'tennis' && <Tennis header="Tennis" />}
@@ -30,6 +32,7 @@ function SportsPage() {
             {sport === 'handball' && <Handball header="Handball" />}
             {sport === 'table_tennis' && <TableTennis header="Table Tennis" />}
             {sport === 'hockey' && <Hockey header="Hockey" />}
+            <Pagination style={{ marginBottom: "2rem" }} count={10} variant="outlined" shape="rounded" />
         </div>
     );
 }

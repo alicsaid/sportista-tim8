@@ -29,6 +29,7 @@ function MappedImage(){
 }
 
 const Home = ({user, isAuthenticated}) => {
+    console.log(user)
     if(isAuthenticated && user != null)
         if(user.is_renter)
             return (<Navigate to={"/renter"}/>)
@@ -57,7 +58,6 @@ const Home = ({user, isAuthenticated}) => {
 };
 
 const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated, user : state.auth.user});
-
 
 export default connect(mapStateToProps,null)(Home);
 
