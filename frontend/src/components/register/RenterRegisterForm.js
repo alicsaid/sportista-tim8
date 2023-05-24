@@ -280,7 +280,7 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                             </Button>
                             {!blockButton &&
                                 <Button variant="primary" onClick={handleNextStep} className="nextButton">
-                                Next
+                                    Next
                                 </Button>}
                             {blockButton &&
                                 <Button variant="primary" onClick={() => {}} className="nextButton">

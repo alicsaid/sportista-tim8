@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import "./RegisterForm.css";
 import {register} from "../../auth/Auth";
 import {connect} from "react-redux";
+import axios from "axios";
+import {SERVER_URL} from "../../auth/Consts";
 
 function UserRegisterForm({register}) {
     const [currentStep, setCurrentStep] = useState(1);
@@ -13,21 +15,18 @@ function UserRegisterForm({register}) {
     const [userPassword, setUserPassword] = useState('');
     const [userGender, setUserGender] = useState('Male');
     const [userDateOfBirth, setUserDateOfBirth] = useState('');
-    const [userBasketball, setUserBasketball] = useState(false);
-    const [userPaintball, setUserPaintball] = useState(false);
-    const [userAirsoft, setUserAirsoft] = useState(false);
-    const [userTennis, setUserTennis] = useState(false);
-    const [userIceSkating, setUserIceSkating] = useState(false);
-    const [userFootball, setUserFootball] = useState(false);
-    const [userVolleyball, setUserVolleyball] = useState(false);
-    const [userBoxing, setUserBoxing] = useState(false);
-    const [userHandball, setUserHandball] = useState(false);
-    const [userTableTennis, setUserTableTennis] = useState(false);
-    const [userHockey, setUserHockey] = useState(false);
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [emailError, setEmailError] = useState('');
     const [userAvailability, setUserAvailability] = useState({});
+    const [playsSports, setplaysSports] = useState([]);
+    const [gotData, setGotData] = useState(false);
+    const [chosenSports, setChosenSprots] = useState([]);
+    if(!gotData)
+        axios.get( `${SERVER_URL}/daj_sportove`).then((res) => {
+            setplaysSports(res.data)
+            setGotData(true)
+        })
 
     const handleUserFirstNameChange = (event) => {
         const inputText = event.target.value;
@@ -70,7 +69,7 @@ function UserRegisterForm({register}) {
             alert('Please enter your gender.');
         } else if (currentStep === 2 && !userDateOfBirth) {
             alert('Please enter your date of birth.')
-        } else if (currentStep === 3 && !userBasketball && !userPaintball && !userAirsoft && !userTennis && !userIceSkating && !userFootball && !userVolleyball && !userBoxing && !userHandball && !userTableTennis && !userHockey) {
+        } else if (currentStep === 3 && chosenSports.length === 0) {
             alert('Please select at least one sport');
         } else if (currentStep === 4 && Object.keys(userAvailability).length === 0) {
             alert('Please select at least one range of hours.');
@@ -83,49 +82,6 @@ function UserRegisterForm({register}) {
         setCurrentStep(currentStep - 1);
     };
 
-    const handleUserBasketballChange = (event) => {
-        setUserBasketball(true);
-    }
-
-    const handleUserPaintballChange = (event) => {
-        setUserPaintball(true);
-    }
-
-    const handleUserAirsoftChange = (event) => {
-        setUserAirsoft(true);
-    }
-
-    const handleUserTennisChange = (event) => {
-        setUserTennis(true);
-    }
-
-    const handleUserIceSkatingChange = (event) => {
-        setUserIceSkating(true);
-    }
-
-    const handleUserFootballChange = (event) => {
-        setUserFootball(true);
-    }
-
-    const handleUserVolleyballChange = (event) => {
-        setUserVolleyball(true);
-    }
-
-    const handleUserBoxingChange = (event) => {
-        setUserBoxing(true);
-    }
-
-    const handleUserHandballChange = (event) => {
-        setUserHandball(true);
-    }
-
-    const handleUserTableTennisChange = (event) => {
-        setUserTableTennis(true);
-    }
-
-    const handleUserHockeyChange = (event) => {
-        setUserHockey(true);
-    }
 
     const handleTermsAcceptance = (event) => {
         setTermsAccepted(event.target.checked);
@@ -167,9 +123,29 @@ function UserRegisterForm({register}) {
             alert('Please agree to the terms and conditions and privacy policy if you want to proceed.');
             return;
         }
-        register(userEmail, userPassword, true, false)
-        setFormSubmitted(true);
+        const DATA = {
+            first_name: userFirstName,
+            last_name: userLastName,
+            gender: userGender,
+            date_of_birth: userDateOfBirth,
+            sports: chosenSports,
+            user_availability: userAvailability
+        }
+        register(userEmail, userPassword, true, false, DATA).then(() => {
+
+        })
     };
+
+    const handleSportChange = (event) => {
+        if (event.target.checked)
+            chosenSports.push(event.target.value)
+        else{
+            const index = chosenSports.indexOf(event.target.value);
+            if (index > -1)
+                chosenSports.splice(index, 1);
+
+        }
+    }
 
     const handleLoginButtonClick = () => {
         window.location.href = '/login';
@@ -289,82 +265,17 @@ function UserRegisterForm({register}) {
                         </div>
                         <Form.Group className="mb-3">
                             <Form.Label>Which sports are you interested in?</Form.Label>
-                            <Form.Check
-                                label="Basketball"
-                                type="checkbox"
-                                value={userBasketball}
-                                onChange={handleUserBasketballChange}
-                            />
-
-                            <Form.Check
-                                label="Paintball"
-                                type="checkbox"
-                                value={userPaintball}
-                                onChange={handleUserPaintballChange}
-                            />
-
-                            <Form.Check
-                                label="Airsoft"
-                                type="checkbox"
-                                value={userAirsoft}
-                                onChange={handleUserAirsoftChange}
-                            />
-
-                            <Form.Check
-                                label="Tennis"
-                                type="checkbox"
-                                value={userTennis}
-                                onChange={handleUserTennisChange}
-                            />
-
-                            <Form.Check
-                                label="Ice skating"
-                                type="checkbox"
-                                value={userIceSkating}
-                                onChange={handleUserIceSkatingChange}
-                            />
-
-                            <Form.Check
-                                label="Football"
-                                type="checkbox"
-                                value={userFootball}
-                                onChange={handleUserFootballChange}
-                            />
-
-                            <Form.Check
-                                label="Volleyball"
-                                type="checkbox"
-                                value={userVolleyball}
-                                onChange={handleUserVolleyballChange}
-                            />
-
-                            <Form.Check
-                                label="Boxing"
-                                type="checkbox"
-                                value={userBoxing}
-                                onChange={handleUserBoxingChange}
-                            />
-
-                            <Form.Check
-                                label="Handball"
-                                type="checkbox"
-                                value={userHandball}
-                                onChange={handleUserHandballChange}
-                            />
-
-                            <Form.Check
-                                label="Table tennis"
-                                type="checkbox"
-                                value={userTableTennis}
-                                onChange={handleUserTableTennisChange}
-                            />
-
-                            <Form.Check
-                                label="Hockey"
-                                type="checkbox"
-                                value={userHockey}
-                                onChange={handleUserHockeyChange}
-                            />
+                            {gotData &&
+                                playsSports.map((sport) => (
+                                    <Form.Check
+                                        key={sport.pk}
+                                        label={sport.fields.name}
+                                        type="checkbox"
+                                        value = {sport.pk}
+                                        onChange={handleSportChange}
+                                    />)
+                                )
+                            }
                         </Form.Group>
 
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>

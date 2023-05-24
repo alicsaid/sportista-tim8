@@ -7,6 +7,8 @@ import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 
 function UserAccount({user, isAuthenticated}) {
+    console.log("HERE")
+    console.log(user)
     if(!isAuthenticated && user == null)
         return (<Navigate to={"/"}/>)
     return (

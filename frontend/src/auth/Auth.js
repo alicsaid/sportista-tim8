@@ -19,29 +19,23 @@ import {
 import axios from "axios";
 
 export const checkAuthenticated = () => async dispatch => {
-    console.log("Provjerio token")
     if(localStorage.getItem('access')){
         try{
-            console.log(localStorage.getItem('access'))
             const res = await axios.post( `${SERVER_URL}/auth/jwt/verify/`, {
                 token: localStorage.getItem('access')
             })
 
             if(res.data.code !== 'token_not_valid'){
-                console.log("Dobar token")
                 dispatch({
                     type: USER_AUTHENTICATED_SUCCESS
                 })
             }else{
-                console.log("Los token")
                 dispatch({
                     type:USER_AUTHENTICATED_FAILED
                 })
             }
 
             } catch(err) {
-            console.log("Error")
-            console.log(err)
             dispatch({
                 type:USER_AUTHENTICATED_FAILED
             })
@@ -55,7 +49,6 @@ export const checkAuthenticated = () => async dispatch => {
 
 export const load_user = () => async dispatch => {
     if(localStorage.getItem('access')){
-        console.log("Ovo bi bilo vrh");
         try{
             const res1 = await axios.get( `${SERVER_URL}/auth/users/me/`, {
                 headers: {
@@ -117,7 +110,6 @@ export const login = (email, password, is_user, is_renter) => async dispatch => 
 
 
     } catch(err){
-        console.log(err)
         dispatch({
             type: LOGIN_FAIL
         })
@@ -132,13 +124,22 @@ export const register = (email, password, is_user, is_renter, DATA) => async dis
             is_user:is_user,
             is_renter:is_renter
         })
-        const encodedName = encodeURIComponent(DATA.name)
-         const  res2 = await axios.post(`${SERVER_URL}/add_renter/`, {
+        if(is_renter){
+            const encodedName = encodeURIComponent(DATA.name)
+            const  res2 = await axios.post(`${SERVER_URL}/add_renter/`, {
                 ...DATA,
                 name:encodedName,
                 id: res1.data.id
 
             })
+        }else if(is_user) {
+            const  res2 = await axios.post(`${SERVER_URL}/add_user/`, {
+                ...DATA,
+                first_name:encodeURIComponent(DATA.first_name),
+                last_name:encodeURIComponent(DATA.last_name),
+                id: res1.data.id
+            })
+        }
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res1.data
@@ -156,14 +157,12 @@ export const verify = (uid, token) => async dispatch =>{
             uid:uid,
             token:token
         })
-        console.log(res)
         dispatch({
             type: ACTIVATION_SUCCESS
         })
 
 
     } catch(err){
-        console.log(err)
         dispatch({
             type: ACTIVATION_FAIL
         })

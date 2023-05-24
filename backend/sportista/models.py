@@ -18,6 +18,7 @@ class SportistaUser(models.Model):
     favourite_fields = models.ManyToManyField("Field", blank=True, related_name="users_favourite_set")
 
 
+
 class Renter(models.Model):
     id_logina = models.ForeignKey("UserAccount", blank=True, related_name="renterts_loged_in_account", on_delete=models.CASCADE)
     name = models.CharField(max_length=255, unique=True)
