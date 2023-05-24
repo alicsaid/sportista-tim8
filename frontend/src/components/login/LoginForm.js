@@ -35,11 +35,13 @@ function LoginForm({login}) {
         setuserPassword(event.target.value)
     }
 
-    const loginRenter = () => {
+    const loginRenter = (event) => {
+        event.preventDefault()
         login(renterEmail, renterPassword, false, true)
     }
 
-    const loginUser = () => {
+    const loginUser = (event) => {
+        event.preventDefault()
         login(userEmail, userPassword, true, false)
     }
 

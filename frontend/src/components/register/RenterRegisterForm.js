@@ -17,7 +17,7 @@ function HasSportFrom(setSport, sport_id, sport_name){
     )
 }
 
-function RenterRegisterForm({register, verify}) {
+const RenterRegisterForm = React.memo(({register, verify}) => {
     const [currentStep, setCurrentStep] = useState(1);
     const [renterName, setRenterName] = useState('');
     const [renterEmail, setRenterEmail] = useState('');
@@ -131,8 +131,10 @@ function RenterRegisterForm({register, verify}) {
             phone: renterPhone,
             sports: chosenSports,
         }
-        register(renterEmail, renterPassword, false, true, DATA)
-        setFormSubmitted(true);
+        register(renterEmail, renterPassword, false, true, DATA).then(() => {
+            setFormSubmitted(true)
+        })
+
     };
 
     const handleLoginButtonClick = () => {
@@ -378,6 +380,6 @@ If you do not agree, please refrain from using the platform.
             {renderCurrentStepForm()}
         </div>
     );
-}
+})
 
 export default connect(null, {register, verify})(RenterRegisterForm);

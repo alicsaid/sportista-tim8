@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from django.shortcuts import redirect
-
+from rest_framework.utils import json
 
 from sportista.models import Field, Sport
 
@@ -18,5 +18,6 @@ def activate_account(request, uid, token):
 
 @api_view(['POST'])
 def add_renter(request):
-    print("DOSAO", request)
+    data = request.data
+    print(data)
     return HttpResponse()

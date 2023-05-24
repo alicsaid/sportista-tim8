@@ -107,6 +107,9 @@ export const login = (email, password, is_user, is_renter) => async dispatch => 
             dispatch({
                 type: LOGIN_FAIL
             })
+
+
+
     } catch(err){
         console.log(err)
         dispatch({
@@ -123,17 +126,15 @@ export const register = (email, password, is_user, is_renter, DATA) => async dis
             is_user:is_user,
             is_renter:is_renter
         })
-        var res2 = null
-        if(is_renter)
-            res2 = await axios.post(`${SERVER_URL}/add_renter/`, {
+         const  res2 = await axios.post(`${SERVER_URL}/add_renter/`, {
                 ...DATA,
                 id_logina: res1.data.id
-            })
-        if(is_user)
-            res2 = await axios.post(`${SERVER_URL}/add_user/`, {
-                ...DATA,
-                id_logina: res1.data.id
-            })
+            }, {
+             headers:{
+                 'Content-Type': 'application/json'
+             }
+         })
+        
         console.log(res2)
         dispatch({
             type: REGISTER_SUCCESS,

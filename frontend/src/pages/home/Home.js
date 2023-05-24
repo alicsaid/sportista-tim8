@@ -7,6 +7,8 @@ import TopNavbar from "../../components/navigation/Navbar";
 import Footer from "../../components/navigation/Footer";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
+import axios from "axios";
+import {SERVER_URL} from "../../auth/Consts";
 
 function MappedImage(){
     return (
