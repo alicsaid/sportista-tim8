@@ -7,16 +7,6 @@ import {connect} from "react-redux";
 import axios from "axios";
 import {SERVER_URL} from "../../auth/Consts";
 
-function HasSportFrom(setSport, sport_id, sport_name){
-    return (
-        <Form.Check
-            label={sport_name}
-            type="checkbox"
-            onChange={(e) => setSport(sport_id, e)}
-        />
-    )
-}
-
 const RenterRegisterForm = React.memo(({register, verify}) => {
     const [currentStep, setCurrentStep] = useState(1);
     const [renterName, setRenterName] = useState('');
@@ -24,24 +14,17 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
     const [renterPassword, setRenterPassword] = useState('');
     const [renterCity, setRenterCity] = useState('');
     const [renterPhone, setRenterPhone] = useState('');
-    const [hasSports, setHasSports] = useState([]);
     const [gotData, setGotData] = useState(false);
-    const [chosenSports, setChosenSprots] = useState([]);
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [phoneError, setPhoneError] = useState('');
     const [emailError, setEmailError] = useState('');
-    const [blockButton, setBlockButton] = useState(false)
+    const [blockButton, setBlockButton] = useState(false);
 
     if(!gotData)
         axios.get( `${SERVER_URL}/daj_sportove`).then((res) => {
-            setHasSports(res.data)
             setGotData(true)
         })
-
-
-    //sport.pk, sport.fields.name
-
 
     const handleNextStep = () => {
         if (currentStep === 1 && !renterName) {
@@ -56,9 +39,7 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
             alert('Please enter your city.');
         } else if (currentStep === 2 && !renterPhone) {
             alert('Please enter your phone number.')
-        } else if (currentStep === 3 && chosenSports.length === 0) {
-            alert('Please select at least one sport');
-        } else {
+        }  else {
             setCurrentStep(currentStep+1);
         }
     };
@@ -144,17 +125,6 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
         window.location.href = '/login';
     };
 
-    const handleSportChange = (event) => {
-        if (event.target.checked)
-            chosenSports.push(event.target.value)
-        else{
-            const index = chosenSports.indexOf(event.target.value);
-            if (index > -1)
-                chosenSports.splice(index, 1);
-
-        }
-    }
-
     const renderCurrentStepForm = () => {
         switch (currentStep) {
             case 1:
@@ -162,7 +132,6 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                     <>
                         <div className="steps">
                             <div className="step active"></div>
-                            <div className="step"></div>
                             <div className="step"></div>
                             <div className="step"></div>
                         </div>
@@ -214,7 +183,6 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                             <div className="step"></div>
                             <div className="step active"></div>
                             <div className="step"></div>
-                            <div className="step"></div>
                         </div>
                         <Form.Group className="mb-3">
                             <Form.Label>City</Form.Label>
@@ -250,47 +218,6 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                     </>
                 );
             case 3:
-                return (
-                    <>
-                        <div className="steps">
-                            <div className="step"></div>
-                            <div className="step"></div>
-                            <div className="step active"></div>
-                            <div className="step"></div>
-                        </div>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Which sports do you offer fields for?</Form.Label>
-                            {gotData &&
-                            hasSports.map((sport) => (
-                                <Form.Check
-                                    key={sport.pk}
-                                label={sport.fields.name}
-                                type="checkbox"
-                                    value = {sport.pk}
-                                onChange={handleSportChange}
-                                />)
-                                )
-                            }
-                        </Form.Group>
-
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
-                            <Button variant="primary" onClick={handlePrevStep} className="previousButton">
-                                Previous
-                            </Button>
-                            {!blockButton &&
-                                <Button variant="primary" onClick={handleNextStep} className="nextButton">
-                                    Next
-                                </Button>}
-                            {blockButton &&
-                                <Button variant="primary" onClick={() => {}} className="nextButton">
-                                    Registering...
-                                </Button>}
-
-
-                        </div>
-                    </>
-                );
-            case 4:
                 if (formSubmitted) {
                     return (
                         <>
@@ -311,7 +238,6 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                     return (
                         <>
                             <div className="steps">
-                                <div className="step"></div>
                                 <div className="step"></div>
                                 <div className="step"></div>
                                 <div className="step active"></div>
