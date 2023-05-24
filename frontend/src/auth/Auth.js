@@ -19,29 +19,23 @@ import {
 import axios from "axios";
 
 export const checkAuthenticated = () => async dispatch => {
-    console.log("Provjerio token")
     if(localStorage.getItem('access')){
         try{
-            console.log(localStorage.getItem('access'))
             const res = await axios.post( `${SERVER_URL}/auth/jwt/verify/`, {
                 token: localStorage.getItem('access')
             })
 
             if(res.data.code !== 'token_not_valid'){
-                console.log("Dobar token")
                 dispatch({
                     type: USER_AUTHENTICATED_SUCCESS
                 })
             }else{
-                console.log("Los token")
                 dispatch({
                     type:USER_AUTHENTICATED_FAILED
                 })
             }
 
             } catch(err) {
-            console.log("Error")
-            console.log(err)
             dispatch({
                 type:USER_AUTHENTICATED_FAILED
             })
@@ -55,19 +49,24 @@ export const checkAuthenticated = () => async dispatch => {
 
 export const load_user = () => async dispatch => {
     if(localStorage.getItem('access')){
-        console.log("Ovo bi bilo vrh");
         try{
-            const res = await axios.get( `${SERVER_URL}/auth/users/me/`, {
+            const res1 = await axios.get( `${SERVER_URL}/auth/users/me/`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `JWT ${localStorage.getItem('access')}`,
                     'Accept': 'application/json'
                 }
             })
+            var res2 = {data:null}
+            if(res1.data.is_renter)
+                res2 = await axios.get( `${SERVER_URL}/get_renter/${res1.data.id}`)
+            else if(res1.data.is_user)
+                res2 = await axios.get( `${SERVER_URL}/get_user/${res1.data.id}`)
+
 
             dispatch({
                 type: USER_LOADED_SUCCESS,
-                payload: res.data
+                payload: {...res1.data, ...res2.data}
             })
         } catch(err){
             dispatch({
@@ -81,7 +80,7 @@ export const load_user = () => async dispatch => {
     }
 };
 
-export const login = (email, password, is_user, is_renter) => async dispatch => {
+export const login = (email, password, is_user, is_renter, handleError) => async dispatch => {
     try{
         const res1 = await axios.post( `${SERVER_URL}/auth/jwt/create/`, {
             email:email,
@@ -107,8 +106,12 @@ export const login = (email, password, is_user, is_renter) => async dispatch => 
             dispatch({
                 type: LOGIN_FAIL
             })
+
+
+
     } catch(err){
-        console.log(err)
+        console.log(err.response.data)
+        handleError(err.response.data)
         dispatch({
             type: LOGIN_FAIL
         })
@@ -123,26 +126,27 @@ export const register = (email, password, is_user, is_renter, DATA) => async dis
             is_user:is_user,
             is_renter:is_renter
         })
-        var res2 = null
-        if(is_renter)
-            res2 = await axios.post(`${SERVER_URL}/add_renter/`, {
+        if(is_renter){
+            const encodedName = encodeURIComponent(DATA.name)
+            const  res2 = await axios.post(`${SERVER_URL}/add_renter/`, {
                 ...DATA,
-                id_logina: res1.data.id
+                name:encodedName,
+                id: res1.data.id
+
             })
-        if(is_user)
-            res2 = await axios.post(`${SERVER_URL}/add_user/`, {
+        }else if(is_user) {
+            const  res2 = await axios.post(`${SERVER_URL}/add_user/`, {
                 ...DATA,
-                id_logina: res1.data.id
+                first_name:encodeURIComponent(DATA.first_name),
+                last_name:encodeURIComponent(DATA.last_name),
+                id: res1.data.id
             })
-        console.log(res2)
+        }
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res1.data
         })
-
-
     } catch(err){
-        console.log(err)
         dispatch({
             type: REGISTER_FAIL
         })
@@ -155,14 +159,12 @@ export const verify = (uid, token) => async dispatch =>{
             uid:uid,
             token:token
         })
-        console.log(res)
         dispatch({
             type: ACTIVATION_SUCCESS
         })
 
 
     } catch(err){
-        console.log(err)
         dispatch({
             type: ACTIVATION_FAIL
         })

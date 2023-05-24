@@ -9,8 +9,9 @@ import {ProSidebarProvider} from "react-pro-sidebar";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 function Dashboard({user, isAuthenticated}) {
-    // if(!isAuthenticated && user == null)
-    //         return (<Navigate to={"/"}/>)
+    console.log(user)
+    if(!isAuthenticated && user == null)
+            return (<Navigate to={"/"}/>)
 
     return (
         <div style={{ display: 'flex' }}>

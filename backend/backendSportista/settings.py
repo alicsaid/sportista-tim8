@@ -90,10 +90,10 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'foul.official@outlook.com'
-DEFAULT_FROM_EMAIL = 'foul.official@outlook.com'
-SERVER_EMAIL = 'foul.official@outlook.com'
-EMAIL_HOST_PASSWORD = 'Ned1mSa1dMers1ha'
+EMAIL_HOST_USER = 'foul.official2305@outlook.com'
+DEFAULT_FROM_EMAIL = 'foul.official2305@outlook.com'
+SERVER_EMAIL = 'foul.official2305@outlook.com'
+EMAIL_HOST_PASSWORD = 'lozinka123'
 EMAIL_USE_TLS = True
 
 

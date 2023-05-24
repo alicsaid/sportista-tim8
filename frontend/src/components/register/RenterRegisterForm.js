@@ -17,7 +17,7 @@ function HasSportFrom(setSport, sport_id, sport_name){
     )
 }
 
-function RenterRegisterForm({register, verify}) {
+const RenterRegisterForm = React.memo(({register, verify}) => {
     const [currentStep, setCurrentStep] = useState(1);
     const [renterName, setRenterName] = useState('');
     const [renterEmail, setRenterEmail] = useState('');
@@ -31,6 +31,7 @@ function RenterRegisterForm({register, verify}) {
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [phoneError, setPhoneError] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [blockButton, setBlockButton] = useState(false)
 
     if(!gotData)
         axios.get( `${SERVER_URL}/daj_sportove`).then((res) => {
@@ -49,7 +50,9 @@ function RenterRegisterForm({register, verify}) {
             alert('Please enter your email address.');
         } else if (currentStep === 1 && !renterPassword) {
             alert('Please enter your password.');
-        } else if (currentStep === 2 && !renterCity) {
+        } else if (currentStep === 1 && (!/\d/.test(renterPassword) || renterPassword.length < 8)) {
+            alert('Please enter a password with at least 8 characters and containing numbers.')
+        }else if (currentStep === 2 && !renterCity) {
             alert('Please enter your city.');
         } else if (currentStep === 2 && !renterPhone) {
             alert('Please enter your phone number.')
@@ -120,6 +123,7 @@ function RenterRegisterForm({register, verify}) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setBlockButton(true)
         // Perform form submission logic here
         if (!termsAccepted) {
             alert('Please agree to the terms and conditions and privacy policy if you want to proceed.');
@@ -129,10 +133,11 @@ function RenterRegisterForm({register, verify}) {
             name: renterName,
             city: renterCity,
             phone: renterPhone,
-            sports: chosenSports,
         }
-        register(renterEmail, renterPassword, false, true, DATA)
-        setFormSubmitted(true);
+        register(renterEmail, renterPassword, false, true, DATA).then(() => {
+            setFormSubmitted(true)
+        })
+
     };
 
     const handleLoginButtonClick = () => {
@@ -272,9 +277,16 @@ function RenterRegisterForm({register, verify}) {
                             <Button variant="primary" onClick={handlePrevStep} className="previousButton">
                                 Previous
                             </Button>
-                            <Button variant="primary" onClick={handleNextStep} className="nextButton">
-                                Next
-                            </Button>
+                            {!blockButton &&
+                                <Button variant="primary" onClick={handleNextStep} className="nextButton">
+                                    Next
+                                </Button>}
+                            {blockButton &&
+                                <Button variant="primary" onClick={() => {}} className="nextButton">
+                                    Registering...
+                                </Button>}
+
+
                         </div>
                     </>
                 );
@@ -378,6 +390,6 @@ If you do not agree, please refrain from using the platform.
             {renderCurrentStepForm()}
         </div>
     );
-}
+})
 
 export default connect(null, {register, verify})(RenterRegisterForm);

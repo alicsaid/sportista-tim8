@@ -27,7 +27,6 @@ export default function(state = initialState, action){
     const { type, payload } = action
     switch(type){
         case USER_AUTHENTICATED_SUCCESS:
-            console.log("POSTAVIO AUTENTIFICIRANOST")
             return {
                 ...state,
                 isAuthenticated: true
@@ -52,7 +51,6 @@ export default function(state = initialState, action){
                 user : payload
             }
         case USER_AUTHENTICATED_FAILED:
-            console.log("FAILO AUTENTIFIKACIJU")
             return {
                 ...state,
                 isAuthenticated: false
@@ -65,7 +63,6 @@ export default function(state = initialState, action){
         case LOGIN_FAIL:
         case LOGOUT:
         case REGISTER_FAIL:
-            console.log("FAILO LOGIN ili register")
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
             return {

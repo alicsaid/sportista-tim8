@@ -10,6 +10,7 @@ function LoginForm({login}) {
     const [renterPassword, setRenterPassword] = useState('');
     const [userEmail, setuserEmail] = useState('');
     const [userPassword, setuserPassword] = useState('');
+    const [error, setError] = useState(null);
 
     const handleUserButtonClick = () => {
         setRightPanelActive(true);
@@ -35,13 +36,36 @@ function LoginForm({login}) {
         setuserPassword(event.target.value)
     }
 
-    const loginRenter = () => {
-        login(renterEmail, renterPassword, false, true)
+    const handleError = (errorMesage) => {
+        setError(errorMesage)
     }
 
-    const loginUser = () => {
-        login(userEmail, userPassword, true, false)
+    const loginRenter = (event) => {
+        event.preventDefault()
+        login(renterEmail, renterPassword, false, true, handleError).then( () =>{
+            displayAlert()
+        })
     }
+    const loginUser = (event) => {
+        event.preventDefault()
+        login(userEmail, userPassword, true, false, handleError).then( () =>{
+            displayAlert()
+        })
+    }
+
+    const displayAlert = () => {
+        if (error && Object.keys(error).length > 0) {
+            if (error.email != null) {
+                alert(error.email);
+            } else if (error.password != null) {
+                alert(error.password);
+            } else if(error.detail != null){
+                alert(error.detail);
+            }else {
+                alert("Error with login")
+            }
+        }
+    };
 
     return (
         <div className={isRightPanelActive ? 'dowebok right-panel-active' : 'dowebok'} id="dowebok">
@@ -50,6 +74,7 @@ function LoginForm({login}) {
                     <h1 className={"loginh1"}>Hi user.</h1>
                     <input type="email" placeholder="Email address" onChange={handleUserEmail}/>
                         <input type="password" placeholder="Password" onChange={handleUserPassword}/>
+                    <a href="http://localhost:3000/reset_password" style={{textDecoration:"none"}}>Forgot password?</a>
                             <button className={"loginbutton"} onClick={loginUser}>Login</button>
                 </form>
             </div>
@@ -58,6 +83,7 @@ function LoginForm({login}) {
                     <h1 className={"loginh1"}>Hi renter.</h1>
                     <input type="email" placeholder="Email address" onChange={handleRenterEmail}/>
                         <input type="password" placeholder="Password" onChange={handleRenterPassword}/>
+                    <a href="http://localhost:3000/reset_password" style={{textDecoration:"none"}}>Forgot password?</a>
                             <button className={"loginbutton"} onClick={loginRenter}>Login</button>
                 </form>
             </div>
@@ -71,6 +97,7 @@ function LoginForm({login}) {
                     <div className="overlay-panel overlay-right">
                         <h1 className={"loginh"}>Are you a user?</h1>
                         <p className={"loginp"}>Click here to login as user.</p>
+
                         <button id="signRenter" className={"loginbutton ghost"} onClick={handleUserButtonClick}>Login</button>
                     </div>
                 </div>
