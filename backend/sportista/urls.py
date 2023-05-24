@@ -7,5 +7,6 @@ urlpatterns = [
     path("renter/spremi", views.spremi, name="spremi"),
     path("daj_sportove", views.dajSportove),
     path("sport/<int:params>/", views.getFields, name="getSport"),
+    path("renter/my-fields/<int:params>/", views.getRenterFields, name="getRenterFields"),
 
 ]

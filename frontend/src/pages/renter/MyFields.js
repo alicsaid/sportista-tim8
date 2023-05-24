@@ -16,7 +16,7 @@ function MyFields({isAuthenticated,user}) {
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
             <div style={{ marginLeft: '10px'}}>
-                <Field />
+                <Field user={user}/>
             </div>
             <AddFieldModal/>
         </div>

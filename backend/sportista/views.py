@@ -34,6 +34,13 @@ def getFields(request, params):
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
 
+@api_view(['GET'])
+def getRenterFields(request, params):
+    list_of_fields = Field.objects.filter(id_rentera_id=params)
+    res = serializers.serialize('json', list_of_fields)
+
+    return HttpResponse(res, content_type="text/json-comment-filtered")
+
 @api_view(['POST'])
 def spremi(request):
 

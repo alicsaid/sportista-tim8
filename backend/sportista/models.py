@@ -84,7 +84,7 @@ class Field(models.Model):
     image = models.ImageField(null=True)
     starts = models.TimeField()
     ends = models.TimeField()
-    is_sport = models.ManyToManyField(Sport)
+    is_sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
     grades = models.ManyToManyField(SportistaUser, through="UserGradesField", blank=True)
     has_teams = models.ManyToManyField(Team, through="TeamRentsField", blank=True)
 

@@ -1,32 +1,61 @@
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import EditFieldModal from './EditFieldModal';
-import DeleteConfirmation from './DeleteConfirmationModal'
-import {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {CardContent, Typography} from "@mui/material";
+import StarIcon from "@mui/icons-material/Star";
+import axios from "axios";
 
-function Field() {
-    const text = "This is a footbal field. Hahaha there is more info about this field isnt it cool?";
+function Field(props) {
+
+    const [fields, setFields] = useState([]);
+
+    useEffect(() => {
+        getFields();
+    }, []);
+
+    function getFields() {
+        axios
+            .get(`http://127.0.0.1:8000/renter/my-fields/${props.user.id}/`)
+            .then((response) => {
+                setFields(response.data);
+                // console.log(fields)
+                // console.log(response.data)
+            })
+            .catch((error) => {
+                console.error('Error fetching fields:', error);
+            });
+    }
+
     const [showMore, setShowMore] = useState(false);
     return (
-        <Card style={{ width: '18rem', marginTop: "5rem" }}>
-            <Card.Img variant="top" src={require('../../resources/images/teren1.jpg')} alt={"teren"} />
-            <Card.Body>
-                <Card.Title>Name of Field</Card.Title>
-                <Card.Text>
-                    {showMore ? text : `${text.substring(0, 50)}`+'...'}
-                    <button style={{padding: "2px", border:"none", background:"none", fontSize:"13px", color:"gray"}} onClick={()=>setShowMore(!showMore)}>
-                        {showMore ? "Show less" : "Show more"}
-                    </button>
-                </Card.Text>
-                <Card.Text>
-                    Price: 50$
-                    Reserved until?
-                </Card.Text>
-                <EditFieldModal />
-                <DeleteConfirmation />
-
-            </Card.Body>
-        </Card>
+        <div className="cardContainer">
+            <h1 className="sportHeader">{props.header}</h1>
+            <div className="cardRow">
+                {fields.map((field) => (
+                    <Card key={field.fields.id} sx={{ margin: '10px', maxWidth: 300 }}>
+                        <img
+                            src={require('../../resources/images/teren1.jpg')}
+                            alt={field.fields.name}
+                            style={{ width: '100%' }}
+                        />
+                        <CardContent>
+                            <Typography variant="h5" component="div">
+                                {field.fields.name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Location: {field.fields.address}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Price: {field.fields.price}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Rating: 4.5/5 {field.fields.grades}
+                                <StarIcon />
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
+        </div>
     );
 }
 
