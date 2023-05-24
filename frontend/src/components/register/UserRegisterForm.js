@@ -361,8 +361,8 @@ function UserRegisterForm({register}) {
                         <>
                             <Form.Group className="mb-3">
                                 <h3 style={{marginBottom: '55px'}}>Welcome to Sportista Field Rental!</h3>
-                                <h4 style={{marginBottom: '35px'}}>Thank you for registering.</h4>
-                                <h4>You can now login to your account.</h4>
+                                <h4 style={{marginBottom: '35px'}}>Thank you for registering, please activate your account on email we sent to you.</h4>
+                                <h4>After that you can proceed to login.</h4>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
