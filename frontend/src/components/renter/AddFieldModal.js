@@ -21,12 +21,12 @@ class App extends Component {
                 </Fab>
                 <Modal show={this.state.isOpen} onHide={this.closeModal}>
                     <Modal.Body>
-                        <Forma dodaj={"Add"}/>
+                        <Forma dodaj={"Add"} user={this.props.user}/>
                     </Modal.Body>
                     <div style={{textAlign:"center",marginBottom:"2px"}}>
-                    <Button variant="danger" onClick={this.closeModal} style={{width:"50%"}}>
-                        Close
-                    </Button>
+                        <Button variant="danger" onClick={this.closeModal} style={{width:"50%"}}>
+                            Close
+                        </Button>
                     </div>
                 </Modal>
             </>

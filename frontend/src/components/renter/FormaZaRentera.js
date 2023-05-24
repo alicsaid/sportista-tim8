@@ -4,39 +4,61 @@ import React, {useState} from "react";
 import axios from "axios";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
+import {SERVER_URL} from "../../auth/Consts";
 
 function Forma(props,{user, isAuthenticated}) {
+    var objekat;
     const [sport,setSport] = useState("");
     const [name,setName] = useState("");
     const [location,setLocation] = useState("");
     const [price,setPrice] = useState("");
     const [img,setImg] = useState("");
     const [description,setDescription] = useState("");
-    const objekat ={
-        sport:sport,
-        name:name,
-        price:price,
-        location:location,
-        img:img,
-        description:description
+    const [hasSports, setHasSports] = useState([]);
+    const [gotData, setGotData] = useState(false);
+    if(!gotData)
+        axios.get( `${SERVER_URL}/daj_sportove`).then((res) => {
+            setHasSports(res.data)
+            setGotData(true)
+        })
+    console.log(img)
+    if(props.user != null){
+        objekat ={
+            user:props.user.id,
+            sport:sport,
+            name:name,
+            price:price,
+            location:location,
+            img:img,
+            description:description
+        }
     }
-    async function posalji(event) {
+
+    function posalji(event) {
         event.preventDefault();
         console.log(objekat);
 
-        await axios('http://127.0.0.1:8000/renter/spremi', {
-            method: 'POST',
-            headers: {'Content-Type': 'text/plain'},
-            body: JSON.stringify(objekat),
-
-        }).then(result => console.log('success====:', result))
-            .catch(error => console.log('error============:', error));
+        axios.post('http://127.0.0.1:8000/renter/spremi', objekat)
+            .then(response => {
+                console.log(response.data);
+                // Handle the successful response
+            })
+            .catch(error => {
+                console.error(error);
+                // Handle the error
+            });
     }
     return (
-        <Form>
+        <Form onSubmit={posalji} encType="multipart/form-data">
+
             <Form.Group className="mb-1" controlId="formBasicSport">
                 <Form.Label>Sport</Form.Label>
-                <Form.Control type="text" placeholder="Enter sport" onChange={(e)=>{setSport(e.target.value)}}/>
+                <Form.Select aria-label="Default select example" onChange={(e)=>{setSport(e.target.value)}}>
+                    <option>Select sport</option>
+                    {hasSports.map((sport) => (
+                        <option value={sport.pk}>{sport.fields.name}</option>
+                    ))}
+                </Form.Select>
             </Form.Group>
             <Form.Group className="mb-1" controlId="formBasicName">
                 <Form.Label>Name</Form.Label>
@@ -60,7 +82,7 @@ function Forma(props,{user, isAuthenticated}) {
                 <Form.Control as="textarea" rows={3} onChange={(e)=>{setDescription(e.target.value)}}/>
             </Form.Group>
 
-            <Button variant="outline-success" type="submit" onClick={posalji}>
+            <Button variant="outline-success" type="submit">
                 {props.dodaj}
             </Button>
         </Form>
@@ -70,9 +92,3 @@ const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated, 
 
 
 export default connect(mapStateToProps,null)(Forma);
-
-
-
-
-
-

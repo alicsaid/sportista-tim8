@@ -18,7 +18,7 @@ function MyFields({isAuthenticated,user}) {
             <div style={{ marginLeft: '10px'}}>
                 <Field user={user}/>
             </div>
-            <AddFieldModal/>
+            <AddFieldModal props={user}/>
         </div>
     );
 }
