@@ -57,17 +57,23 @@ export const load_user = () => async dispatch => {
     if(localStorage.getItem('access')){
         console.log("Ovo bi bilo vrh");
         try{
-            const res = await axios.get( `${SERVER_URL}/auth/users/me/`, {
+            const res1 = await axios.get( `${SERVER_URL}/auth/users/me/`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `JWT ${localStorage.getItem('access')}`,
                     'Accept': 'application/json'
                 }
             })
+            var res2 = {data:null}
+            if(res1.data.is_renter)
+                res2 = await axios.get( `${SERVER_URL}/get_renter/${res1.data.id}`)
+            else if(res1.data.is_user)
+                res2 = await axios.get( `${SERVER_URL}/get_user/${res1.data.id}`)
+
 
             dispatch({
                 type: USER_LOADED_SUCCESS,
-                payload: res.data
+                payload: {...res1.data, ...res2.data}
             })
         } catch(err){
             dispatch({
@@ -126,24 +132,18 @@ export const register = (email, password, is_user, is_renter, DATA) => async dis
             is_user:is_user,
             is_renter:is_renter
         })
+        const encodedName = encodeURIComponent(DATA.name)
          const  res2 = await axios.post(`${SERVER_URL}/add_renter/`, {
                 ...DATA,
-                id_logina: res1.data.id
-            }, {
-             headers:{
-                 'Content-Type': 'application/json'
-             }
-         })
-        
-        console.log(res2)
+                name:encodedName,
+                id: res1.data.id
+
+            })
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res1.data
         })
-
-
     } catch(err){
-        console.log(err)
         dispatch({
             type: REGISTER_FAIL
         })

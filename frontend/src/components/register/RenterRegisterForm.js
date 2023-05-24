@@ -31,6 +31,7 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [phoneError, setPhoneError] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [blockButton, setBlockButton] = useState(false)
 
     if(!gotData)
         axios.get( `${SERVER_URL}/daj_sportove`).then((res) => {
@@ -122,6 +123,7 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setBlockButton(true)
         // Perform form submission logic here
         if (!termsAccepted) {
             alert('Please agree to the terms and conditions and privacy policy if you want to proceed.');
@@ -276,9 +278,16 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                             <Button variant="primary" onClick={handlePrevStep} className="previousButton">
                                 Previous
                             </Button>
-                            <Button variant="primary" onClick={handleNextStep} className="nextButton">
+                            {!blockButton &&
+                                <Button variant="primary" onClick={handleNextStep} className="nextButton">
                                 Next
-                            </Button>
+                                </Button>}
+                            {blockButton &&
+                                <Button variant="primary" onClick={() => {}} className="nextButton">
+                                    Registering...
+                                </Button>}
+
+
                         </div>
                     </>
                 );
