@@ -80,7 +80,7 @@ export const load_user = () => async dispatch => {
     }
 };
 
-export const login = (email, password, is_user, is_renter) => async dispatch => {
+export const login = (email, password, is_user, is_renter, handleError) => async dispatch => {
     try{
         const res1 = await axios.post( `${SERVER_URL}/auth/jwt/create/`, {
             email:email,
@@ -110,6 +110,8 @@ export const login = (email, password, is_user, is_renter) => async dispatch => 
 
 
     } catch(err){
+        console.log(err.response.data)
+        handleError(err.response.data)
         dispatch({
             type: LOGIN_FAIL
         })

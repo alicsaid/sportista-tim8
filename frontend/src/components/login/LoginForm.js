@@ -10,6 +10,7 @@ function LoginForm({login}) {
     const [renterPassword, setRenterPassword] = useState('');
     const [userEmail, setuserEmail] = useState('');
     const [userPassword, setuserPassword] = useState('');
+    const [error, setError] = useState(null);
 
     const handleUserButtonClick = () => {
         setRightPanelActive(true);
@@ -35,15 +36,36 @@ function LoginForm({login}) {
         setuserPassword(event.target.value)
     }
 
-    const loginRenter = (event) => {
-        event.preventDefault()
-        login(renterEmail, renterPassword, false, true)
+    const handleError = (errorMesage) => {
+        setError(errorMesage)
     }
 
+    const loginRenter = (event) => {
+        event.preventDefault()
+        login(renterEmail, renterPassword, false, true, handleError).then( () =>{
+            displayAlert()
+        })
+    }
     const loginUser = (event) => {
         event.preventDefault()
-        login(userEmail, userPassword, true, false)
+        login(userEmail, userPassword, true, false, handleError).then( () =>{
+            displayAlert()
+        })
     }
+
+    const displayAlert = () => {
+        if (error && Object.keys(error).length > 0) {
+            if (error.email != null) {
+                alert(error.email);
+            } else if (error.password != null) {
+                alert(error.password);
+            } else if(error.detail != null){
+                alert(error.detail);
+            }else {
+                alert("Error with login")
+            }
+        }
+    };
 
     return (
         <div className={isRightPanelActive ? 'dowebok right-panel-active' : 'dowebok'} id="dowebok">
