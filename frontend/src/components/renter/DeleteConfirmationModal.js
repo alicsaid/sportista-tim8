@@ -21,7 +21,7 @@ class App extends Component {
                     <Modal.Body><div className="alert alert-danger">Are you sure you want to delete the field ?</div></Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.closeModal}>
-                            Cancle
+                            Cancel
                         </Button>
                         <Button variant="danger" onClick={this.closeModal}>
                             Delete

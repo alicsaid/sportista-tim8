@@ -3,53 +3,29 @@ import React, {useEffect, useState} from "react";
 import {CardContent, Typography} from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import axios from "axios";
+import EditFieldModal from "./EditFieldModal";
+import DeleteConfirmation from "./DeleteConfirmationModal";
 
 function Field(props) {
 
-    const [fields, setFields] = useState([]);
-
-    useEffect(() => {
-        getFields();
-    }, [fields]);
-
-    function getFields() {
-        axios
-            .get(`http://127.0.0.1:8000/renter/my-fields/${props.user.id}/`)
-            .then((response) => {
-                setFields(response.data);
-                // console.log(fields)
-                // console.log(response.data)
-            })
-            .catch((error) => {
-                console.error('Error fetching fields:', error);
-            });
-    }
-    const [showMore, setShowMore] = useState(false);
     return (
         <div className="cardContainer">
             <div className="cardRow">
-                {fields.map((field) => (
-                    <Card key={field.fields.id} sx={{ marginLeft: '10px', maxWidth: 20 }}>
-                        <img
-                            src={require('../../resources/images/teren1.jpg')}
-                            alt={field.fields.name}
-                            style={{ width: '300px'}}
-                        />
-                        <CardContent>
-                            <Typography variant="h5" component="div">
-                                {field.fields.name}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
+                {props.fields.map((field) => (
+                    <Card key={field.fields.id} style={{ width: '18rem', marginTop: "5rem" }}>
+                        <Card.Img variant="top" src={require('../../resources/images/teren1.jpg')} alt={"teren"} />
+                        <Card.Body>
+                            <Card.Title>{field.fields.name}</Card.Title>
+                            <Card.Text>
+                                {field.fields.details}
+                            </Card.Text>
+                            <Card.Text>
                                 Location: {field.fields.address}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Details: {field.fields.details}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Rating: 4.5/5 {field.fields.grades}
-                                <StarIcon />
-                            </Typography>
-                        </CardContent>
+                            </Card.Text>
+                            <EditFieldModal />
+                            <DeleteConfirmation />
+
+                        </Card.Body>
                     </Card>
                 ))}
             </div>

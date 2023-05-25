@@ -34,8 +34,7 @@ function Forma(props,{user, isAuthenticated}) {
         }
     }
 
-    function posalji(event) {
-        event.preventDefault();
+    function posalji() {
         console.log(objekat);
 
         axios.post('http://127.0.0.1:8000/renter/spremi', objekat)
@@ -48,8 +47,14 @@ function Forma(props,{user, isAuthenticated}) {
                 // Handle the error
             });
     }
+
+    function callFuns(){
+        posalji()
+        props.closeModal()
+        setTimeout(props.getF, 330)
+    }
     return (
-        <Form onSubmit={posalji} encType="multipart/form-data" >
+        <Form encType="multipart/form-data" >
 
             <Form.Group className="mb-1" controlId="formBasicSport">
                 <Form.Label>Sport</Form.Label>
@@ -82,7 +87,7 @@ function Forma(props,{user, isAuthenticated}) {
                 <Form.Control as="textarea" rows={3} onChange={(e)=>{setDescription(e.target.value)}}/>
             </Form.Group>
             <div style={{textAlign: "center"}}>
-            <Button variant="outline-success" type="submit" onClick={props.closeModal} style={{width: "53%"}}>
+            <Button variant="outline-success" onClick={callFuns} style={{width: "53%"}}>
                 {props.dodaj}
             </Button>
             </div>
