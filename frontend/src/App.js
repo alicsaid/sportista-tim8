@@ -47,7 +47,7 @@ function App() {
               <Route path="/admin/renters" element={<Renters />} />
               <Route path="/admin/users" element={<Users />} />
               <Route path="/renter" element={<Renter />} />
-              <Route path="/renter/my-fields" element={<MyFields />} />
+              <Route path="/renter/my-fields" element={<MyFields/>} />
               <Route path="/renter/analytics" element={<Analytics />} />
               <Route path="/renter/account" element={<RenterAccount />} />
               <Route path="/renter/contact" element={<RenterContact />} />

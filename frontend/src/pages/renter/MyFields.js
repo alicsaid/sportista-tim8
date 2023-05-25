@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 
 //components
@@ -9,7 +9,8 @@ import AddFieldModal from "../../components/renter/AddFieldModal";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 
-function MyFields({isAuthenticated,user}) {
+function MyFields({user,isAuthenticated}) {
+    console.log(isAuthenticated)
     if(!isAuthenticated && user == null)
         return (<Navigate to={"/"}/>)
     return (

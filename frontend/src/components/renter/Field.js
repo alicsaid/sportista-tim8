@@ -10,7 +10,7 @@ function Field(props) {
 
     useEffect(() => {
         getFields();
-    }, []);
+    }, [fields]);
 
     function getFields() {
         axios
@@ -24,18 +24,16 @@ function Field(props) {
                 console.error('Error fetching fields:', error);
             });
     }
-
     const [showMore, setShowMore] = useState(false);
     return (
         <div className="cardContainer">
-            <h1 className="sportHeader">{props.header}</h1>
             <div className="cardRow">
                 {fields.map((field) => (
-                    <Card key={field.fields.id} sx={{ margin: '10px', maxWidth: 300 }}>
+                    <Card key={field.fields.id} sx={{ marginLeft: '10px', maxWidth: 20 }}>
                         <img
                             src={require('../../resources/images/teren1.jpg')}
                             alt={field.fields.name}
-                            style={{ width: '100%' }}
+                            style={{ width: '300px'}}
                         />
                         <CardContent>
                             <Typography variant="h5" component="div">
@@ -45,7 +43,7 @@ function Field(props) {
                                 Location: {field.fields.address}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                Price: {field.fields.price}
+                                Details: {field.fields.details}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
                                 Rating: 4.5/5 {field.fields.grades}

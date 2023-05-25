@@ -49,7 +49,7 @@ function Forma(props,{user, isAuthenticated}) {
             });
     }
     return (
-        <Form onSubmit={posalji} encType="multipart/form-data">
+        <Form onSubmit={posalji} encType="multipart/form-data" >
 
             <Form.Group className="mb-1" controlId="formBasicSport">
                 <Form.Label>Sport</Form.Label>
@@ -81,10 +81,11 @@ function Forma(props,{user, isAuthenticated}) {
                 <Form.Label>Description</Form.Label>
                 <Form.Control as="textarea" rows={3} onChange={(e)=>{setDescription(e.target.value)}}/>
             </Form.Group>
-
-            <Button variant="outline-success" type="submit">
+            <div style={{textAlign: "center"}}>
+            <Button variant="outline-success" type="submit" onClick={props.closeModal} style={{width: "53%"}}>
                 {props.dodaj}
             </Button>
+            </div>
         </Form>
     );
 }
