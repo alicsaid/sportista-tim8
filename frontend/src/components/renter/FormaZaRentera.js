@@ -34,18 +34,32 @@ function Forma(props,{user, isAuthenticated}) {
         }
     }
 
+    function getBase64(file, cb) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+
     function posalji() {
         console.log(objekat);
+        getBase64(img, (result)=>{
+            axios.post('http://127.0.0.1:8000/renter/spremi', {...objekat, img:result})
+                .then(response => {
+                    console.log(response.data);
+                    // Handle the successful response
+                })
+                .catch(error => {
+                    console.error(error);
+                    // Handle the error
+                });
+        })
 
-        axios.post('http://127.0.0.1:8000/renter/spremi', objekat)
-            .then(response => {
-                console.log(response.data);
-                // Handle the successful response
-            })
-            .catch(error => {
-                console.error(error);
-                // Handle the error
-            });
+
     }
 
     function callFuns(){

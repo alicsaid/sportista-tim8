@@ -81,7 +81,7 @@ class Field(models.Model):
     name = models.CharField(max_length=255, default="field_name")
     address = models.CharField(max_length=255)
     details = models.CharField(max_length=1000)
-    image = models.ImageField(null=True)
+    image = models.TextField(null=True)
     starts = models.TimeField()
     ends = models.TimeField()
     is_sport = models.ForeignKey(Sport, on_delete=models.CASCADE)

@@ -7,13 +7,13 @@ import EditFieldModal from "./EditFieldModal";
 import DeleteConfirmation from "./DeleteConfirmationModal";
 
 function Field(props) {
-
+    console.log(props.fields[0])
     return (
         <div className="cardContainer">
             <div className="cardRow">
                 {props.fields.map((field) => (
-                    <Card key={field.fields.id} style={{ width: '18rem', marginTop: "5rem" }}>
-                        <Card.Img variant="top" src={require('../../resources/images/teren1.jpg')} alt={"teren"} />
+                    <Card key={field.pk} style={{ width: '18rem', marginTop: "5rem" }}>
+                        <Card.Img variant="top" src={field.fields.image} alt={"teren"} />
                         <Card.Body>
                             <Card.Title>{field.fields.name}</Card.Title>
                             <Card.Text>
@@ -23,7 +23,7 @@ function Field(props) {
                                 Location: {field.fields.address}
                             </Card.Text>
                             <EditFieldModal />
-                            <DeleteConfirmation />
+                            <DeleteConfirmation field_id={field.pk} getf={props.getf}/>
 
                         </Card.Body>
                     </Card>
