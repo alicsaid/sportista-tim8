@@ -14,7 +14,7 @@ function MyFields({user,isAuthenticated}) {
     const [fields, setFields] = useState([]);
     useEffect(() => {
         getFields();
-    }, [fields]);
+    }, [fields, user]);
 
     // if(!isAuthenticated && user == null)
     //     return (<Navigate to={"/"}/>)
