@@ -1,3 +1,5 @@
+/* navbar */
+
 .small_logo {
     max-height: 90px;
     transition: transform 0.3s;
@@ -7,84 +9,82 @@
     transform: scale(1.1);
 }
 
-.m-1 {
-    transition: transform 0.3s;
-}
-
-.m-1:hover {
-    transform: scale(1.1);
-}
-
-main {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - 90px - 50px);
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-}
-
 .navbar {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     z-index: 100;
-    background-color: #f2f2f2;
+    border-bottom: 1px solid black;
 }
+
+.nav-btn {
+    height: 2.5rem;
+    width: 5rem;
+    border-radius: 5px;
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.nav-btn:hover {
+    background: black;
+    color: white;
+}
+
+.scaler {
+    transition: transform 0.3s;
+}
+
+.scaler:hover {
+    transform: scale(1.1);
+}
+
+/* main */
+
+main {
+    position: relative;
+    flex-direction: column;
+    min-height: calc(100vh - 90px - 50px);
+}
+
+/* footer */
 
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #b8acab;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+    color: black;
+    height: 4rem;
+    display: flex;
+    align-items: center;
     z-index: 100;
+    border-top: 1px solid black;
 }
+
+.copyright {
+    flex-grow: 1;
+    padding-left: 2rem;
+}
+
+.admin-login {
+    padding-right: 2rem;
+}
+
+.admin-login a {
+    color: #9a9a9a;
+    text-decoration: none;
+}
+
+.admin-login a:hover {
+    color: #000000;
+}
+
+/* media-queries */
 
 @media (max-height: 600px) {
     .footer {
         position: relative;
     }
 }
-
-.footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.copyright {
-    flex-grow: 1;
-    text-align: center;
-}
-
-.admin-login {
-    position: absolute;
-    text-align: right;
-    width: 100%;
-    bottom: 10px;
-    right: 10px;
-    font-size: 15px;
-}
-
-.admin-link {
-    text-decoration: underline;
-    color: gray;
-}
-
-.admin-link:hover {
-    font-weight: bold;
-}
-
-@media (max-height: 600px) {
-    .admin-login {
-        position: relative;
-    }
-}
-
-

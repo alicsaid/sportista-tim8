@@ -1,41 +1,39 @@
 import "../../pages/user/User.css";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import { FaStar } from 'react-icons/fa';
-import {useState} from "react";
-import BookFieldModal from "./BookFieldModal";
+import React from 'react';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 import FieldDetailsModal from "./FieldDetailsModal";
+import BookFieldModal from "./BookFieldModal";
 
 
 function FieldCard() {
-    const ratingValue = 4;
-    const text = "Nedim you are wrong! This is NOT a footbal field. Hahaha there is more info about this field isnt it cool?";
-    const [showMore, setShowMore] = useState(false);
-
     return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={require('../../resources/images/teren1.jpg')} alt={"teren"} />
-            <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                    {showMore ? text : `${text.substring(0, 50)}`+'...'}
-                    <button className="showMoreButton" onClick={()=>setShowMore(!showMore)}>
-                        {showMore ? "Show less" : "Show more"}
-                    </button>
-                </Card.Text>
+        <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+                component="img"
+                height="140"
+                image={require('../../resources/images/teren1.jpg')}
+                alt="Field"
+            />
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    Field Name
+                </Typography>
+            </CardContent>
+            <CardActions className="d-flex justify-content-between">
                 <BookFieldModal />
                 <FieldDetailsModal />
-
-            </Card.Body>
-            <Card.Footer>
-                <div className="float-end">
-                    <span>4.5/5 </span>
-                    <FaStar
-                        color={"#ffc107"}
-                        size={20}
-                    />
-                </div>
-            </Card.Footer>
+            </CardActions>
+            <CardActions className="float-end" disableSpacing>
+                <Typography component="span">4.5/5 </Typography>
+                <StarIcon color="primary" fontSize="small" />
+            </CardActions>
         </Card>
     );
 }

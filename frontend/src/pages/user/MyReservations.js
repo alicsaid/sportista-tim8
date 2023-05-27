@@ -5,14 +5,17 @@ import UserSidebar from "../../components/navigation/UserSidebar";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 
-function MyReservations({user, isAuthenticated}) {
-    if(!isAuthenticated && user == null)
-        return (<Navigate to={"/"}/>)
+function MyReservations({ user, isAuthenticated }) {
+
+    // if(!isAuthenticated && user == null)
+    //     return (<Navigate to={"/"}/>)
+
     return (
         <div style={{ display: 'flex' }}>
             <UserSidebar />
-            <div style={{ marginLeft: '10px'}}>
+            <div className="user-page">
                 <h1>My Reservations</h1>
+                <h5>List of your bookings.</h5>
             </div>
         </div>
     );

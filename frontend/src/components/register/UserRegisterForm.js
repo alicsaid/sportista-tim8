@@ -163,55 +163,59 @@ function UserRegisterForm({register}) {
                             <div className="step"></div>
                             <div className="step"></div>
                         </div>
-                        <Form.Group className="mb-3">
-                            <Form.Label>First name</Form.Label>
-                            <Form.Control
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="text"
+                                id="firstName"
                                 placeholder="First name"
                                 value={userFirstName}
                                 onChange={handleUserFirstNameChange}
-                                required={true}
+                                required
                             />
-                        </Form.Group>
+                        </div>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>Last name</Form.Label>
-                            <Form.Control
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="text"
+                                id="lastName"
                                 placeholder="Last name"
                                 value={userLastName}
                                 onChange={handleUserLastNameChange}
-                                required={true}
+                                required
                             />
-                        </Form.Group>
+                        </div>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="email"
+                                id="email"
                                 placeholder="E-mail"
                                 value={userEmail}
                                 onChange={handleUserEmailChange}
-                                required={true}
+                                required
                             />
                             {emailError && <div className="error">{emailError}</div>}
-                        </Form.Group>
+                        </div>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
-                                className="input"
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="password"
+                                id="password"
                                 placeholder="Password"
                                 value={userPassword}
                                 onChange={handleUserPasswordChange}
-                                required={true}
+                                required
                             />
-                        </Form.Group>
+                        </div>
 
-                        <Button variant="primary" onClick={handleNextStep} className="nextButton">
+                        <button onClick={handleNextStep} className="nextButton custom-register-button">
                             Next
-                        </Button>
+                        </button>
+
                     </>
                 );
             case 2:
@@ -224,33 +228,40 @@ function UserRegisterForm({register}) {
                             <div className="step"></div>
                             <div className="step"></div>
                         </div>
-                        <Form.Group className="mb-3">
-                            <Form.Label className="gender">Gender</Form.Label>
-                            <Form.Select value={userGender} onChange={handleUserGenderChange} required>
+                        <div className="form-group">
+                            <select
+                                className="custom-input gender"
+                                value={userGender}
+                                onChange={handleUserGenderChange}
+                                required
+                            >
+                                <option value="">Select gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
-                            </Form.Select>
-                        </Form.Group>
+                            </select>
+                        </div>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label className="date">Date of birth</Form.Label>
-                            <Form.Control
-                                className="input"
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="date"
+                                placeholder="Date of Birth"
+                                title="Date of birth"
                                 value={userDateOfBirth}
                                 onChange={handleUserDateOfBirthChange}
-                                required={true}
+                                required
                             />
-                        </Form.Group>
-
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px'}}>
-                            <Button variant="primary" onClick={handlePrevStep} className="previousButton">
-                                Previous
-                            </Button>
-                            <Button variant="primary" onClick={handleNextStep} className="nextButton">
-                                Next
-                            </Button>
                         </div>
+
+                        <div>
+                            <button onClick={handlePrevStep} className="previousButton custom-register-button">
+                                Previous
+                            </button>
+                            <button onClick={handleNextStep} className="nextButton custom-register-button">
+                                Next
+                            </button>
+                        </div>
+
                     </>
                 );
             case 3:
@@ -263,28 +274,26 @@ function UserRegisterForm({register}) {
                             <div className="step"></div>
                             <div className="step"></div>
                         </div>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Which sports are you interested in?</Form.Label>
-                            {gotData &&
-                                playsSports.map((sport) => (
-                                    <Form.Check
-                                        key={sport.pk}
-                                        label={sport.fields.name}
+                        <div className="d-flex flex-column">
+                            <label className="m-3">Which sports are you interested in?</label>
+                            <div>
+                                {playsSports.map((sport) => (
+                                <div key={sport.pk}>
+                                    <input
+                                        className="m-2"
                                         type="checkbox"
-                                        value = {sport.pk}
+                                        id={sport.pk}
+                                        value={sport.pk}
                                         onChange={handleSportChange}
-                                    />)
-                                )
-                            }
-                        </Form.Group>
-
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
-                            <Button variant="primary" onClick={handlePrevStep} className="previousButton">
-                                Previous
-                            </Button>
-                            <Button variant="primary" onClick={handleNextStep} className="nextButton">
-                                Next
-                            </Button>
+                                    />
+                                    <label htmlFor={sport.pk}>{sport.fields.name}</label>
+                                </div>
+                            ))}
+                            </div>
+                            <div className="d-flex justify-content-between mt-2">
+                                <button className="custom-register-button" onClick={handlePrevStep}>Previous</button>
+                                <button className="custom-register-button" onClick={handleNextStep}>Next</button>
+                            </div>
                         </div>
                     </>
                 );
@@ -299,59 +308,45 @@ function UserRegisterForm({register}) {
                             <div className="step active"></div>
                             <div className="step"></div>
                         </div>
-                        <Form.Label>When are you available?</Form.Label>
-                        <div style={{marginTop: '25px', marginBottom: '10px'}}>
-                            <Form.Label style={{marginLeft: '100px'}}>Start Hour</Form.Label>
-                            <Form.Label style={{marginLeft: '70px'}}>End Hour</Form.Label>
-                        </div>
-
-                        {daysOfWeek.map((day) => (
-                            <div key={day} className="d-flex align-items-center">
-                                <div className="col-2">
-                                    <Form.Label>{day}</Form.Label>
-                                </div>
-                                <div className="col">
-                                    <Form.Group className="mb-3">
-
-                                        <Form.Control
-                                            type="time"
-                                            style={{width: '100px', height: '30px', marginLeft: '35px', marginTop: '4px'}}
-                                            onChange={(e) =>
-                                                handleUserAvailabilityChange(
-                                                    day,
-                                                    e.target.value,
-                                                    userAvailability[day]?.endHour
-                                                )
-                                            }
-                                        />
-                                    </Form.Group>
-                                </div>
-                                <div className="col">
-                                    <Form.Group className="mb-3">
-
-                                        <Form.Control
-                                            type="time"
-                                            style={{width: '100px', height: '30px', marginTop: '4px'}}
-                                            onChange={(e) =>
-                                                handleUserAvailabilityChange(
-                                                    day,
-                                                    userAvailability[day]?.startHour,
-                                                    e.target.value
-                                                )
-                                            }
-                                        />
-                                    </Form.Group>
-                                </div>
+                        <div className="text-center">
+                            <label className="mb-5">When are you available?</label>
+                            <div className="d-flex justify-content-evenly">
+                                <label>FROM</label>
+                                <label>TO</label>
                             </div>
-                        ))}
-
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
-                            <Button variant="primary" onClick={handlePrevStep} className="previousButton">
-                                Previous
-                            </Button>
-                            <Button variant="primary" onClick={handleNextStep} className="nextButton">
-                                Next
-                            </Button>
+                            {daysOfWeek.map((day) => (
+                                <div key={day} className="d-flex align-items-center">
+                                    <div className="d-flex align-items-center col-2 m-2">
+                                        <label>{day}</label>
+                                    </div>
+                                    <div className="col">
+                                            <div className="mb-3">
+                                                <input
+                                                    type="time"
+                                                    className="custom-time-input"
+                                                    onChange={(e) =>
+                                                        handleUserAvailabilityChange(day, e.target.value, userAvailability[day]?.endHour)
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    <div className="col">
+                                            <div className="mb-3">
+                                                <input
+                                                    type="time"
+                                                    className="custom-time-input"
+                                                    onChange={(e) =>
+                                                        handleUserAvailabilityChange(day, userAvailability[day]?.startHour, e.target.value)
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                </div>
+                            ))}
+                            <div className="d-flex justify-content-between mt-2">
+                                <button className="custom-register-button" onClick={handlePrevStep}>Previous</button>
+                                <button className="custom-register-button" onClick={handleNextStep}>Next</button>
+                            </div>
                         </div>
                     </>
                 );
@@ -359,18 +354,17 @@ function UserRegisterForm({register}) {
                 if (formSubmitted) {
                     return (
                         <>
-                            <Form.Group className="mb-3">
-                                <h3 style={{marginBottom: '55px'}}>Welcome to Sportista Field Rental!</h3>
-                                <h4 style={{marginBottom: '35px'}}>Thank you for registering, please activate your account on email we sent to you.</h4>
-                                <h4>After that you can proceed to login.</h4>
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Button variant="primary" onClick={handleLoginButtonClick} className="login-button">
+                            <div className="text-center">
+                                <h3 className="mb-5">Welcome to Sportista Field Rental!</h3>
+                                <h4>Thank you for registering! Please check your email to activate your account.</h4>
+                                <h4>After that, you can proceed to login.</h4>
+                            </div>
+                            <div className="float-end mb-3">
+                                <button onClick={handleLoginButtonClick} className="custom-register-button">
                                     Login
-                                </Button>
-                            </Form.Group>
-                        </>
+                                </button>
+                            </div>
+                </>
                     );
                 } else {
                     return (
@@ -382,68 +376,63 @@ function UserRegisterForm({register}) {
                                 <div className="step"></div>
                                 <div className="step active"></div>
                             </div>
-                            <Form.Group className="mb-3">
-                                <Form.Label>
-                                    <div className="terms-and-conditions">
-    <pre>
-      {`
+                            <div className="mb-3">
+                                <label className="terms-and-conditions">
+          <pre>
+            {`
 Terms and Conditions
 
-Welcome to Sportista Field Rental! 
-By using our platform, you agree to comply with the following terms and 
+Welcome to Sportista Field Rental!
+By using our platform, you agree to comply with the following terms and
 conditions:
 
 1. Use of the Platform
-   - You are responsible for maintaining the confidentiality of your 
+   - You are responsible for maintaining the confidentiality of your
    account.
-   - You agree not to use the platform for any illegal or unauthorized 
+   - You agree not to use the platform for any illegal or unauthorized
    purposes.
 
 2. Field Rental
    - The platform facilitates the rental of sports fields.
-   - The availability and booking process may vary and are subject to 
+   - The availability and booking process may vary and are subject to
    specific terms outlined on the platform.
-   - Any disputes or issues regarding field rental are the responsibility 
+   - Any disputes or issues regarding field rental are the responsibility
    of the field renter and user.
 
 3. Liability
-   - We are not responsible for any accidents, injuries, or damages that 
+   - We are not responsible for any accidents, injuries, or damages that
    may occur during field rental.
-   - Users and renters are advised to establish their own agreements 
+   - Users and renters are advised to establish their own agreements
    regarding liability and responsibilities.
 
 4. Privacy
    - We collect and store user data in accordance with our privacy policy.
-   - We implement security measures to protect user information, but we 
+   - We implement security measures to protect user information, but we
    cannot guarantee complete security.
 
 5. Disclaimer
-   - The platform is provided "as is" and we do not make any warranties or 
+   - The platform is provided "as is" and we do not make any warranties or
    representations.
-   - We are not responsible for the accuracy or availability of the 
+   - We are not responsible for the accuracy or availability of the
    platform's content.
 
-By using our platform, you agree to these terms and conditions. 
+By using our platform, you agree to these terms and conditions.
 If you do not agree, please refrain from using the platform.
-      `}
-    </pre>
-                                    </div>
-                                </Form.Label>
-                            </Form.Group>
-
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>
-                                    <Form.Check inline required={true} className="terms" onChange={handleTermsAcceptance}></Form.Check>
+            `}
+          </pre>
+                                </label>
+                            </div>
+                            <div className="mb-3">
+                                <label>
+                                    <input type="checkbox" required={true} onChange={handleTermsAcceptance} />
                                     I agree to the terms and conditions and privacy policy
-                                </Form.Label>
-                            </Form.Group>
-
-                            <Form.Group as={Form.Row}>
-                                <Button variant="primary" type="button" onClick={handleSubmit} style={{float: 'right'}}>
+                                </label>
+                            </div>
+                            <div className="mb-3">
+                                <button className="custom-register-button float-end" type="button" onClick={handleSubmit}>
                                     Register
-                                </Button>
-                            </Form.Group>
+                                </button>
+                            </div>
                         </>
                     );
                 }

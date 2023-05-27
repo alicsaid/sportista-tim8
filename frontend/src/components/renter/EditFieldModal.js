@@ -1,34 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import Forma from "./FormaZaRentera";
+import FieldFormAction from "./FieldFormAction";
 
-class App extends Component {
-    state = {
-        isOpen: false
-    };
+const EditFieldModal = () => {
+    const [isOpen, setIsOpen] = useState(false);
 
-    openModal = () => this.setState({ isOpen: true });
-    closeModal = () => this.setState({ isOpen: false });
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
 
-    render() {
-        return (
-            <>
+    return (
+        <>
+            <Button variant="outline-secondary" style={{ margin: "5px" }} onClick={openModal}>
+                Edit field
+            </Button>
+            <Modal show={isOpen} onHide={closeModal}>
+                <Modal.Header>
+                    <button className="btn-close" onClick={closeModal}></button>
+                </Modal.Header>
+                <Modal.Body>
+                    <FieldFormAction action="Edit" />
+                </Modal.Body>
+            </Modal>
+        </>
+    );
+};
 
-                <Button variant="outline-secondary" style={{margin: '5px'}} onClick={this.openModal}>Edit field</Button>
-                <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                    <Modal.Body>
-                        <Forma dodaj={"Edit"}/>
-                    </Modal.Body>
-                    <div style={{textAlign:"center",marginBottom:"2px"}}>
-                        <Button variant="danger" onClick={this.closeModal} style={{width:"50%"}}>
-                            Close
-                        </Button>
-                    </div>
-
-                </Modal>
-            </>
-        );
-    }
-}
-
-export default App;
+export default EditFieldModal;

@@ -1,5 +1,8 @@
 /* --- DASHBOARD ---- */
 
+.admin-page {
+    margin: 2rem 0 4rem 2rem;
+}
 
 .dashboard-data {
     margin-top: 5rem;

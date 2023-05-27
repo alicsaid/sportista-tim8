@@ -3,18 +3,18 @@ import React from 'react';
 //components
 import Navbar from "../components/navigation/Navbar";
 import RegisterForm from "../components/register/RegisterForm";
-import axios from "axios";
+import Footer from "../components/navigation/Footer";
 
-function Users() {
+function Register() {
     return (
         <div>
             <Navbar />
-            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                <h1>Register</h1>
+            <div className="d-flex justify-content-center">
                 <RegisterForm/>
             </div>
+            <Footer />
         </div>
     );
 }
 
-export default Users;
+export default Register;

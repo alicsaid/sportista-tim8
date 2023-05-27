@@ -1,14 +1,15 @@
+.register-page {
+    height: 76vh;
+    display: flex;
+    align-items: center;
+}
+
 .registerForm {
     position: relative;
-    border: 3px solid #ccc;
-    border-radius: 7px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    border: 1px solid black;
     padding: 2rem;
-    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: left !important;
-    margin-bottom: 2rem;
 }
 
 .registerForm::before {
@@ -18,11 +19,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/public/home_image.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    filter: blur(2.6px);
     z-index: -1;
     opacity: 0.5;
 }
@@ -41,7 +37,6 @@
     appearance: none;
     -webkit-appearance: none;
     border: 2px solid black;
-    border-radius: 50%;
     width: 16px;
     height: 16px;
     transition: border-color 0.3s;
@@ -49,12 +44,6 @@
 
 .registerType input[type="radio"]:hover {
     border-color: #ccc;
-}
-
-.input {
-    border: 2.5px solid #ccc !important;
-    border-radius: 7px !important;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2) !important;
 }
 
 .radio-group {
@@ -127,6 +116,35 @@
     margin-bottom: 15px;
 }
 
+.custom-register-button {
+    height: 2.5rem;
+    width: 5rem;
+    border-radius: 5px;
+    background: white;
+    color: black;
+    border: 1px solid black;
+    margin-top: 1rem;
+}
 
+.custom-register-button:hover {
+    background: black;
+    color: white;
+}
 
+.custom-input {
+    background: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+    outline: none;
+}
+
+.custom-time-input {
+    background: #eee;
+    border: none;
+    padding: .5rem;
+    width: 80%;
+    outline: none;
+}
 

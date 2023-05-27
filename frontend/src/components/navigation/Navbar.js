@@ -16,8 +16,8 @@ function TopNavbar() {
                 <Navbar.Collapse className="justify-content-end">
                     <div className="offset-4 col-4">
                         <div className="d-flex justify-content-end">
-                            <a href="/login"><Button className="m-1">Login</Button></a>
-                            <a href="/register"><Button className="m-1">Register</Button></a>
+                            <a href="/login"><button className="scaler m-2 nav-btn">Login</button></a>
+                            <a href="/register"><button className="scaler m-2 nav-btn">Register</button></a>
                         </div>
                     </div>
                 </Navbar.Collapse>
