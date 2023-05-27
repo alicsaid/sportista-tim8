@@ -6,14 +6,17 @@ import ContactForm from "../../components/contact/ContactForm";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 
-function Contact({user, isAuthenticated}) {
-    if(!isAuthenticated && user == null)
-        return (<Navigate to={"/"}/>)
+function Contact({ user, isAuthenticated }) {
+
+    // if(!isAuthenticated && user == null)
+    //     return (<Navigate to={"/"}/>)
+
     return (
         <div style={{ display: 'flex' }}>
             <UserSidebar />
-            <div style={{ marginLeft: '10px'}}>
+            <div className="user-page">
                 <h1>Contact</h1>
+                <h5>Contact support team for any questions.</h5>
                 <ContactForm />
             </div>
         </div>

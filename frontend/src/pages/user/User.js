@@ -13,8 +13,9 @@ function Dashboard({user, isAuthenticated}) {
     return (
         <div style={{ display: 'flex' }}>
                 <UserSidebar />
-            <div style={{ marginLeft: '10px'}}>
+            <div className="user-page">
                 <h1>Dashboard</h1>
+                <h5>List of available fields for booking.</h5>
                 <div className="fieldCards">
                     <FieldCard />
                 </div>

@@ -136,44 +136,46 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                             <div className="step"></div>
                         </div>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="text"
+                                id="name"
                                 placeholder="Name"
                                 value={renterName}
                                 onChange={handleRenterNameChange}
-                                required={true}
+                                required
                             />
-                        </Form.Group>
+                        </div>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="email"
+                                id="email"
                                 placeholder="E-mail"
                                 value={renterEmail}
                                 onChange={handleRenterEmailChange}
-                                required={true}
+                                required
                             />
                             {emailError && <div className="error">{emailError}</div>}
-                        </Form.Group>
+                        </div>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
-                                className="input"
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="password"
+                                id="password"
                                 placeholder="Password"
                                 value={renterPassword}
                                 onChange={handleRenterPasswordChange}
-                                required={true}
+                                required
                             />
-                        </Form.Group>
+                        </div>
 
-                        <Button variant="primary" onClick={handleNextStep} className="nextButton">
+                        <button onClick={handleNextStep} className="nextButton custom-register-button">
                             Next
-                        </Button>
+                        </button>
                     </>
                 );
             case 2:
@@ -184,36 +186,38 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                             <div className="step active"></div>
                             <div className="step"></div>
                         </div>
-                        <Form.Group className="mb-3">
-                            <Form.Label>City</Form.Label>
-                            <Form.Control
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="text"
+                                id="city"
                                 placeholder="City"
                                 value={renterCity}
                                 onChange={handleRenterCityChange}
-                                required={true}
+                                required
                             />
-                        </Form.Group>
+                        </div>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>Phone number</Form.Label>
-                            <Form.Control
+                        <div className="form-group">
+                            <input
+                                className="custom-input"
                                 type="text"
+                                id="phoneNumber"
                                 placeholder="Phone number"
                                 value={renterPhone}
                                 onChange={handleRenterPhoneChange}
-                                required={true}
+                                required
                             />
                             {phoneError && <div className="error">{phoneError}</div>}
-                        </Form.Group>
+                        </div>
 
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px'}}>
-                            <Button variant="primary" onClick={handlePrevStep} className="previousButton">
+                        <div>
+                            <button className="previousButton custom-register-button" onClick={handlePrevStep}>
                                 Previous
-                            </Button>
-                            <Button variant="primary" onClick={handleNextStep} className="nextButton">
+                            </button>
+                            <button className="nextButton custom-register-button" onClick={handleNextStep}>
                                 Next
-                            </Button>
+                            </button>
                         </div>
                     </>
                 );
@@ -221,17 +225,16 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                 if (formSubmitted) {
                     return (
                         <>
-                            <Form.Group className="mb-3">
-                                <h3 style={{marginBottom: '35px'}}>Welcome to Sportista Field Rental!</h3>
-                                <h4 style={{marginBottom: '35px'}}>Thank you for registering, please activate your account on email we sent to you.</h4>
-                                <h4>After that you can proceed to login.</h4>
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Button variant="primary" onClick={handleLoginButtonClick} className="login-button">
+                            <div className="text-center">
+                                <h3 className="mb-5">Welcome to Sportista Field Rental!</h3>
+                                <h4>Thank you for registering! Please check your email to activate your account.</h4>
+                                <h4>After that, you can proceed to login.</h4>
+                            </div>
+                            <div>
+                                <button onClick={handleLoginButtonClick} className="login-button custom-register-button">
                                     Login
-                                </Button>
-                            </Form.Group>
+                                </button>
+                            </div>
                         </>
                     );
                 } else {
@@ -242,67 +245,71 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                                 <div className="step"></div>
                                 <div className="step active"></div>
                             </div>
-                            <Form.Group className="mb-3">
-                                <Form.Label>
-                                    <div className="terms-and-conditions">
-    <pre>
-      {`
-Terms and Conditions
+                            <div className="form-group">
+                                <label htmlFor="termsAndConditions" className="terms-and-conditions">
+        <pre>
+            {`
+            Terms and Conditions
 
-Welcome to Sportista Field Rental! 
-By using our platform, you agree to comply with the following terms and 
-conditions:
+            Welcome to Sportista Field Rental! 
+            By using our platform, you agree to comply with the following terms and 
+            conditions:
 
-1. Use of the Platform
-   - You are responsible for maintaining the confidentiality of your 
-   account.
-   - You agree not to use the platform for any illegal or unauthorized 
-   purposes.
+            1. Use of the Platform
+               - You are responsible for maintaining the confidentiality of your 
+                 account.
+               - You agree not to use the platform for any illegal or unauthorized 
+                 purposes.
 
-2. Field Rental
-   - The platform facilitates the rental of sports fields.
-   - The availability and booking process may vary and are subject to 
-   specific terms outlined on the platform.
-   - Any disputes or issues regarding field rental are the responsibility 
-   of the field renter and user.
+            2. Field Rental
+               - The platform facilitates the rental of sports fields.
+               - The availability and booking process may vary and are subject to 
+                 specific terms outlined on the platform.
+               - Any disputes or issues regarding field rental are the responsibility 
+                 of the field renter and user.
 
-3. Liability
-   - We are not responsible for any accidents, injuries, or damages that 
-   may occur during field rental.
-   - Users and renters are advised to establish their own agreements 
-   regarding liability and responsibilities.
+            3. Liability
+               - We are not responsible for any accidents, injuries, or damages that 
+                 may occur during field rental.
+               - Users and renters are advised to establish their own agreements 
+                 regarding liability and responsibilities.
 
-4. Privacy
-   - We collect and store user data in accordance with our privacy policy.
-   - We implement security measures to protect user information, but we 
-   cannot guarantee complete security.
+            4. Privacy
+               - We collect and store user data in accordance with our privacy policy.
+               - We implement security measures to protect user information, but we 
+                 cannot guarantee complete security.
 
-5. Disclaimer
-   - The platform is provided "as is" and we do not make any warranties or 
-   representations.
-   - We are not responsible for the accuracy or availability of the 
-   platform's content.
+            5. Disclaimer
+               - The platform is provided "as is" and we do not make any warranties or 
+                 representations.
+               - We are not responsible for the accuracy or availability of the 
+                 platform's content.
 
-By using our platform, you agree to these terms and conditions. 
-If you do not agree, please refrain from using the platform.
-      `}
-    </pre>
-                                    </div>
-                                </Form.Label>
-                            </Form.Group>
+            By using our platform, you agree to these terms and conditions. 
+            If you do not agree, please refrain from using the platform.
+            `}
+        </pre>
+                                </label>
+                            </div>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label>
-                                    <Form.Check inline required={true} className="terms" onChange={handleTermsAcceptance}></Form.Check>
+                            <div className="form-group">
+                                <label htmlFor="termsAcceptance">
+                                    <input
+                                        type="checkbox"
+                                        id="termsAcceptance"
+                                        className="terms"
+                                        required
+                                        onChange={handleTermsAcceptance}
+                                    />
                                     I agree to the terms and conditions and privacy policy
-                                </Form.Label>
-                            </Form.Group>
+                                </label>
+                            </div>
 
-                            <Form.Group as={Form.Row}>
-                                <Button variant="primary" type="button" onClick={handleSubmit} style={{float: 'right'}}>
+                            <div className="form-group">
+                                <button onClick={handleSubmit} className="custom-register-button" type="button" style={{ float: 'right' }}>
                                     Register
-                                </Button>
-                            </Form.Group>
+                                </button>
+                            </div>
                         </>
                     );
                 }

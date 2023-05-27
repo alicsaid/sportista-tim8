@@ -68,40 +68,41 @@ function LoginForm({login}) {
     };
 
     return (
-        <div className={isRightPanelActive ? 'dowebok right-panel-active' : 'dowebok'} id="dowebok">
+        <div className="login-form-page">
+            <div className={isRightPanelActive ? 'dowebok right-panel-active' : 'dowebok'} id="dowebok">
             <div className="form-container sign-up-container">
                 <form action="#">
-                    <h1 className={"loginh1"}>Hi user.</h1>
+                    <h3 className="loginh1">USER LOGIN</h3>
                     <input type="email" placeholder="Email address" onChange={handleUserEmail}/>
                         <input type="password" placeholder="Password" onChange={handleUserPassword}/>
-                    <a href="http://localhost:3000/reset_password" style={{textDecoration:"none", paddingBottom: "5px"}}>Forgot password?</a>
-                            <button className={"loginbutton"} onClick={loginUser}>Login</button>
+                    <a href="http://localhost:3000/reset_password" className="forgot_password">Forgot password?</a>
+                            <button className="custom-login-btn mt-2" onClick={loginUser}>Login</button>
                 </form>
             </div>
             <div className="form-container sign-in-container">
                 <form action="#">
-                    <h1 className={"loginh1"}>Hi renter.</h1>
+                    <h3 className="loginh1">RENTER LOGIN</h3>
                     <input type="email" placeholder="Email address" onChange={handleRenterEmail}/>
                         <input type="password" placeholder="Password" onChange={handleRenterPassword}/>
-                    <a href="http://localhost:3000/reset_password" style={{textDecoration:"none", paddingBottom: "5px"}}>Forgot password?</a>
-                            <button className={"loginbutton"} onClick={loginRenter}>Login</button>
+                    <a href="http://localhost:3000/reset_password" className="forgot_password">Forgot password?</a>
+                            <button className="custom-login-btn mt-2" onClick={loginRenter}>Login</button>
                 </form>
             </div>
             <div className="overlay-container">
                 <div className="overlay">
                     <div className="overlay-panel overlay-left">
-                        <h1 className={"loginh1"}>Are you a renter?</h1>
-                        <p className={"loginp"}>Click here to login as renter.</p>
-                        <button id="signUser" className={"loginbutton ghost"} onClick={handleRenterButtonClick}>Login</button>
+                        <h1 className="loginh1">Are you a renter?</h1>
+                        <p className="loginp">Click here to login as renter.</p>
+                        <button id="signUser" className="custom-login-btn" onClick={handleRenterButtonClick}>Login</button>
                     </div>
                     <div className="overlay-panel overlay-right">
-                        <h1 className={"loginh"}>Are you a user?</h1>
-                        <p className={"loginp"}>Click here to login as user.</p>
-
-                        <button id="signRenter" className={"loginbutton ghost"} onClick={handleUserButtonClick}>Login</button>
+                        <h1 className="loginh1">Are you a user?</h1>
+                        <p className="loginp">Click here to login as user.</p>
+                        <button id="signRenter" className="custom-login-btn" onClick={handleUserButtonClick}>Login</button>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 }

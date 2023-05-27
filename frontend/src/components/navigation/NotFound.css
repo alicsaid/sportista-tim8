@@ -1,0 +1,16 @@
+.notFound-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h1-404 {
+  font-size: 7.5em;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+.h2-404 {
+  font-weight: bold;
+}

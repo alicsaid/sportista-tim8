@@ -1,11 +1,9 @@
 .contact-form {
-    border: 3px solid #ccc;
-    border-radius: 7px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    padding: 2rem;
+    border: 1px solid;
     width: 20rem;
-    height: 29rem;
+    padding: 2rem;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }

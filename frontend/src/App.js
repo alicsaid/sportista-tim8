@@ -27,6 +27,8 @@ import Logout from './auth/Logout'
 import {Provider} from 'react-redux'
 import store from './store'
 import Authentification from "./auth/Authentification";
+import AdminLoginForm from "./components/login/AdminLoginForm";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
               <Route index path="/" element={<Home />} />
               <Route path="/sport/:sport" element={<SportsPage />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/admin-login" element={<AdminLogin />} />
               <Route path="/reset_password" element={<ResetPassword />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/register" element={<Register />} />

@@ -25,28 +25,38 @@ function Boxing(props) {
     }
 
     return (
-        <div>
-            <h1>{props.header}</h1>
-            {fields.map(field => (
-                <Card key={field.fields.id} sx={{ margin: '10px', maxWidth: 300 }}>
-                    <img src={require('../../resources/images/teren1.jpg')} alt={field.fields.name} style={{ width: '100%' }} />
-                    <CardContent>
-                        <Typography variant="h5" component="div">
-                            {field.fields.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Location: {field.fields.address}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Price: {field.fields.price}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Rating: 4.5/5 {field.fields.grades}
-                            <StarIcon />
-                        </Typography>
-                    </CardContent>
-                </Card>
-            ))}
+        <div className="cardContainer">
+            <h1 className="sportHeader">{props.header}</h1>
+            <div className="cardRow">
+                {fields.length === 0 ? (
+                    <h2>No fields available right now!</h2>
+                ) : (
+                    fields.map((field) => (
+                        <Card key={field.fields.id} sx={{ margin: '10px', maxWidth: 300 }}>
+                            <img
+                                src={field.fields.image}
+                                alt={field.fields.name}
+                                style={{ width: '100%' }}
+                            />
+                            <CardContent>
+                                <Typography variant="h5" component="div">
+                                    {field.fields.name}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Location: {field.fields.address}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Price: {field.fields.price}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Rating: 4.5/5 {field.fields.grades}
+                                    <StarIcon />
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    ))
+                )}
+            </div>
         </div>
     );
 }

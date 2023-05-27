@@ -2,15 +2,16 @@ import React from 'react';
 
 //components
 import RenterSidebar from "../../components/navigation/RenterSidebar";
-import AccountForRenter from "../../components/renter/AccountForRenter";
+import RenterAccountOverview from "../../components/renter/RenterAccountOverview";
 
 function RenterAccount() {
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
-            <div style={{ marginLeft: '10px'}}>
+            <div className="renter-page">
                 <h1>Account</h1>
-                <AccountForRenter/>
+                <h5>Edit you account information here.</h5>
+                <RenterAccountOverview/>
             </div>
         </div>
     );

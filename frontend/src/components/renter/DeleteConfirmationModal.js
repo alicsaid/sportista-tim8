@@ -1,10 +1,9 @@
 import {SERVER_URL} from "../../auth/Consts";
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Modal } from 'react-bootstrap';
 
-const DeleteConfirmation = (props) => {
+const DeleteConfirmationModal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => setIsOpen(true);
@@ -30,27 +29,22 @@ const DeleteConfirmation = (props) => {
 
     return (
         <>
-            <Button variant="outline-danger" style={{ margin: '5px' }} onClick={openModal}>
+            <button className="custom-register-button" onClick={openModal}>
                 Delete
-            </Button>
+            </button>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Delete field</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <div className="alert alert-danger">Are you sure you want to delete the field?</div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={closeModal}>
-                        Cancel
-                    </Button>
-                    <Button variant="danger" onClick={() => callFuns()}>
+                <Modal.Body className="text-center">
+                    <h4>Are you sure you want to delete the field?</h4>
+                    <button className="custom-register-button float-end" onClick={() => callFuns()}>
                         Delete
-                    </Button>
-                </Modal.Footer>
+                    </button>
+                </Modal.Body>
             </Modal>
         </>
     );
 };
 
-export default DeleteConfirmation;
+export default DeleteConfirmationModal;

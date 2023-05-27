@@ -1,28 +1,18 @@
-
-.all {
-    box-sizing: border-box;
-}
-
-.loginbody {
-    font-family: "Montserrat", sans-serif;
-    background: #f6f5f7;
+.login-form-page {
+    height: 76vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: -20px 0 50px;
 }
 
 .loginh1 {
     font-weight: bold;
-    margin: 0;
+    margin: 2rem;
 }
 
 .loginp {
     font-size: 14px;
     line-height: 20px;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     margin: 20px 0 30px;
 }
 
@@ -39,13 +29,21 @@
 
 .dowebok {
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+}
+
+.forgot_password {
+    text-decoration: none;
+    margin: 1rem;
+    color: black;
+}
+
+.forgot_password:hover {
+    color: #9d9d9d;
 }
 
 .form-container form {
@@ -59,25 +57,6 @@
     text-align: center;
 }
 
-.social-container {
-    margin: 20px 0;
-}
-
-.social-container a {
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-    height: 40px;
-    width: 40px;
-}
-
-.social-container a:hover {
-    background-color: #eee;
-}
-
 .form-container input {
     background: #eee;
     border: none;
@@ -85,33 +64,6 @@
     margin: 8px 0;
     width: 100%;
     outline: none;
-}
-
-.loginbutton {
-    border-radius: 20px;
-    border: 1px solid;
-    background: #6e84b5;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    cursor: pointer;
-}
-
-.loginbutton:active {
-    transform: scale(0.95);
-}
-
-.loginbutton:focus {
-    outline: none;
-}
-
-.loginbutton.ghost {
-    background: transparent;
-    border-color: #fff;
 }
 
 .form-container {
@@ -146,9 +98,8 @@
 }
 
 .overlay {
-    background: #ff416c;
-    background: linear-gradient(to right, #6e84b5, #05297d) no-repeat 0 0 / cover;
-    color: #fff;
+    background: #dcdcdc no-repeat 0 0 / cover;
+    color: black;
     position: relative;
     left: -100%;
     height: 100%;
@@ -213,3 +164,25 @@
     transform: translateY(20%);
 }
 
+.custom-login-btn {
+    height: 2.5rem;
+    width: 5rem;
+    border-radius: 5px;
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.custom-login-btn:hover {
+    background: black;
+    color: white;
+}
+
+.admin-login-form {
+    border: 1px solid;
+    background: #fff;
+    width: 25rem;
+    margin: 2rem;
+    padding: 3rem;
+    text-align: center;
+}

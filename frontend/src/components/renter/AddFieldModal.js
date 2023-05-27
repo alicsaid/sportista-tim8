@@ -1,37 +1,41 @@
-import React, { Component } from "react";
-import { Modal, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Modal } from "react-bootstrap";
 import AddIcon from "@mui/icons-material/Add";
-import {Fab} from "@mui/material";
-import Forma from "./FormaZaRentera";
+import { Fab } from "@mui/material";
+import FieldFormAction from "./FieldFormAction";
 
-class App extends Component {
-    state = {
-        isOpen: false
-    };
+const AddFieldModal = (props) => {
+    const [isOpen, setIsOpen] = useState(false);
 
-    openModal = () => this.setState({ isOpen: true });
-    closeModal = () => this.setState({ isOpen: false });
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
 
-    render() {
-        return (
-            <>
+    return (
+        <>
+            <Fab
+                style={{ position: "fixed", right: "30px", bottom: "30px" }}
+                color="primary"
+                aria-label="Add"
+                onClick={openModal}
+            >
+                <AddIcon />
+            </Fab>
+            <Modal show={isOpen} onHide={closeModal}>
+                <Modal.Header>
+                    <h3>TEST</h3>
+                    <button className="btn-close" onClick={closeModal}></button>
+                </Modal.Header>
+                <Modal.Body>
+                    <FieldFormAction
+                        action="Add"
+                        user={props.user}
+                        closeModal={closeModal}
+                        getF={props.getf}
+                    />
+                </Modal.Body>
+            </Modal>
+        </>
+    );
+};
 
-                <Fab style={{position: "fixed", right:"30px", bottom:"30px"}} color="primary" aria-label="Add" onClick={this.openModal}>
-                    <AddIcon />
-                </Fab>
-                <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                    <Modal.Body>
-                        <Forma dodaj={"Add"} user={this.props.user} closeModal={this.closeModal} getF={this.props.getf}/>
-                    </Modal.Body>
-                    <div style={{textAlign:"center",marginBottom:"2px"}}>
-                        <Button variant="outline-danger" onClick={this.closeModal} style={{width:"50%"}}>
-                            Close
-                        </Button>
-                    </div>
-                </Modal>
-            </>
-        );
-    }
-}
-
-export default App;
+export default AddFieldModal;

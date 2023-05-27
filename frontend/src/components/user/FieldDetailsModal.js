@@ -1,39 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-class App extends Component {
-    state = {
-        isOpen: false
-    };
+const FieldDetailsModal = () => {
+    const [isOpen, setIsOpen] = useState(false);
 
-    openModal = () => this.setState({ isOpen: true });
-    closeModal = () => this.setState({ isOpen: false });
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
 
-    render() {
-        return (
-            <>
-                <Button className="float-end" variant="primary" onClick={this.openModal}>Details</Button>
-                <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Teren 1</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <p>Adresa: ...</p>
-                        <p>Detalji: ...</p>
-                        <p>Posto u bazi nemamo vise podataka o terenu, ovdje mozemo dodati jos kad je koji dostupan</p>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="primary">
-                            Book
-                        </Button>
-                        <Button variant="secondary" onClick={this.closeModal}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-            </>
-        );
-    }
-}
+    return (
+        <>
+            <button className="custom-register-button" onClick={openModal}>Details</button>
+            <Modal show={isOpen} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Field Name</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="d-flex flex-column align-items-center">
+                    <p>Adresa: ...</p>
+                    <p>Detalji: ...</p>
+                    <p>Posto u bazi nemamo vise podataka o terenu, ovdje mozemo dodati jos kad je koji dostupan</p>
+                    <button className="custom-register-button">Book</button>
+                </Modal.Body>
+            </Modal>
+        </>
+    );
+};
 
-export default App;
+export default FieldDetailsModal;

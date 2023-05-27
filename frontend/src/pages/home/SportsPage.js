@@ -14,6 +14,7 @@ import TableTennis from '../../components/sports/TableTennis';
 import Hockey from '../../components/sports/Hockey';
 import TopNavbar from "../../components/navigation/Navbar";
 import {Pagination} from "@mui/material";
+import Footer from "../../components/navigation/Footer";
 
 function SportsPage() {
 
@@ -33,6 +34,7 @@ function SportsPage() {
             {sport === 'table_tennis' && <TableTennis header="Table Tennis" />}
             {sport === 'hockey' && <Hockey header="Hockey" />}
             <Pagination style={{ marginBottom: "2rem" }} count={10} variant="outlined" shape="rounded" />
+            <Footer />
         </div>
     );
 }

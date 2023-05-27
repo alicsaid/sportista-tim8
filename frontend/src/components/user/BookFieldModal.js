@@ -1,42 +1,33 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-class App extends Component {
-    state = {
-        isOpen: false
-    };
+const BookFieldModal = () => {
+    const [isOpen, setIsOpen] = useState(false);
 
-    openModal = () => this.setState({ isOpen: true });
-    closeModal = () => this.setState({ isOpen: false });
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
 
-    render() {
-        return (
-            <>
-                <Button variant="outline-primary" onClick={this.openModal}>Book now</Button>
-                <Modal show={this.state.isOpen} onHide={this.closeModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Book your field!</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <input type="date" value="2017-06-01" style={{margin: "5px"}}/>
-                        <input type="time" />
-                        <div className="form-check form-switch form-check-reverse">
-                            <input className="form-check-input" type="checkbox" id="flexSwitchCheckReverse" />
-                                <label className="form-check-label" htmlFor="flexSwitchCheckReverse">Book weekly!</label>
-                        </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="primary">
-                            Book
-                        </Button>
-                        <Button variant="secondary" onClick={this.closeModal}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-            </>
-        );
-    }
-}
+    return (
+        <>
+            <button className="custom-register-button" onClick={openModal}>Book</button>
+            <Modal show={isOpen} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>BOOK THIS FIELD!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="d-flex flex-column align-items-center">
+                    <input className="custom-input" type="date" value="2017-06-01" />
+                    <input className="custom-input" type="time" />
+                    <div className="form-check form-switch">
+                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckReverse" />
+                        <label className="form-check-label" htmlFor="flexSwitchCheckReverse">Book weekly!</label>
+                    </div>
+                    <button className="custom-register-button mt-5" >
+                        Book
+                    </button>
+                </Modal.Body>
+            </Modal>
+        </>
+    );
+};
 
-export default App;
+export default BookFieldModal;

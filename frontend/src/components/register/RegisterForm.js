@@ -16,11 +16,11 @@ function RegisterForm() {
     const renderCurrentStepForm = () => {
         if (currentStep === 1) {
             return (
-                <Form.Group className="mb-3">
-                    <Form.Label>
-                        <h4 style={{marginTop: '20px', marginBottom: '80px', textAlign: 'center'}}>Do you want to register as a renter or as a user?</h4>
+                <Form.Group>
+                    <Form.Label className="d-flex justify-content-center mb-5">
+                        <h4>Choose account type to register!</h4>
                     </Form.Label>
-                    <div className="radio-group">
+                    <div className="radio-group d-flex justify-content-evenly">
                         <Form.Check
                             className="registerType"
                             type="radio"
@@ -53,8 +53,8 @@ function RegisterForm() {
     };
 
     return (
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Form className="registerForm" style={{ width: '600px' }}>
+        <div className="register-page">
+            <Form className="registerForm" style={{ minWidth: "30rem" }}>
                 {renderCurrentStepForm()}
             </Form>
         </div>

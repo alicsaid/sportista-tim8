@@ -1,24 +1,19 @@
 import React from 'react';
+import "./Renter.css";
 
 //components
 import RenterSidebar from "../../components/navigation/RenterSidebar";
-import Field from "../../components/renter/Field";
-import AddFieldModal from '../../components/renter/AddFieldModal';
-import 'boxicons';
-import {ProSidebarProvider} from "react-pro-sidebar";
 import {connect} from "react-redux";
-import {Navigate} from "react-router-dom";
-function Dashboard({user, isAuthenticated}) {
-    console.log(user)
-    if(!isAuthenticated && user == null)
-            return (<Navigate to={"/"}/>)
+import TableNext10Bookings from "../../components/renter/TableNext10Bookings";
+function Dashboard() {
 
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
-            <div style={{ marginLeft: '10px'}}>
+            <div className="renter-page">
                 <h1>Dashboard</h1>
-                <h3>ovdje mu treba prikazati tabelu idućih 10 zakazanih termina</h3>
+                <h5>Table of your 10 next bookings.</h5>
+                <TableNext10Bookings />
             </div>
 
         </div>

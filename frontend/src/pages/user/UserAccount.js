@@ -2,21 +2,22 @@ import React from 'react';
 
 //components
 import UserSidebar from "../../components/navigation/UserSidebar";
-import AccountForUser from "../../components/user/AccountForUser";
+import UserAccountOverview from "../../components/user/UserAccountOverview";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 
-function UserAccount({user, isAuthenticated}) {
-    console.log("HERE")
-    console.log(user)
-    if(!isAuthenticated && user == null)
-        return (<Navigate to={"/"}/>)
+function UserAccount({ user, isAuthenticated }) {
+
+    // if(!isAuthenticated && user == null)
+    //     return (<Navigate to={"/"}/>)
+
     return (
         <div style={{ display: 'flex' }}>
             <UserSidebar />
-            <div style={{ marginLeft: '10px'}}>
+            <div className="user-page">
                 <h1>Account</h1>
-		        <AccountForUser/>
+                <h5>Edit you account information here.</h5>
+		        <UserAccountOverview/>
             </div>
         </div>
     );

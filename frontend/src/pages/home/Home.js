@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "../../components/navigation/Navbar&Footer.css"
 import "./Home.css"
 
@@ -7,8 +7,7 @@ import TopNavbar from "../../components/navigation/Navbar";
 import Footer from "../../components/navigation/Footer";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
-import axios from "axios";
-import {SERVER_URL} from "../../auth/Consts";
+import FAQModal from "../../components/navigation/FAQFAB";
 
 function MappedImage(){
     return (
@@ -28,29 +27,25 @@ function MappedImage(){
     );
 }
 
-const Home = ({user, isAuthenticated}) => {
-    console.log(user)
-    if(isAuthenticated && user != null)
-        if(user.is_renter)
-            return (<Navigate to={"/renter"}/>)
-        else if(user.is_user)
-            return (<Navigate to={"/user"}/>)
+const Home = ({ user, isAuthenticated }) => {
+
+    // if(isAuthenticated && user != null)
+    //     if(user.is_renter)
+    //         return (<Navigate to={"/renter"}/>)
+    //     else if(user.is_user)
+    //         return (<Navigate to={"/user"}/>)
 
     return (
         <div>
             <TopNavbar />
             <main className="align-items-center justify-content-center d-flex">
-                <h4 className="display-6 text-center m-3 fw-bold">Get ready for some sports!</h4>
-                <h4 className="display-6 text-center mb-5 fw-bold">Book your favorite field in just a few clicks.</h4>
+                <h4 className="display-6 m-3 fw-bold">WELCOME TO SPORTISTA!</h4>
+                <h4 className="display-6 mb-5 ">Book your favorite field in just a few clicks.</h4>
                 <div className="justify-content-center d-flex">
                     <MappedImage />
                 </div>
-                <div style={{width: '100%', marginTop: '10px'}}>
-                    <h2 className="display-5" style={{textAlign: 'center'}}>Click the sport you want to see!</h2>
-                    <div className="admin-login">
-                        <a href="http://127.0.0.1:8000/admin/" className="admin-link">Login as admin</a>
-                    </div>
-                </div>
+                <h2 className="display-5 mt-3">Click the sport you want to see!</h2>
+                <FAQModal />
             </main>
             <Footer />
         </div>

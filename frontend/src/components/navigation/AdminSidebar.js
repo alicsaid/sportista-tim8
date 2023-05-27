@@ -17,7 +17,7 @@ const AdminSidebar = () => {
                 <CDBSidebarHeader prefix={<i className='fa fa-bars fa-large'></i>}>
                     <img src='/favicon.svg' alt='logo' style={{ width: '30px' , paddingRight: '3px'}}/>
                     <span className='text-decoration-none' style={{ color: 'inherit' }}>
-                    Sporty
+                    Sportista
                     </span>
                 </CDBSidebarHeader>
 

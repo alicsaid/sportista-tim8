@@ -10,8 +10,9 @@ function Dashboard() {
     return (
         <div style={{ display: 'flex' }}>
             <AdminSidebar />
-            <div style={{marginLeft: '10px'}}>
+            <div className="admin-page">
                 <h1>Dashboard</h1>
+                <h5>Admin dashboard.</h5>
                 <DashboardCharts />
                 <MostRentedFields />
             </div>
