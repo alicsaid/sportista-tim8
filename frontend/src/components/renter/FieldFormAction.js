@@ -41,19 +41,7 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
         }
     }
 
-    function getBase64(file, cb) {
 
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-
-        reader.onload = function () {
-            cb(reader.result)
-        };
-
-        reader.onerror = function (error) {
-            console.log('Error: ', error);
-        };
-    }
 
     function posalji() {
 
@@ -128,7 +116,7 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
             </div>
 
             <div style={{ textAlign: "center" }}>
-                <button className="custom-register-button" onClick={callFuns}>
+                <button type="button" className="custom-register-button" onClick={()=>callFuns()}>
                     {props.action}
                 </button>
             </div>
