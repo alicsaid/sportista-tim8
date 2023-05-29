@@ -1,4 +1,4 @@
-import Card from 'react-bootstrap/Card';
+import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material'
 import React from "react";
 
 /* components */
@@ -13,19 +13,25 @@ function Field(props) {
         <div className="cardContainer">
             <div className="cardRow">
                 {props.fields.map((field) => (
-                    <Card key={field.pk} style={{ width: '18rem', marginTop: "5rem" }}>
-                        <Card.Img variant="top" src={field.fields.image} alt={"teren"} />
-                        <Card.Body>
-                            <Card.Title>{field.fields.name}</Card.Title>
-                            <Card.Text>
+                    <Card key={field.pk} sx={{ width: '18rem', marginTop: "5rem" }}>
+                        <CardMedia
+                            component="img"
+                            src={field.fields.image}
+                            alt="teren"
+                        />
+                        <CardContent>
+                            <Typography variant="h5" component="div">
+                                {field.fields.name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
                                 {field.fields.details}
-                            </Card.Text>
-                            <Card.Text>
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
                                 Location: {field.fields.address}
-                            </Card.Text>
+                            </Typography>
                             <EditFieldModal />
                             <DeleteConfirmationModal field_id={field.pk} getf={props.getf}/>
-                        </Card.Body>
+                        </CardContent>
                     </Card>
                 ))}
             </div>

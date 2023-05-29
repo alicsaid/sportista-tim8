@@ -7,9 +7,11 @@ import FieldCard from "../../components/user/FieldCard";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 
-function Dashboard({user, isAuthenticated}) {
+function Dashboard({ user, isAuthenticated }) {
+
     // if(!isAuthenticated && user == null)
     //     return (<Navigate to={"/"}/>)
+
     return (
         <div style={{ display: 'flex' }}>
                 <UserSidebar />
