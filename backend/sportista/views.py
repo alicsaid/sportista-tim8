@@ -40,6 +40,12 @@ def getRenterFields(request, params):
     res = serializers.serialize('json', list_of_fields)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
+@api_view(['GET'])
+def getUserFields(request):
+    list_of_fields = Field.objects.all()
+    res = serializers.serialize('json', list_of_fields)
+
+    return HttpResponse(res, content_type="text/json-comment-filtered")
 
 @api_view(['DELETE'])
 def deleteRenterField(request, params):
@@ -51,6 +57,6 @@ def deleteRenterField(request, params):
 @api_view(['POST'])
 def spremi(request):
     print(request.data.get("img"))
-    objekat = Field(id_rentera_id=request.data.get("user"), name=request.data.get("name"),address=request.data.get("location"),details=request.data.get("description"),image=request.data.get("img"),starts=request.data.get("start"),ends=request.data.get("end"),is_sport_id=request.data.get("sport"))
+    objekat = Field(id_rentera_id=request.data.get("user"),price=request.data.get("price"), name=request.data.get("name"),address=request.data.get("location"),details=request.data.get("description"),image=request.data.get("img"),starts=request.data.get("start"),ends=request.data.get("end"),is_sport_id=request.data.get("sport"))
     objekat.save()
     return HttpResponse("okej")

@@ -23,6 +23,9 @@ function Field(props) {
                             <Card.Text>
                                 Location: {field.fields.address}
                             </Card.Text>
+                            <Card.Text>
+                                Price: {field.fields.price}
+                            </Card.Text>
                             <EditFieldModal />
                             <DeleteConfirmationModal field_id={field.pk} getf={props.getf}/>
                         </Card.Body>
