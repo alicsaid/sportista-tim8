@@ -9,4 +9,10 @@ urlpatterns = [
     path("sport/<int:params>/", views.getFields, name="getSport"),
     path("renter/my-fields/<int:params>/", views.getRenterFields, name="getRenterFields"),
     path("renter/delete/<int:params>/", views.deleteRenterField, name="deleteRenterField"),
+    path("renter/getData/<int:params>/", views.getRenterData, name="getRenterData"),
+    path("renter/changeData/<int:params>/", views.changeRenterData, name="changeRenterData"),
+    path("renter/editFieldData/<int:params>/", views.editFieldData, name="editFieldData"),
+    path("renter/getFieldData/<int:params>/", views.getFieldData, name="getFieldData"),
+    path("user/getData/<int:params>/", views.getUserData, name="getUserData"),
+    path("user/changeData/<int:params>/", views.changeUserData, name="changeUserData"),
 ]
