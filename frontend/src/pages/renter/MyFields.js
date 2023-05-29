@@ -26,7 +26,7 @@ function MyFields({user,isAuthenticated}) {
             .get(`http://127.0.0.1:8000/renter/my-fields/${user.id}/`)
             .then((response) => {
 
-                //console.log(fields.length, response.data.length)
+                console.log(fields.length, response.data.length)
 
                 if(fields.length !== response.data.length)
                     setFields(response.data.reverse())
