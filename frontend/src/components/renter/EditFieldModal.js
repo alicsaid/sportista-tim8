@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import FieldFormAction from "./FieldFormAction";
+import EditFieldForm from "./EditFieldForm";
 
-const EditFieldModal = () => {
+const EditFieldModal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => setIsOpen(true);
@@ -10,16 +11,15 @@ const EditFieldModal = () => {
 
     return (
         <>
-            <button className="custom-register-button" onClick={openModal}>
-                EDIT
-            </button>
+            <Button variant="outline-secondary" style={{ margin: "5px" }} onClick={openModal}>
+                Edit field
+            </Button>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header>
-                    <Modal.Title>EDIT FIELD</Modal.Title>
                     <button className="btn-close" onClick={closeModal}></button>
                 </Modal.Header>
                 <Modal.Body>
-                    <FieldFormAction action="EDIT" />
+                    <EditFieldForm field_id={props.field_id} closeModal={closeModal} getf={props.getf}/>
                 </Modal.Body>
             </Modal>
         </>

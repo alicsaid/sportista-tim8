@@ -17,7 +17,7 @@ function UserAccount({ user, isAuthenticated }) {
             <div className="user-page">
                 <h1>Account</h1>
                 <h5>Edit you account information here.</h5>
-		        <UserAccountOverview/>
+		        <UserAccountOverview user={user}/>
             </div>
         </div>
     );

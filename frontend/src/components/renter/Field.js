@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material'
+import Card from 'react-bootstrap/Card';
 import React from "react";
 
 /* components */
@@ -13,25 +13,22 @@ function Field(props) {
         <div className="cardContainer">
             <div className="cardRow">
                 {props.fields.map((field) => (
-                    <Card key={field.pk} sx={{ width: '18rem', marginTop: "5rem" }}>
-                        <CardMedia
-                            component="img"
-                            src={field.fields.image}
-                            alt="teren"
-                        />
-                        <CardContent>
-                            <Typography variant="h5" component="div">
-                                {field.fields.name}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
+                    <Card key={field.pk} style={{ width: '18rem', marginTop: "5rem" }}>
+                        <Card.Img variant="top" src={field.fields.image} alt={"teren"} />
+                        <Card.Body>
+                            <Card.Title>{field.fields.name}</Card.Title>
+                            <Card.Text>
                                 {field.fields.details}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
+                            </Card.Text>
+                            <Card.Text>
+                                Price: {field.fields.price}
+                            </Card.Text>
+                            <Card.Text>
                                 Location: {field.fields.address}
-                            </Typography>
-                            <EditFieldModal />
+                            </Card.Text>
+                            <EditFieldModal field_id={field.pk} getf={props.getf}/>
                             <DeleteConfirmationModal field_id={field.pk} getf={props.getf}/>
-                        </CardContent>
+                        </Card.Body>
                     </Card>
                 ))}
             </div>

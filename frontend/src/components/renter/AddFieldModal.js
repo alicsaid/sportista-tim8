@@ -9,7 +9,6 @@ const AddFieldModal = (props) => {
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
-
     return (
         <>
             <Fab
