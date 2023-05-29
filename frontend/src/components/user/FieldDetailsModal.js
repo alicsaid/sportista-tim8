@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 
-const FieldDetailsModal = () => {
+const FieldDetailsModal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => setIsOpen(true);
@@ -9,16 +9,17 @@ const FieldDetailsModal = () => {
 
     return (
         <>
-            <button className="custom-register-button" onClick={openModal}>DETAILS</button>
+            <button className="custom-register-button" onClick={openModal}>Details</button>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>FIELD NAME</Modal.Title>
+                    <Modal.Title>{props.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="d-flex flex-column align-items-center">
-                    <p>Adresa: ...</p>
-                    <p>Detalji: ...</p>
+                    <p>Address: {props.address}</p>
+                    <p>Details: {props.details}</p>
+                    <p>Price: {props.price}</p>
                     <p>Posto u bazi nemamo vise podataka o terenu, ovdje mozemo dodati jos kad je koji dostupan</p>
-                    <button className="custom-register-button">BOOK</button>
+                    <button className="custom-register-button">Book</button>
                 </Modal.Body>
             </Modal>
         </>

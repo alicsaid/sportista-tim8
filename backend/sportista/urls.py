@@ -10,6 +10,7 @@ urlpatterns = [
     path("daj_sportove", views.dajSportove),
     path("sport/<int:params>/", views.getFields, name="getSport"),
     path("renter/my-fields/<int:params>/", views.getRenterFields, name="getRenterFields"),
+    path("user/dashboard", views.getUserFields, name="getUserFields"),
     path("renter/delete/<int:params>/", views.deleteRenterField, name="deleteRenterField"),
     path("renter/getData/<int:params>/", views.getRenterData, name="getRenterData"),
     path("renter/changeData/<int:params>/", views.changeRenterData, name="changeRenterData"),

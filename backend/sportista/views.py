@@ -54,6 +54,12 @@ def getRenterFields(request, params):
     res = serializers.serialize('json', list_of_fields)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
+@api_view(['GET'])
+def getUserFields(request):
+    list_of_fields = Field.objects.all()
+    res = serializers.serialize('json', list_of_fields)
+
+    return HttpResponse(res, content_type="text/json-comment-filtered")
 
 @api_view(['POST'])
 def changeRenterData(request, params):
