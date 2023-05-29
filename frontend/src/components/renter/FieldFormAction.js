@@ -16,6 +16,8 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
     const [description,setDescription] = useState("");
     const [hasSports, setHasSports] = useState([]);
     const [gotData, setGotData] = useState(false);
+    const [start,setStart] = useState("");
+    const [end,setEnd] = useState("");
 
     if(!gotData)
         axios.get( `${SERVER_URL}/daj_sportove`).then((res) => {
@@ -33,7 +35,9 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
             price:price,
             location:location,
             img:img,
-            description:description
+            description:description,
+            start:start,
+            end:end
         }
     }
 
@@ -111,6 +115,12 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
 
             <div className="mb-1">
                 <input className="custom-input" type="file" id="formBasicImg" placeholder="Enter Image" onChange={(e) => { setImg(e.target.files[0]) }} />
+            </div>
+            <div className="mb-1" style={{display:"flex"}}>
+                <p>Free appointments (every working day:FROM-TO)</p>
+                <input className="custom-input" type="time" id="formBasicTime1" placeholder="From" onChange={(e) => { setStart(e.target.value) }} />
+                <input className="custom-input" type="time" id="formBasicTime2" placeholder="To" onChange={(e) => { setEnd(e.target.value) }} />
+
             </div>
 
             <div className="mb-3">
