@@ -82,6 +82,7 @@ class Field(models.Model):
     address = models.CharField(max_length=255)
     details = models.CharField(max_length=1000)
     image = models.TextField(null=True)
+    price = models.IntegerField(null=True)
     starts = models.TimeField()
     ends = models.TimeField()
     price = models.IntegerField(null=True)

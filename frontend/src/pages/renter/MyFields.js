@@ -15,7 +15,7 @@ function MyFields({user,isAuthenticated}) {
 
     useEffect(() => {
         getFields();
-    }, [fields, user]);
+    }, [user]);
 
     // if(!isAuthenticated && user == null)
     //     return (<Navigate to={"/"}/>)
@@ -25,11 +25,7 @@ function MyFields({user,isAuthenticated}) {
         axios
             .get(`http://127.0.0.1:8000/renter/my-fields/${user.id}/`)
             .then((response) => {
-
-                //console.log(fields.length, response.data.length)
-
-                if(fields.length !== response.data.length)
-                    setFields(response.data.reverse())
+                setFields(response.data.reverse())
             })
             .catch((error) => {
                 console.error('Error fetching fields:', error);
