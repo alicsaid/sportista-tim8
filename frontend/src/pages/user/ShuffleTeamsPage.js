@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 import ShuffleTeams from "../../components/user/ShuffleTeams";
 
-function Invites({ user, isAuthenticated }) {
+function ShuffleTeamsPage({ user, isAuthenticated }) {
 
     // if(!isAuthenticated && user == null)
     //     return (<Navigate to={"/"}/>)
@@ -15,8 +15,9 @@ function Invites({ user, isAuthenticated }) {
         <div style={{ display: 'flex' }}>
             <UserSidebar />
             <div className="user-page">
-                <h1>Invites</h1>
-                <h5>List of invites from other users.</h5>
+                <h1>Shuffle teams</h1>
+                <h5 className="user-subtitle">You can create random teams here.</h5>
+                <ShuffleTeams />
             </div>
         </div>
     );
@@ -25,4 +26,4 @@ function Invites({ user, isAuthenticated }) {
 const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated, user : state.auth.user});
 
 
-export default connect(mapStateToProps,null)(Invites);
+export default connect(mapStateToProps,null)(ShuffleTeamsPage);

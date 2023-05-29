@@ -23,32 +23,37 @@ const RenterSidebar = () => {
 
                 <CDBSidebarContent>
                     <CDBSidebarMenu>
-                        <NavLink to="/user" className={isActive1 ? 'activeClicked' : ''}>
+                        <NavLink exact to="/user" className={isActive1 ? 'activeClicked' : ''}>
                             <CDBSidebarMenuItem icon='th-large'>
                                 Dashboard
                             </CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink to="/user/my-reservations" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
+                        <NavLink exact to="/user/my-reservations" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
                             <CDBSidebarMenuItem icon='calendar'>
                                 My Reservations
                             </CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink to="/user/invites" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
+                        <NavLink exact to="/user/shuffle-teams" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
+                            <CDBSidebarMenuItem icon='random'>
+                                Shuffle Teams
+                            </CDBSidebarMenuItem>
+                        </NavLink>
+                        <NavLink exact to="/user/invites" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
                             <CDBSidebarMenuItem icon='comment'>
                                 Invites
                             </CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink to="/user/account" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
+                        <NavLink exact to="/user/account" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
                             <CDBSidebarMenuItem icon='user'>
                                 Account
                             </CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink to="/user/contact" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
+                        <NavLink exact to="/user/contact" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
                             <CDBSidebarMenuItem icon='phone'>
                                 Contact
                             </CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink to="/logout">
+                        <NavLink exact to="/logout">
                             <CDBSidebarMenuItem icon='sign-out-alt'>
                                     Logout
                             </CDBSidebarMenuItem>
