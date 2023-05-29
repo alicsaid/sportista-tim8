@@ -51,6 +51,6 @@ def deleteRenterField(request, params):
 @api_view(['POST'])
 def spremi(request):
     print(request.data.get("img"))
-    objekat = Field(id_rentera_id=request.data.get("user"), name=request.data.get("name"),address=request.data.get("location"),details=request.data.get("description"),image=request.data.get("img"),starts=request.data.get("start"),ends=request.data.get("endlo"),is_sport_id=request.data.get("sport"))
+    objekat = Field(id_rentera_id=request.data.get("user"), name=request.data.get("name"),address=request.data.get("location"),details=request.data.get("description"),image=request.data.get("img"),starts=request.data.get("start"),ends=request.data.get("end"),is_sport_id=request.data.get("sport"))
     objekat.save()
     return HttpResponse("okej")
