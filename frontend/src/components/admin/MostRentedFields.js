@@ -28,7 +28,6 @@ function MostRentedFields() {
 
     return (
         <div className="most-rented-fields">
-            <h1>Most Rented Fields</h1>
             <div className="most-rented-fields-container">
                 {mostRentedFields.map((field, index) => (
                     <Card key={index} className="most-rented-field-card">

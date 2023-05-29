@@ -10,15 +10,16 @@ const EditFieldModal = () => {
 
     return (
         <>
-            <Button variant="outline-secondary" style={{ margin: "5px" }} onClick={openModal}>
-                Edit field
-            </Button>
+            <button className="custom-register-button" onClick={openModal}>
+                EDIT
+            </button>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header>
+                    <Modal.Title>EDIT FIELD</Modal.Title>
                     <button className="btn-close" onClick={closeModal}></button>
                 </Modal.Header>
                 <Modal.Body>
-                    <FieldFormAction action="Edit" />
+                    <FieldFormAction action="EDIT" />
                 </Modal.Body>
             </Modal>
         </>

@@ -2,6 +2,9 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Card, CardContent, Typography} from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
+import CardActions from "@mui/material/CardActions";
+import BookFieldModal from "../user/BookFieldModal";
+import FieldDetailsModal from "../user/FieldDetailsModal";
 
 function IceSkating(props) {
 
@@ -29,7 +32,7 @@ function IceSkating(props) {
             <h1 className="sportHeader">{props.header}</h1>
             <div className="cardRow">
                 {fields.length === 0 ? (
-                    <h2>No fields available right now!</h2>
+                    <h2>No fields for this category available at this time!</h2>
                 ) : (
                     fields.map((field) => (
                         <Card key={field.fields.id} sx={{ margin: '10px', maxWidth: 300 }}>
@@ -53,6 +56,10 @@ function IceSkating(props) {
                                     <StarIcon />
                                 </Typography>
                             </CardContent>
+                            <CardActions className="d-flex justify-content-between">
+                                <BookFieldModal />
+                                <FieldDetailsModal />
+                            </CardActions>
                         </Card>
                     ))
                 )}
