@@ -20,7 +20,7 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\HP\Desktop\New folder (2)\sportista-tim8\backend\db.sqlite3</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="db.sqlite3" uuid="856562f9-95b9-4da0-907c-de9f8281d92e">
+    <data-source source="LOCAL" name="db.sqlite3" uuid="e703de2c-b800-4bab-94c5-fca38836d813">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
