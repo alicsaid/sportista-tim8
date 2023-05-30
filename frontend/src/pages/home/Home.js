@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import "../../components/navigation/Navbar&Footer.css"
 import "./Home.css"
 
@@ -35,34 +35,6 @@ const Home = ({ user, isAuthenticated }) => {
     //     else if(user.is_user)
     //         return (<Navigate to={"/user"}/>)
 
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 4000);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    if (loading) {
-        return (
-            <div>
-                <div className="loader-container">
-                    <div className="loader">
-                        <div className="loader--dot"></div>
-                        <div className="loader--dot"></div>
-                        <div className="loader--dot"></div>
-                        <div className="loader--dot"></div>
-                        <div className="loader--dot"></div>
-                        <div className="loader--dot"></div>
-                        <div className="loader--text"></div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
     return (
         <div>
             <TopNavbar />
@@ -73,10 +45,8 @@ const Home = ({ user, isAuthenticated }) => {
                     <MappedImage />
                 </div>
                 <h2 className="display-5 mt-3">Click the sport you want to see!</h2>
-            </main>
-            <div style={{ position: 'fixed', bottom: '3rem', right: '20px' }}>
                 <FAQModal />
-            </div>
+            </main>
             <Footer />
         </div>
     );

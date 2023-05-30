@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import "./User.css";
 
 //components
@@ -6,29 +6,8 @@ import UserSidebar from "../../components/navigation/UserSidebar";
 import FieldCard from "../../components/user/FieldCard";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
-import axios from "axios";
 
 function Dashboard({user, isAuthenticated}) {
-    const [fields, setFields] = useState([]);
-
-    useEffect(() => {
-        getFields();
-    }, [fields, user]);
-    function getFields() {
-        if(user)
-            axios
-                .get(`http://127.0.0.1:8000/user/dashboard`)
-                .then((response) => {
-
-                    console.log(fields.length, response.data.length)
-
-                    if(fields.length !== response.data.length)
-                        setFields(response.data.reverse())
-                })
-                .catch((error) => {
-                    console.error('Error fetching fields:', error);
-                });
-    }
     // if(!isAuthenticated && user == null)
     //     return (<Navigate to={"/"}/>)
     return (
@@ -38,7 +17,7 @@ function Dashboard({user, isAuthenticated}) {
                 <h1>Dashboard</h1>
                 <h5>List of available fields for booking.</h5>
                 <div className="fieldCards">
-                    <FieldCard fields={fields}/>
+                    <FieldCard />
                 </div>
             </div>
         </div>
