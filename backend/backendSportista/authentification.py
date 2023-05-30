@@ -34,12 +34,14 @@ def add_renter(request):
 def add_user(request):
     data = request.data
     account = UserAccount.objects.get(id=data['id'])
-    u = ""
     if data['gender'] == 'Male':
-        u = SportistaUser(first_name=unquote(data['first_name']), last_name=unquote(data['last_name']), id_logina=account,gender=True, date_of_birth=data['date_of_birth'])
+        u = SportistaUser(first_name=unquote(data['first_name']), last_name=unquote(data['last_name']), id_logina=account, gender=True, date_of_birth=data['date_of_birth'])
     else:
-        u = SportistaUser(first_name=unquote(data['first_name']), last_name=unquote(data['last_name']),id_logina=account, gender=False, date_of_birth=data['date_of_birth'])
+        u = SportistaUser(first_name=unquote(data['first_name']), last_name=unquote(data['last_name']), id_logina=account, gender=False, date_of_birth=data['date_of_birth'])
     u.save()
+    for id_sporta in data['sports']:
+        u.plays_sports.add(Sport.objects.get(id=id_sporta))
+
 
     return HttpResponse()
 
