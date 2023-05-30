@@ -82,10 +82,18 @@ class Field(models.Model):
     name = models.CharField(max_length=255, default="field_name")
     address = models.CharField(max_length=255)
     details = models.CharField(max_length=1000)
+<<<<<<< HEAD
     images = models.TextField(null=True)
     starts = models.TimeField()
     ends = models.TimeField()
     lock = models.BooleanField(default=False)
+=======
+    image = models.TextField(null=True)
+    price = models.IntegerField(null=True)
+    starts = models.TimeField()
+    ends = models.TimeField()
+    price = models.IntegerField(null=True)
+>>>>>>> main
     is_sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
     grades = models.ManyToManyField(SportistaUser, through="UserGradesField", blank=True)
     has_teams = models.ManyToManyField(Team, through="TeamRentsField", blank=True)

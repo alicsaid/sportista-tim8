@@ -23,7 +23,10 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
             setGotData(true)
         })
 
+<<<<<<< HEAD
     console.log(images)
+=======
+>>>>>>> main
 
     if(props.user != null){
         objekat ={
@@ -123,7 +126,7 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
             </div>
 
             <div style={{ textAlign: "center" }}>
-                <button className="custom-register-button" onClick={callFuns}>
+                <button type="button" className="custom-register-button" onClick={callFuns}>
                     {props.action}
                 </button>
             </div>

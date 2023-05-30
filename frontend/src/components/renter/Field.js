@@ -24,9 +24,12 @@ function Field(props) {
                                 {field.fields.details}
                             </Card.Text>
                             <Card.Text>
+                                Price: {field.fields.price}
+                            </Card.Text>
+                            <Card.Text>
                                 Location: {field.fields.address}
                             </Card.Text>
-                            <EditFieldModal />
+                            <EditFieldModal field_id={field.pk} getf={props.getf}/>
                             <DeleteConfirmationModal field_id={field.pk} getf={props.getf}/>
                         </Card.Body>
                         <Card.Footer className={"justify-content-between align-items-center d-flex"}>
