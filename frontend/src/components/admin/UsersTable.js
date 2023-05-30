@@ -4,21 +4,12 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import DeleteConfirmationModalRenter from "./DeleteConfirmationModalRenter";
+import DeleteConfirmationModalUser from "./DeleteConfirmationModalUser";
 
 function UsersTable() {
     const [users, setUsers] = useState([]);
-
-    const handleDelete = (id) => {
-        const updatedUsers = users.filter(user => user.id !== id);
-
-        const updatedUsersWithNewIds = updatedUsers.map((user, index) => ({
-            ...user,
-            id: index + 1,
-        }));
-
-        setUsers(updatedUsersWithNewIds);
-    };
-
+    const [counter, setCounter] = useState(1);
 
     useEffect(() => {
         getUsers();
@@ -28,8 +19,6 @@ function UsersTable() {
         axios.get(`http://127.0.0.1:8000/admin/users/getUsers/`)
             .then((response) => {
                 setUsers(response.data);
-                console.log("DA VIDIMO RESPONSE.DATA: ")
-                console.log(response.data)
 
             })
             .catch((error) => {
@@ -53,9 +42,9 @@ function UsersTable() {
                     </tr>
                     </thead>
                     <tbody>
-                    {users.map(user => (
+                    {users.map((user, index= 1) => (
                         <tr key={user.id}>
-                            <td className="table-content">{user.id}</td>
+                            <td className="table-content">{counter + index}</td>
                             <td className="table-content">{user.firstName}</td>
                             <td className="table-content">{user.lastName}</td>
                             <td className="table-content">{user.email}</td>
@@ -64,7 +53,7 @@ function UsersTable() {
                             <td className="table-content">
                                 <div className="button-group">
                                     <Button className="buttonView" size="sm" >Warn</Button>
-                                    <Button className="buttonDelete" variant="danger" size="sm" onClick={() => handleDelete(user.id)}>Delete</Button>
+                                    <DeleteConfirmationModalUser user_id={user.id} getU={getUsers} />
                                 </div>
                             </td>
                         </tr>

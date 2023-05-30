@@ -174,3 +174,13 @@ def getUsers(request):
     res = json.dumps(novi_useri)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
+
+@api_view(['DELETE'])
+def deleteRenter(request, params):
+    Renter.objects.filter(id=params).delete()
+    return HttpResponse("Ok")
+
+@api_view(['DELETE'])
+def deleteUser(request, params):
+    SportistaUser.objects.filter(id=params).delete()
+    return HttpResponse("Ok")
