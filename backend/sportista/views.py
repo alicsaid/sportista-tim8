@@ -111,7 +111,8 @@ def changeUserData(request, params):
 def editFieldData(request, params):
     f = Field.objects.get(id=params)
     f.name = request.data.get("name")
-    f.is_sport_id = request.data.get("sport")
+    if(request.data.get("sport")):
+        f.is_sport_id = request.data.get("sport")
     f.address = request.data.get("location")
     f.details = request.data.get("description")
     f.price = request.data.get("price")
