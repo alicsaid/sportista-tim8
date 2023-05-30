@@ -6,10 +6,19 @@ from django.shortcuts import redirect
 
 from sportista.models import Field, Sport
 
+from sportista.recomendation import train, create_user_field_model
+
 #from sportista.models import Users
 
 
 # Create your views here.
+
+
+def test(request):
+    train()
+    create_user_field_model()
+    return HttpResponse("To je backend Sporiste hehe")
+
 
 def index(request):
     return HttpResponse("To je backend Sporiste hehe")
@@ -50,7 +59,20 @@ def deleteRenterField(request, params):
 
 @api_view(['POST'])
 def spremi(request):
-    print(request.data.get("img"))
-    objekat = Field(id_rentera_id=request.data.get("user"), name=request.data.get("name"),address=request.data.get("location"),details=request.data.get("description"),image=request.data.get("img"),starts="1:1",ends="1:1",is_sport_id=request.data.get("sport"))
+    objekat = Field(id_rentera_id=request.data.get("user"), name=request.data.get("name"),address=request.data.get("location"),details=request.data.get("description"),starts="1:1",ends="1:1",is_sport_id=request.data.get("sport"))
     objekat.save()
+    lista = objekat.get_my_images()
+    for image in request.data.get("img"):
+        lista.append(image)
+    objekat.set_my_images(lista)
+    objekat.save()
+    return HttpResponse("okej") 
+
+
+@api_view(['POST'])
+def lock_field(request, id_field, state):
+    if state == 0:
+        Field.objects.filter(pk=id_field).update(lock=False)
+    else:
+        Field.objects.filter(pk=id_field).update(lock=True)
     return HttpResponse("okej")
