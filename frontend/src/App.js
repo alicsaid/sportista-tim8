@@ -29,6 +29,7 @@ import store from './store'
 import Authentification from "./auth/Authentification";
 import AdminLoginForm from "./components/login/AdminLoginForm";
 import AdminLogin from "./pages/AdminLogin";
+import ShuffleTeamsPage from "./pages/user/ShuffleTeamsPage";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
               <Route path="/renter/contact" element={<RenterContact />} />
               <Route path="/user" element={<User />} />
               <Route path="/user/my-reservations" element={<MyReservations />} />
+              <Route path="/user/shuffle-teams" element={<ShuffleTeamsPage />} />
               <Route path="/user/invites" element={<Invites />} />
               <Route path="/user/account" element={<UserAccount />} />
               <Route path="/user/contact" element={<UserContact />} />

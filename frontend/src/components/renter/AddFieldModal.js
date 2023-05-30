@@ -9,7 +9,6 @@ const AddFieldModal = (props) => {
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
-
     return (
         <>
             <Fab
@@ -22,12 +21,12 @@ const AddFieldModal = (props) => {
             </Fab>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header>
-                    <h3>TEST</h3>
+                    <Modal.Title>ADD NEW FIELD</Modal.Title>
                     <button className="btn-close" onClick={closeModal}></button>
                 </Modal.Header>
                 <Modal.Body>
                     <FieldFormAction
-                        action="Add"
+                        action="ADD"
                         user={props.user}
                         closeModal={closeModal}
                         getF={props.getf}
