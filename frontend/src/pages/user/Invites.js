@@ -4,7 +4,6 @@ import React from 'react';
 import UserSidebar from "../../components/navigation/UserSidebar";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
-import ShuffleTeams from "../../components/user/ShuffleTeams";
 
 function Invites({ user, isAuthenticated }) {
 

@@ -23,22 +23,22 @@ const AdminSidebar = () => {
 
                 <CDBSidebarContent>
                     <CDBSidebarMenu>
-                        <NavLink to="/admin" className={isActive1 ? 'activeClicked' : ''}>
+                        <NavLink exact to="/admin" className={isActive1 ? 'activeClicked' : ''}>
                             <CDBSidebarMenuItem icon='th-large'>
                                 Dashboard
                             </CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink to="/admin/renters" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
+                        <NavLink exact to="/admin/renters" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
                             <CDBSidebarMenuItem icon='user-tag'>
                                 Renters
                             </CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink to="/admin/users" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
+                        <NavLink exact to="/admin/users" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
                             <CDBSidebarMenuItem icon='user'>
                                 Users
                             </CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink to="/logout">
+                        <NavLink exact to="/logout">
                             <CDBSidebarMenuItem icon='sign-out-alt'>
                                 Logout
                             </CDBSidebarMenuItem>

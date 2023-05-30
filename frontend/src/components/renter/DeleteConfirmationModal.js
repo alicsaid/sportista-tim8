@@ -30,16 +30,16 @@ const DeleteConfirmationModal = (props) => {
     return (
         <>
             <button className="custom-register-button" onClick={openModal}>
-                DELETE
+                Delete
             </button>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>DELETE FIELD</Modal.Title>
+                    <Modal.Title>Delete field</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="text-center">
                     <h4>Are you sure you want to delete the field?</h4>
-                    <button className="custom-register-button" onClick={() => callFuns()}>
-                        DELETE
+                    <button className="custom-register-button float-end" onClick={() => callFuns()}>
+                        Delete
                     </button>
                 </Modal.Body>
             </Modal>
