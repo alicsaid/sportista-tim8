@@ -4,10 +4,12 @@ import Button from "react-bootstrap/Button";
 import "../../pages/admin/Admin.css";
 
 import axios from "axios";
+import DeleteConfirmationModalRenter from "./DeleteConfirmationModalRenter";
 
 function RentersTable() {
 
     const [renters, setRenters] = useState([]);
+    const [counter, setCounter] =  useState(1);
 
     const handleDelete = (id) => {
         const updatedRenters = renters.filter(renter => renter.id !== id);
@@ -29,9 +31,6 @@ function RentersTable() {
         axios.get(`http://127.0.0.1:8000/admin/renters/getRenters/`)
             .then((response) => {
                 setRenters(response.data);
-                // console.log("DA VIDIMO RESPONSE.DATA: ")
-                console.log(response.data)
-
             })
             .catch((error) => {
                 console.error('Error fetching fields:', error);
@@ -57,10 +56,10 @@ function RentersTable() {
                         </tr>
                         </thead>
                         <tbody>
-                        {renters.map(renter => (
+                        {renters.map((renter, index=1) => (
                             <React.Fragment key={renter.id}>
                                 <tr>
-                                    <td className="table-content">{renter.id}</td>
+                                    <td className="table-content">{counter + index}</td>
                                     <td className="table-content">{renter.name}</td>
                                     <td className="table-content">{renter.email}</td>
                                     <td className="table-content">{renter.city}</td>
@@ -70,8 +69,7 @@ function RentersTable() {
                                         <div className="button-group">
                                             <Button className="buttonView"  size="sm">Warn</Button>
 
-                                            <Button className="buttonDelete" variant="danger" size="sm"
-                                                    onClick={() => handleDelete(renter.id)}>Delete</Button>
+                                            <DeleteConfirmationModalRenter renter_id={renter.id} getR={getRenters} />
                                         </div>
                                     </td>
                                 </tr>
