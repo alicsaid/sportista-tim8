@@ -1,7 +1,5 @@
-
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-
 
 # Create your models here.
 
@@ -11,8 +9,7 @@ class Sport(models.Model):
 
 
 class SportistaUser(models.Model):
-    id_logina = models.ForeignKey("UserAccount", blank=True, related_name="users_loged_in_account",
-                                  on_delete=models.CASCADE)
+    id_logina = models.ForeignKey("UserAccount", blank=True, related_name="users_loged_in_account", on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     gender = models.BooleanField()
@@ -21,20 +18,20 @@ class SportistaUser(models.Model):
     favourite_fields = models.ManyToManyField("Field", blank=True, related_name="users_favourite_set")
 
 
+
 class Renter(models.Model):
-    id_logina = models.ForeignKey("UserAccount", blank=True, related_name="renterts_loged_in_account",
-                                  on_delete=models.CASCADE)
+    id_logina = models.ForeignKey("UserAccount", blank=True, related_name="renterts_loged_in_account", on_delete=models.CASCADE)
     name = models.CharField(max_length=255, unique=True)
     phone_number = models.CharField(max_length=255)
     rates_user = models.ManyToManyField(SportistaUser, through="RenterRatesUser", blank=True)
 
 
 class UserAccountManager(BaseUserManager):
-    def create_user(self, email, is_user, is_renter, is_admin, password=None):
+    def create_user(self, email, is_user, is_renter, password=None):
         if not email:
             raise ValueError("Users must have email address")
         email = self.normalize_email(email)
-        user = self.model(email=email, is_user=is_user, is_renter=is_renter, is_admin=is_admin)
+        user = self.model(email=email, is_user=is_user, is_renter=is_renter)
         user.set_password(password)
         user.save()
 
@@ -44,11 +41,12 @@ class UserAccountManager(BaseUserManager):
         if not email:
             raise ValueError("Users must have email address")
         email = self.normalize_email(email)
-        user = self.model(email=email, is_superuser=True, is_staff=True, is_active=True, is_admin=True)
+        user = self.model(email=email, is_superuser=True, is_staff=True)
         user.set_password(password)
         user.save()
 
         return user
+
 
 
 class UserAccount(AbstractBaseUser, PermissionsMixin):
@@ -59,15 +57,15 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_user = models.BooleanField(default=False)
     is_renter = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
 
     objects = UserAccountManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["is_user", "is_renter", "is_admin"]
+    REQUIRED_FIELDS = ["is_user", "is_renter"]
 
     def __str__(self):
         return self.email
+
 
 
 class Team(models.Model):
@@ -77,27 +75,20 @@ class Team(models.Model):
     plays_sport = models.ForeignKey(Sport, on_delete=models.CASCADE, related_name="teams_sport_set")
 
 
+
 class Field(models.Model):
     id_rentera = models.ForeignKey(Renter, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, default="field_name")
     address = models.CharField(max_length=255)
     details = models.CharField(max_length=1000)
-    images = models.TextField(null=True)
+    image = models.TextField(null=True)
+    price = models.IntegerField(null=True)
     starts = models.TimeField()
     ends = models.TimeField()
-    lock = models.BooleanField(default=False)
+    price = models.IntegerField(null=True)
     is_sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
     grades = models.ManyToManyField(SportistaUser, through="UserGradesField", blank=True)
     has_teams = models.ManyToManyField(Team, through="TeamRentsField", blank=True)
-
-    def set_my_images(self, value):
-        self.images = 'SPLIT'.join(value)
-
-    def get_my_images(self):
-        return self.images.split('SPLIT') if self.images else []
-
-    def __str__(self):
-        return str(self.get_my_images())
 
 
 class TeamRentsField(models.Model):
@@ -105,7 +96,6 @@ class TeamRentsField(models.Model):
     id_fielda = models.ForeignKey(Field, on_delete=models.CASCADE)
     beginning = models.DateTimeField()
     ending = models.DateTimeField()
-
 
 class RenterRatesUser(models.Model):
     id_renter = models.ForeignKey(Renter, on_delete=models.CASCADE)
@@ -117,14 +107,3 @@ class UserGradesField(models.Model):
     id_usera = models.ForeignKey(SportistaUser, on_delete=models.CASCADE)
     id_fielda = models.ForeignKey(Field, on_delete=models.CASCADE)
     grade = models.IntegerField()
-
-
-class UserGradesFieldTemp(models.Model):
-    id_usera = models.ForeignKey(SportistaUser, on_delete=models.CASCADE)
-    id_fielda = models.ForeignKey(Field, on_delete=models.CASCADE)
-    grade = models.IntegerField()
-
-
-class UserClicksFieldTemp(models.Model):
-    id_usera = models.ForeignKey(SportistaUser, on_delete=models.CASCADE)
-    id_fielda = models.ForeignKey(Field, on_delete=models.CASCADE)
