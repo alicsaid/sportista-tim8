@@ -42,13 +42,13 @@ function LoginForm({login}) {
 
     const loginRenter = (event) => {
         event.preventDefault()
-        login(renterEmail, renterPassword, false, true, handleError).then( () =>{
+        login(renterEmail, renterPassword, false, false, true, handleError).then( () =>{
             displayAlert()
         })
     }
     const loginUser = (event) => {
         event.preventDefault()
-        login(userEmail, userPassword, true, false, handleError).then( () =>{
+        login(userEmail, userPassword, false, true, false, handleError).then( () =>{
             displayAlert()
         })
     }

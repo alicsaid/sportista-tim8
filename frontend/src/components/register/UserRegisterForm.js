@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import axios from "axios";
 import {SERVER_URL} from "../../auth/Consts";
 
-const UserRegisterForm = React.memo(({register, verify}) => {
+function UserRegisterForm({register}) {
     const [currentStep, setCurrentStep] = useState(1);
     const [userFirstName, setUserFirstName] = useState('');
     const [userLastName, setUserLastName] = useState('');
@@ -131,7 +131,7 @@ const UserRegisterForm = React.memo(({register, verify}) => {
             sports: chosenSports,
             user_availability: userAvailability
         }
-        register(userEmail, userPassword, true, false, DATA).then(() => {
+        register(userEmail, userPassword, false, true, false, DATA).then(() => {
             setFormSubmitted(true)
         })
     };
@@ -446,6 +446,6 @@ If you do not agree, please refrain from using the platform.
             {renderCurrentStepForm()}
         </div>
     );
-})
+}
 
 export default connect(null, {register})(UserRegisterForm);
