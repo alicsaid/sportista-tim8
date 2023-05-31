@@ -17,7 +17,7 @@ function Field(props) {
             <div className="cardRow">
                 {props.fields.map((field) => (
                     <Card key={field.pk} style={{ width: '18rem', marginTop: "5rem" }}>
-                        <Card.Img variant="top" src={field.fields.images.split("SPLIT")[1]} alt={"teren"} />
+                        <Card.Img variant="top" src={field.fields.images.split("SPLIT")[0]} alt={"teren"} />
                         <Card.Body>
                             <Card.Title>{field.fields.name}</Card.Title>
                             <Card.Text>

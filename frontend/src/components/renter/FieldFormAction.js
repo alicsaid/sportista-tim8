@@ -23,10 +23,6 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
             setGotData(true)
         })
 
-<<<<<<< HEAD
-    console.log(images)
-=======
->>>>>>> main
 
     if(props.user != null){
         objekat ={

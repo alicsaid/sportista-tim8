@@ -37,7 +37,7 @@ function Boxing(props) {
                     fields.map((field) => (
                         <Card key={field.fields.id} sx={{ margin: '10px', maxWidth: 300 }}>
                             <img
-                                src={field.fields.image}
+                                src={field.fields.images.split("SPLIT")[0]}
                                 alt={field.fields.name}
                                 style={{ width: '100%' }}
                             />

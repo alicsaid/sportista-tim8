@@ -161,9 +161,6 @@ def lock_field(request, id_field, state):
         Field.objects.filter(pk=id_field).update(lock=True)
     return HttpResponse("okej")
 
-    objekat = Field(id_rentera_id=request.data.get("user"), name=request.data.get("name"),address=request.data.get("location"),details=request.data.get("description"),image=request.data.get("img"),starts="1:1",ends="1:1",is_sport_id=request.data.get("sport"))
-    objekat.save()
-    return HttpResponse("okej")
 
 
 @api_view(['GET'])
@@ -177,7 +174,6 @@ def getRenters(request):
                 "email": list_of_renters2[i].email, "city": list_of_renters2[i].city}
         i = i+1
         novi_renteri.append(temp)
-    print(novi_renteri)
 
     res = json.dumps(novi_renteri)
 
@@ -196,8 +192,6 @@ def getUsers(request):
                 "email": list_of_users2[i].email, "city": list_of_users2[i].city}
         i = i+1
         novi_useri.append(temp)
-    print('useri: ')
-    print(novi_useri)
 
     res = json.dumps(novi_useri)
 
@@ -205,10 +199,12 @@ def getUsers(request):
 
 @api_view(['DELETE'])
 def deleteRenter(request, params):
-    Renter.objects.filter(id=params).delete()
+    Renter.objects.filter(id_logina_id=params).delete()
+    UserAccount.objects.filter(id=params).delete()
     return HttpResponse("Ok")
 
 @api_view(['DELETE'])
 def deleteUser(request, params):
-    SportistaUser.objects.filter(id=params).delete()
+    SportistaUser.objects.filter(id_logina_id=params).delete()
+    UserAccount.objects.filter(id=params).delete()
     return HttpResponse("Ok")

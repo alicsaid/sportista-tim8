@@ -21,7 +21,7 @@ function FieldCard(props) {
                     <CardMedia
                         component="img"
                         height="140"
-                        image={field.fields.image}
+                        image={field.fields.images.split("SPLIT")[0]}
                         alt="Field"
                     />
                     <CardContent>
