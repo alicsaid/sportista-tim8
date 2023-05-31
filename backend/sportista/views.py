@@ -177,10 +177,12 @@ def getUsers(request):
 
 @api_view(['DELETE'])
 def deleteRenter(request, params):
-    Renter.objects.filter(id=params).delete()
+    Renter.objects.filter(id_logina_id=params).delete()
+    UserAccount.objects.filter(id=params).delete()
     return HttpResponse("Ok")
 
 @api_view(['DELETE'])
 def deleteUser(request, params):
-    SportistaUser.objects.filter(id=params).delete()
+    SportistaUser.objects.filter(id_logina_id=params).delete()
+    UserAccount.objects.filter(id=params).delete()
     return HttpResponse("Ok")
