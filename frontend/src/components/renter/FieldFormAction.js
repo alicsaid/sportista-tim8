@@ -12,7 +12,7 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
     const [name,setName] = useState("");
     const [location,setLocation] = useState("");
     const [price,setPrice] = useState("");
-    const [images,setImages] = useState(null);
+    const [img,setImg] = useState("");
     const [description,setDescription] = useState("");
     const [hasSports, setHasSports] = useState([]);
     const [gotData, setGotData] = useState(false);
@@ -23,7 +23,6 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
             setGotData(true)
         })
 
-    console.log(images)
 
     if(props.user != null){
         objekat ={
@@ -32,46 +31,41 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
             name:name,
             price:price,
             location:location,
-            img:images,
+            img:img,
             description:description
         }
     }
 
-    function convertImagesToStrings(fileList) {
-        const promises = Array.from(fileList).map((file) => {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    const imageData = reader.result;
-                    resolve(imageData);
-                };
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
-        });
+    function getBase64(file, cb) {
 
-        return Promise.all(promises);
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = function () {
+            cb(reader.result)
+        };
+
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
     }
 
-
     function posalji() {
+
         console.log(objekat);
-        if (images) {
-            convertImagesToStrings(images)
-                .then((imageStrings) => {
-                    axios.post('http://127.0.0.1:8000/renter/spremi', {...objekat, img:imageStrings} )
-                        .then(response => {
-                            console.log(response.data);
-                            // Handle the successful response
-                        })
-                        .catch(error => {
-                            console.error(error);
-                            // Handle the error
-                        });
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
+
+        if (img) {
+            getBase64(img, (result)=>{
+                axios.post('http://127.0.0.1:8000/renter/spremi', {...objekat, img:result})
+                    .then(response => {
+                        console.log(response.data);
+                        // Handle the successful response
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        // Handle the error
+                    });
+            })
         } else {
             axios.post('http://127.0.0.1:8000/renter/spremi', objekat )
                 .then(response => {
@@ -115,7 +109,7 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
             </div>
 
             <div className="mb-1">
-                <input className="custom-input" type="file" id="formBasicImg" placeholder="Enter Image" multiple onChange={(e) => { setImages(e.target.files) }} />
+                <input className="custom-input" type="file" id="formBasicImg" placeholder="Enter Image" onChange={(e) => { setImg(e.target.files[0]) }} />
             </div>
 
             <div className="mb-3">
@@ -123,7 +117,7 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
             </div>
 
             <div style={{ textAlign: "center" }}>
-                <button className="custom-register-button" onClick={callFuns}>
+                <button type="button" className="custom-register-button" onClick={callFuns}>
                     {props.action}
                 </button>
             </div>

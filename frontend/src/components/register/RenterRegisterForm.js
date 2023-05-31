@@ -115,7 +115,7 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
             city: renterCity,
             phone: renterPhone,
         }
-        register(renterEmail, renterPassword, false, false, true, DATA).then(() => {
+        register(renterEmail, renterPassword, false, true, DATA).then(() => {
             setFormSubmitted(true)
         })
 

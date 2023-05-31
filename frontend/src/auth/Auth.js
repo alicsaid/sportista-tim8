@@ -80,7 +80,7 @@ export const load_user = () => async dispatch => {
     }
 };
 
-export const login = (email, password, is_admin, is_user, is_renter, handleError) => async dispatch => {
+export const login = (email, password, is_user, is_renter, handleError) => async dispatch => {
     try{
         const res1 = await axios.post( `${SERVER_URL}/auth/jwt/create/`, {
             email:email,
@@ -118,14 +118,13 @@ export const login = (email, password, is_admin, is_user, is_renter, handleError
     }
 }
 
-export const register = (email, password, is_admin, is_user, is_renter, DATA) => async dispatch => {
+export const register = (email, password, is_user, is_renter, DATA) => async dispatch => {
     try{
         const res1 = await axios.post( `${SERVER_URL}/auth/users/`, {
             email:email,
             password:password,
             is_user:is_user,
-            is_renter:is_renter,
-            is_admin: is_admin
+            is_renter:is_renter
         })
         if(is_renter){
             const encodedName = encodeURIComponent(DATA.name)
