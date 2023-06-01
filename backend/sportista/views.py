@@ -4,15 +4,17 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.utils import json
 from django.shortcuts import redirect
+from django.core.mail import send_mail
+from django.http import HttpResponse
 
 from sportista.models import Field, Sport, Renter, UserAccount, SportistaUser
 
 from sportista.models import Field, Sport, UserAccount, SportistaUser, Renter
 
-
 from sportista.recomendation import train, create_user_field_model
 
-#from sportista.models import Users
+
+# from sportista.models import Users
 
 
 # Create your views here.
@@ -27,11 +29,13 @@ def test(request):
 def index(request):
     return HttpResponse("To je backend Sporiste hehe")
 
+
 @api_view(['GET'])
 def dajSportove(request):
     lista_sportova = Sport.objects.all()
     res = serializers.serialize('json', lista_sportova)
     return HttpResponse(res, content_type="text/json-comment-filtered")
+
 
 # @api_view(['GET'])
 # def getListaUsera(request):
@@ -47,6 +51,7 @@ def getFields(request, params):
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
 
+
 @api_view(['GET'])
 def getRenterData(request, params):
     data1 = Renter.objects.filter(id_logina_id=params)
@@ -57,18 +62,22 @@ def getRenterData(request, params):
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
 
+
 @api_view(['GET'])
 def getRenterFields(request, params):
     list_of_fields = Field.objects.filter(id_rentera_id=params)
     res = serializers.serialize('json', list_of_fields)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
+
+
 @api_view(['GET'])
 def getUserFields(request):
     list_of_fields = Field.objects.all()
     res = serializers.serialize('json', list_of_fields)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
+
 
 @api_view(['POST'])
 def changeRenterData(request, params):
@@ -94,6 +103,7 @@ def getUserData(request, params):
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
 
+
 @api_view(['GET'])
 def getFieldData(request, params):
     data = Field.objects.filter(id=params)
@@ -116,16 +126,17 @@ def changeUserData(request, params):
 
     return HttpResponse("ok")
 
+
 @api_view(['POST'])
 def editFieldData(request, params):
     f = Field.objects.get(id=params)
     f.name = request.data.get("name")
-    if(request.data.get("sport")):
+    if (request.data.get("sport")):
         f.is_sport_id = request.data.get("sport")
     f.address = request.data.get("location")
     f.details = request.data.get("description")
     f.price = request.data.get("price")
-    if(request.data.get("img")):
+    if (request.data.get("img")):
         f.image = request.data.get("img")
 
     f.save()
@@ -139,18 +150,18 @@ def deleteRenterField(request, params):
     return HttpResponse("Ok")
 
 
-
 @api_view(['POST'])
 def spremi(request):
-
-    objekat = Field(id_rentera_id=request.data.get("user"), name=request.data.get("name"),address=request.data.get("location"),details=request.data.get("description"),starts="1:1",ends="1:1",is_sport_id=request.data.get("sport"))
+    objekat = Field(id_rentera_id=request.data.get("user"), name=request.data.get("name"),
+                    address=request.data.get("location"), details=request.data.get("description"), starts="1:1",
+                    ends="1:1", is_sport_id=request.data.get("sport"))
     objekat.save()
     lista = objekat.get_my_images()
     for image in request.data.get("img"):
         lista.append(image)
     objekat.set_my_images(lista)
     objekat.save()
-    return HttpResponse("okej") 
+    return HttpResponse("okej")
 
 
 @api_view(['POST'])
@@ -162,7 +173,6 @@ def lock_field(request, id_field, state):
     return HttpResponse("okej")
 
 
-
 @api_view(['GET'])
 def getRenters(request):
     list_of_renters2 = UserAccount.objects.filter(is_renter=1)
@@ -170,10 +180,12 @@ def getRenters(request):
     i = 0
     for user in list_of_renters2:
         odgovarajuci_renter = Renter.objects.filter(id_logina=user.id)
-        temp = {"id": user.id, "name": odgovarajuci_renter[0].name, "phone": odgovarajuci_renter[0].phone_number,
-                "email": list_of_renters2[i].email, "city": list_of_renters2[i].city}
-        i = i+1
-        novi_renteri.append(temp)
+
+        if odgovarajuci_renter:
+            temp = {"id": user.id, "name": odgovarajuci_renter[0].name, "phone": odgovarajuci_renter[0].phone_number,
+                    "email": list_of_renters2[i].email, "city": list_of_renters2[i].city}
+            i = i + 1
+            novi_renteri.append(temp)
 
     res = json.dumps(novi_renteri)
 
@@ -187,15 +199,18 @@ def getUsers(request):
     i = 0
     for user in list_of_users2:
         odgovarajuci_user = SportistaUser.objects.filter(id_logina=user.id)
-        temp = {"id": user.id, "firstName": odgovarajuci_user[0].first_name, "lastName": odgovarajuci_user[0].last_name,
-                "gender": odgovarajuci_user[0].gender,
-                "email": list_of_users2[i].email, "city": list_of_users2[i].city}
-        i = i+1
-        novi_useri.append(temp)
+
+        if odgovarajuci_user:
+            temp = {"id": user.id, "firstName": odgovarajuci_user[0].first_name, "lastName": odgovarajuci_user[0].last_name,
+                    "gender": odgovarajuci_user[0].gender,
+                    "email": list_of_users2[i].email, "city": list_of_users2[i].city}
+            i = i + 1
+            novi_useri.append(temp)
 
     res = json.dumps(novi_useri)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
+
 
 @api_view(['DELETE'])
 def deleteRenter(request, params):
@@ -203,8 +218,28 @@ def deleteRenter(request, params):
     UserAccount.objects.filter(id=params).delete()
     return HttpResponse("Ok")
 
+
 @api_view(['DELETE'])
 def deleteUser(request, params):
     SportistaUser.objects.filter(id_logina_id=params).delete()
     UserAccount.objects.filter(id=params).delete()
     return HttpResponse("Ok")
+
+
+@api_view(['POST'])
+def sendEmail(request):
+    if request.method == 'POST':
+        sender_email = request.data.get('sender_email')
+        recipient_email = request.data.get('recipient_email')
+        message = request.data.get('message')
+
+        send_mail(
+            'Warning',
+            message,
+            sender_email,
+            [recipient_email],
+            fail_silently=False,
+        )
+        return HttpResponse('Email sent successfully')
+
+    return HttpResponse('Invalid request method')

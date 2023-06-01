@@ -6,10 +6,50 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import DeleteConfirmationModalRenter from "./DeleteConfirmationModalRenter";
 import DeleteConfirmationModalUser from "./DeleteConfirmationModalUser";
+import {Form} from "react-bootstrap";
 
 function UsersTable() {
     const [users, setUsers] = useState([]);
     const [counter, setCounter] = useState(1);
+    const [isOpen, setIsOpen] = useState(false);
+    const [warningMessage, setWarningMessage] = useState('');
+    const [selectedUser, setSelectedUser] = useState(null);
+
+    const openModal = (user) => {
+        setIsOpen(true);
+        setSelectedUser(user);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+        setSelectedUser(null);
+        setWarningMessage("");
+    };
+
+
+    const sendWarningMessage = () => {
+
+        const emailData = {
+            sender_email: 'foul.official2305@outlook.com', // Naša adresa e-pošte
+            recipient_email: selectedUser.email,
+            message: warningMessage,
+        };
+
+        axios
+            .post('http://127.0.0.1:8000/admin/users/send-email/', emailData)
+            .then((response) => {
+                console.log('Warning email sent successfully');
+                closeModal();
+
+            })
+            .catch((error) => {
+                console.error('Warning email sending failed:', error);
+            });
+
+        setIsOpen(false);
+
+    };
+
 
     useEffect(() => {
         getUsers();
@@ -52,7 +92,34 @@ function UsersTable() {
                             <td className="table-content">{user.city}</td>
                             <td className="table-content">
                                 <div className="button-group">
-                                    <Button className="buttonView" size="sm" >Warn</Button>
+                                    <Button className="buttonView" onClick={() => openModal(user)}  size="sm">Warn</Button>
+                                    <Modal show={isOpen} onHide={closeModal}>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Send Warning Message</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <Form>
+                                                <Form.Group controlId="message">
+                                                    <Form.Label>Message</Form.Label>
+                                                    <Form.Control
+                                                        as="textarea"
+                                                        rows={4}
+                                                        value={warningMessage}
+                                                        onChange={(e) => setWarningMessage(e.target.value)}
+                                                    />
+                                                </Form.Group>
+                                            </Form>
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button variant="secondary" onClick={closeModal}>
+                                                Cancel
+                                            </Button>
+                                            <Button variant="primary" onClick={() => sendWarningMessage()} >
+                                                Send
+                                            </Button>
+                                        </Modal.Footer>
+                                    </Modal>
+
                                     <DeleteConfirmationModalUser user_id={user.id} getU={getUsers} />
                                 </div>
                             </td>

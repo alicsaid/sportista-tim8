@@ -5,21 +5,49 @@ import "../../pages/admin/Admin.css";
 
 import axios from "axios";
 import DeleteConfirmationModalRenter from "./DeleteConfirmationModalRenter";
+import {Navigate} from "react-router-dom";
+import {Form, Modal} from "react-bootstrap";
 
-function RentersTable() {
-
+function RentersTable(props) {
     const [renters, setRenters] = useState([]);
     const [counter, setCounter] =  useState(1);
+    const [isOpen, setIsOpen] = useState(false);
+    const [warningMessage, setWarningMessage] = useState('');
+    const [selectedRenter, setSelectedRenter] = useState(null);
 
-    const handleDelete = (id) => {
-        const updatedRenters = renters.filter(renter => renter.id !== id);
+    const openModal = (renter) => {
+        setIsOpen(true);
+        setSelectedRenter(renter);
+    };
 
-        const updatedRentersWithNewIds = updatedRenters.map((renter, index) => ({
-            ...renter,
-            id: index + 1,
-        }));
+    const closeModal = () => {
+        setIsOpen(false);
+        setSelectedRenter(null);
+        setWarningMessage("");
+    };
 
-        setRenters(updatedRentersWithNewIds);
+
+    const sendWarningMessage = () => {
+
+        const emailData = {
+            sender_email: 'foul.official2305@outlook.com', // Naša adresa e-pošte
+            recipient_email: selectedRenter.email,
+            message: warningMessage,
+        };
+
+        axios
+            .post('http://127.0.0.1:8000/admin/renters/send-email/', emailData)
+            .then((response) => {
+                console.log('Warning email sent successfully');
+                closeModal();
+
+            })
+            .catch((error) => {
+                console.error('Warning email sending failed:', error);
+            });
+
+        setIsOpen(false);
+
     };
 
 
@@ -67,7 +95,33 @@ function RentersTable() {
 
                                     <td className="table-content">
                                         <div className="button-group">
-                                            <Button className="buttonView"  size="sm">Warn</Button>
+                                            <Button className="buttonView" onClick={() => openModal(renter)}  size="sm">Warn</Button>
+                                            <Modal show={isOpen} onHide={closeModal}>
+                                                <Modal.Header closeButton>
+                                                    <Modal.Title>Send Warning Message</Modal.Title>
+                                                </Modal.Header>
+                                                <Modal.Body>
+                                                    <Form>
+                                                        <Form.Group controlId="message">
+                                                            <Form.Label>Message</Form.Label>
+                                                            <Form.Control
+                                                                as="textarea"
+                                                                rows={4}
+                                                                value={warningMessage}
+                                                                onChange={(e) => setWarningMessage(e.target.value)}
+                                                            />
+                                                        </Form.Group>
+                                                    </Form>
+                                                </Modal.Body>
+                                                <Modal.Footer>
+                                                    <Button variant="secondary" onClick={closeModal}>
+                                                        Cancel
+                                                    </Button>
+                                                    <Button variant="primary" onClick={() => sendWarningMessage()} >
+                                                        Send
+                                                    </Button>
+                                                </Modal.Footer>
+                                            </Modal>
 
                                             <DeleteConfirmationModalRenter renter_id={renter.id} getR={getRenters} />
                                         </div>

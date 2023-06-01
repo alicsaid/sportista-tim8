@@ -5,7 +5,7 @@ import "./Renter.css";
 import RenterSidebar from "../../components/navigation/RenterSidebar";
 import {connect} from "react-redux";
 import TableNext10Bookings from "../../components/renter/TableNext10Bookings";
-function Dashboard() {
+function Dashboard({isAuthenticated, user}) {
 
     return (
         <div style={{ display: 'flex' }}>
