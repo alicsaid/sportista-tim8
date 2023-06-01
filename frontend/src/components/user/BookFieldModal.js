@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import {SERVER_URL} from "../../auth/Consts";
+import axios from "axios";
 
-const BookFieldModal = () => {
+const BookFieldModal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedTimeFrom, setSelectedTimeFrom] = useState('8:00 AM'); // Selected time slot
-    const [selectedTimeTo, setSelectedTimeTo] = useState('8:30 AM'); // Selected time slot
+    const [selectedTimeFrom, setSelectedTimeFrom] = useState('NONE'); // Selected time slot
+    const [selectedTimeTo, setSelectedTimeTo] = useState('NONE'); // Selected time slot
     const [numSlots, setNumSlots] = useState(0); // Number of slots
+    const [selectedDate, setSelectedDate] = useState(new Date())
+    console.log(props.field.fields)
 
     const handleTimeChangeFrom = (event) => {
         const newTimeFrom = event.target.value;
@@ -25,23 +29,66 @@ const BookFieldModal = () => {
         const diffInMillis = Math.abs(to - from);
         const numSlots = Math.ceil(diffInMillis / (30 * 60 * 1000));
         setNumSlots(numSlots);
+        if(numSlots)
+            document.getElementById('price').value=(numSlots * props.field.fields.price).toString() + "$";
+        else
+            document.getElementById('price').value="";
     };
 
     const handleBooking = () => {
-        // Handle booking with the selected number of slots
-        // You can use the `numSlots` state variable here
+        //TO DO sredi alertove za pogresan unos
+        if(selectedTimeFrom === 'NONE' || selectedTimeTo === 'NONE')
+            alert("UNESI DATUME")
+        console.log(props.user)
+        if(selectedTimeFrom && selectedTimeTo){
+            console.log(selectedTimeFrom, selectedTimeTo, selectedDate)
+            let start = new Date(selectedDate)
+            let end = new Date(selectedDate)
+            start.setHours(selectedTimeFrom.split(':')[0])
+            start.setMinutes(selectedTimeFrom.split(':')[1])
+            end.setHours(selectedTimeTo.split(':')[0])
+            end.setMinutes(selectedTimeTo.split(':')[1])
+            console.log(start)
+            console.log(end)
+            if(start >= end)
+                alert("POGRESNO IZABRANI DATUMI")
+
+            axios.post(`${SERVER_URL}/user/solo_book_field/`, {
+                id_usera: props.user.id,
+                id_sporta: props.field.fields.is_sport,
+                id_fielda: props.field.pk,
+                price: props.field.fields.price,
+                start: start,
+                ends:  end
+            })
+        }
+
     };
 
     // Generate time options from 8 AM to 12 PM
-    const generateTimeOptions = () => {
+    const generateTimeOptions = (start, end) => {
         const options = [];
-        for (let i = 8; i <= 24; i++) {
-            const hour = i <= 12 ? i : i - 12;
-            const suffix = i < 12 ? 'AM' : 'PM';
-            options.push(
-                <option key={`${i}:00`} value={`${hour}:00 ${suffix}`}>{`${hour}:00 ${suffix}`}</option>,
-                <option key={`${i}:30`} value={`${hour}:30 ${suffix}`}>{`${hour}:30 ${suffix}`}</option>
-            );
+        //TO DO - provjeri da li odgovara sa terminima u bazi
+        if(start !== undefined && end !== undefined){
+            let start_date = new Date(selectedDate)
+            let end_date = new Date(selectedDate)
+            start_date.setHours(start.split(":")[0])
+            end_date.setHours(end.split(":")[0])
+            options.push(<option>NONE</option>)
+            if(new Date().getDate() === start_date.getDate()){
+                start_date.setHours(Math.max(parseInt(start.split(":")[0]), new Date().getHours()))
+            }
+            if(new Date().getDate() > start_date.getDate()){
+                start_date.setHours(24)
+            }
+            for (let i = start_date.getHours(); i <= end_date.getHours(); i++) {
+
+                options.push(
+                    <option key={`${i}:00`} value={`${i}:00`}>{`${i}:00`}</option>,
+                    <option key={`${i}:30`} value={`${i}:30`}>{`${i}:30`}</option>
+                );
+            }
+
         }
         return options;
     };
@@ -57,24 +104,16 @@ const BookFieldModal = () => {
                     <Modal.Title>BOOK THIS FIELD</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="d-flex flex-column align-items-center">
-                    <input className="custom-input" type="date" value="2017-06-01" />
-                    <select className="custom-input" value={selectedTimeFrom} onChange={handleTimeChangeFrom}>
-                        {generateTimeOptions()}
-                    </select>
-                    <select className="custom-input" value={selectedTimeTo} onChange={handleTimeChangeTo}>
-                        {generateTimeOptions()}
-                    </select>
-                    <input
-                        className="custom-input"
-                        type="number"
-                        id="numSlots"
-                        value={numSlots}
-                        onChange={(event) => setNumSlots(event.target.value)}
-                        min={1}
-                        max={24}
-                    />
+                    <input className="custom-input" type="date" value={selectedDate.toISOString().split('T')[0]} onChange={(event) => {setSelectedDate(new Date(event.target.value))}}/>
+                        <select className="custom-input" value={selectedTimeFrom} onChange={handleTimeChangeFrom}>
+                            {generateTimeOptions(props.field.fields.starts, props.field.fields.ends)}
+                        </select>
+                        <select className="custom-input" value={selectedTimeTo} onChange={handleTimeChangeTo}>
+                            {generateTimeOptions(props.field.fields.starts, props.field.fields.ends)}
+                        </select>
+
                     {/* cijena bi trebalo da se izračuna po slotu, a cijena slota se pravi kada se pravi teren, slot je pola sata */}
-                    <input className="custom-input" id="price" name="price" type="text" />
+                    <input className="custom-input" id="price" name="price" type="text" disabled={true}/>
                     <div className="form-check form-switch">
                         <input className="form-check-input" type="checkbox" id="flexSwitchCheckReverse" />
                         <label className="form-check-label" htmlFor="flexSwitchCheckReverse">Book weekly!</label> </div>
