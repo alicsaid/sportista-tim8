@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import { Modal } from "react-bootstrap";
 import Button from '@material-ui/core/Button';
-import { Modal } from "react-bootstrap";
 import {SERVER_URL} from "../../auth/Consts";
 import axios from "axios";
 
@@ -10,9 +9,10 @@ import axios from "axios";
 const BookFieldModal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedTimeFrom, setSelectedTimeFrom] = useState('NONE'); // Selected time slot
-    const [selectedTimeTo, setSelectedTimeTo] = useState('NONE'); // Selected time slot
+    const [selectedTimeTo, setSelectedTimeTo] = useState('NON'); // Selected time slot
     const [numSlots, setNumSlots] = useState(0); // Number of slots
     const [selectedDate, setSelectedDate] = useState(new Date())
+    const [bookedDates, setBookedDates] = useState([])
     console.log(props.field.fields)
 
     const handleTimeChangeFrom = (event) => {
@@ -76,6 +76,7 @@ const BookFieldModal = (props) => {
         if(start !== undefined && end !== undefined){
             let start_date = new Date(selectedDate)
             let end_date = new Date(selectedDate)
+            console.log(bookedDates)
             start_date.setHours(start.split(":")[0])
             end_date.setHours(end.split(":")[0])
             options.push(<option>NONE</option>)
@@ -86,18 +87,29 @@ const BookFieldModal = (props) => {
                 start_date.setHours(24)
             }
             for (let i = start_date.getHours(); i <= end_date.getHours(); i++) {
-
-                options.push(
-                    <option key={`${i}:00`} value={`${i}:00`}>{`${i}:00`}</option>,
-                    <option key={`${i}:30`} value={`${i}:30`}>{`${i}:30`}</option>
-                );
+                let validan = true
+                bookedDates.forEach((date) => {
+                    date.start = new Date(date.start)
+                    date.end = new Date(date.end)
+                    if(date.start.getDate() === selectedDate.getDate() && date.start.getHours() === i)
+                        validan = false
+                })
+                if(validan)
+                    options.push(
+                        <option key={`${i}:00`} value={`${i}:00`}>{`${i}:00`}</option>,
+                        <option key={`${i}:30`} value={`${i}:30`}>{`${i}:30`}</option>
+                    );
             }
 
         }
         return options;
     };
 
-    const openModal = () => setIsOpen(true);
+    const openModal = () => {
+        axios.get(`${SERVER_URL}/user/get_dates/${props.field.pk}/`).then((result)=>{
+            setBookedDates(result.data)
+        })
+        setIsOpen(true)};
     const closeModal = () => setIsOpen(false);
 
     return (

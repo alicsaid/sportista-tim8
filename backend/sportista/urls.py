@@ -21,6 +21,7 @@ urlpatterns = [
 
     path("renter/lock_field/<int:id_field>/<int:state>/", views.lock_field, name="lock_field"),
     path("user/solo_book_field/", views.book_field_solo, name="book_field_solo"),
+    path("user/get_dates/<int:field_id>/", views.get_dates, name="book_field_solo"),
 
     path("renter/getData/<int:params>/", views.getRenterData, name="getRenterData"),
     path("renter/changeData/<int:params>/", views.changeRenterData, name="changeRenterData"),

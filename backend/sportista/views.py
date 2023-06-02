@@ -222,3 +222,15 @@ def book_field_solo(request):
     })
 
     return HttpResponse("Ok")
+
+@api_view(['GET'])
+def get_dates(request, field_id):
+    timovi = list(TeamRentsField.objects.all())
+    temp = []
+    for tim in timovi:
+        temp.append({
+            "start": str(tim.beginning),
+            "end": str(tim.ending)
+        })
+    res = json.dumps(temp)
+    return HttpResponse(res, content_type="text/json-comment-filtered")
