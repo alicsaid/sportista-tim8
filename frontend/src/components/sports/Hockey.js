@@ -5,6 +5,8 @@ import StarIcon from "@mui/icons-material/Star";
 import CardActions from "@mui/material/CardActions";
 import BookFieldModal from "../user/BookFieldModal";
 import FieldDetailsModal from "../user/FieldDetailsModal";
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 function Hockey(props) {
 
@@ -36,11 +38,13 @@ function Hockey(props) {
                 ) : (
                     fields.map((field) => (
                         <Card key={field.fields.id} sx={{ margin: '10px', maxWidth: 300 }}>
-                            <img
-                                src={field.fields.images.split("SPLIT")[0]}
-                                alt={field.fields.name}
-                                style={{ width: '100%' }}
-                            />
+                            <Carousel showThumbs={false}>
+                                {field.fields.images.split("SPLIT").map((image) => (
+                                    <div>
+                                        <img src={image} alt="Field photo" />
+                                    </div>
+                                ))}
+                            </Carousel>
                             <CardContent>
                                 <Typography variant="h5" component="div">
                                     {field.fields.name}

@@ -1,4 +1,9 @@
+import Card from 'react-bootstrap/Card';
 import React from "react";
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+/* components */
 import EditFieldModal from "./EditFieldModal";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import Card from '@material-ui/core/Card';
@@ -12,18 +17,20 @@ import axios from "axios";
 import {SERVER_URL} from "../../auth/Consts";
 
 function Field(props) {
+
+
     return (
         <div className="cardContainer mt-5">
             <div className="cardRow">
                 {props.fields.map((field) => (
-                    <Card key={field.pk} style={{ width: '18rem' }}>
-                        <CardMedia
-                            component="img"
-                            alt="teren"
-                            height="140"
-                            image={field.fields.images.split("SPLIT")[0]}
-                            title="teren"
-                        />
+                    <Card key={field.pk} style={{ width: '18rem', marginTop: "5rem" }}>
+                        <Carousel showThumbs={false}>
+                            {field.fields.images.split("SPLIT").map((image) => (
+                                <div>
+                                    <img src={image} alt="Field photo" />
+                                </div>
+                            ))}
+                        </Carousel>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                                 {field.fields.name}
