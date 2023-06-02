@@ -14,7 +14,7 @@ function UserAccount({ user, isAuthenticated }) {
     return (
         <div style={{ display: 'flex' }}>
             <UserSidebar />
-            <div className="user-page">
+            <div className="page-margin">
                 <h1>Account</h1>
                 <h5>Edit you account information here.</h5>
 		        <UserAccountOverview user={user}/>

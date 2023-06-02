@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import {connect} from "react-redux";
 import {reset_password_confirm} from "./Auth";
-import Form from 'react-bootstrap/Form';
-import Button from "react-bootstrap/Button";
+import Button from '@material-ui/core/Button';
 import {Navigate} from "react-router-dom";
 import {useParams} from "react-router-dom";
+import TopNavbar from "../components/navigation/Navbar";
+import Footer from "../components/navigation/Footer";
+import TextField from '@material-ui/core/TextField';
 
 
 function ResetPasswordConfirm({match, reset_password_confirm}) {
@@ -26,22 +28,24 @@ function ResetPasswordConfirm({match, reset_password_confirm}) {
         )
 
     return (
-        <div className="container">
-            <Form.Group className="mb-3">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
+        <div>
+            <TopNavbar />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+                <TextField
+                    className="mt-5 mb-3 w-25"
                     type="password"
-                    placeholder="Password"
+                    label="Password"
                     value={password}
                     onChange={handlePasswordChange}
-                    required={true}
+                    required
+                    variant="outlined"
                 />
-            </Form.Group>
-            <Button variant="primary" onClick={resetPasswordConfirm} className="nextButton">
+                <Button variant="outlined" onClick={resetPasswordConfirm} className="nextButton">
                 Next
             </Button>
+            </div>
+            <Footer />
         </div>
-
     );
 }
 

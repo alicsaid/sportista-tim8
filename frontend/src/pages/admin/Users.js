@@ -10,7 +10,7 @@ function Users() {
     return (
         <div style={{ display: 'flex' }}>
             <AdminSidebar />
-            <div className="admin-page">
+            <div className="page-margin">
                 <h1>Users</h1>
                 <h5>Table of registered users.</h5>
                 <UsersTable />

@@ -1,7 +1,8 @@
 import {SERVER_URL} from "../../auth/Consts";
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import Button from '@material-ui/core/Button';
 
 const DeleteConfirmationModal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,18 +30,18 @@ const DeleteConfirmationModal = (props) => {
 
     return (
         <>
-            <button className="custom-register-button" onClick={openModal}>
+            <Button variant="outlined" onClick={openModal}>
                 DELETE
-            </button>
+            </Button>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>DELETE FIELD</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="text-center">
-                    <h4>Are you sure you want to delete the field?</h4>
-                    <button className="custom-register-button" onClick={() => callFuns()}>
+                    <h5>Are you sure you want to delete the field?</h5>
+                    <Button className="mt-3" variant="outlined" onClick={() => callFuns()}>
                         DELETE
-                    </button>
+                    </Button>
                 </Modal.Body>
             </Modal>
         </>

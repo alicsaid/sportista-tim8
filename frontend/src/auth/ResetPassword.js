@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import {connect} from "react-redux";
 import {reset_password} from "./Auth";
 import Form from 'react-bootstrap/Form';
-import Button from "react-bootstrap/Button";
+import Button from '@material-ui/core/Button';
 import {Navigate} from "react-router-dom";
+import TopNavbar from "../components/navigation/Navbar";
+import Footer from "../components/navigation/Footer";
+import TextField from "@material-ui/core/TextField";
 
 
 function ResetPassword({reset_password}) {
@@ -24,22 +27,24 @@ function ResetPassword({reset_password}) {
         )
 
     return (
-        <div className={"container"}>
-            <Form.Group className="mb-3">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
+        <div>
+            <TopNavbar />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+                <TextField
+                    className="mt-5 mb-3 w-50"
                     type="email"
-                    placeholder="Email"
+                    label="Email"
                     value={email}
                     onChange={handleEmailChange}
-                    required={true}
+                    required
+                    variant="outlined"
                 />
-            </Form.Group>
-            <Button variant="primary" onClick={resetPassword} className="nextButton">
-                Next
-            </Button>
+                <Button variant="outlined" onClick={resetPassword} className="nextButton">
+                    Next
+                </Button>
+            </div>
+            <Footer />
         </div>
-
     );
 }
 

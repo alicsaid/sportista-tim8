@@ -14,9 +14,9 @@ function ShuffleTeamsPage({ user, isAuthenticated }) {
     return (
         <div style={{ display: 'flex' }}>
             <UserSidebar />
-            <div className="user-page">
+            <div className="page-margin">
                 <h1>Shuffle teams</h1>
-                <h5 className="user-subtitle">You can create random teams here.</h5>
+                <h5>You can create random teams here.</h5>
                 <ShuffleTeams />
             </div>
         </div>

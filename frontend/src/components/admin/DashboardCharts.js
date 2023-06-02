@@ -17,7 +17,7 @@ function DashboardCharts() {
         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
         datasets: [
             {
-                label: 'Sales',
+                label: 'Bookings',
                 data: [1200, 1900, 3000, 5000, 2200, 4100],
                 backgroundColor: '#36A2EB',
             },
@@ -73,7 +73,7 @@ function DashboardCharts() {
     }, []);
 
     return (
-        <div className="dashboard-data">
+        <div className="dashboard-data mt-5">
             <div className="chart-container">
                 <canvas ref={pieChartRef} />
             </div>

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+
+import { Modal } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
+import { Modal } from "react-bootstrap";
 import {SERVER_URL} from "../../auth/Consts";
 import axios from "axios";
+
 
 const BookFieldModal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -98,7 +102,7 @@ const BookFieldModal = (props) => {
 
     return (
         <>
-            <button className="custom-register-button" onClick={openModal}>BOOK</button>
+            <Button variant="outlined" onClick={openModal}>BOOK</Button>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>BOOK THIS FIELD</Modal.Title>
@@ -117,9 +121,9 @@ const BookFieldModal = (props) => {
                     <div className="form-check form-switch">
                         <input className="form-check-input" type="checkbox" id="flexSwitchCheckReverse" />
                         <label className="form-check-label" htmlFor="flexSwitchCheckReverse">Book weekly!</label> </div>
-                    <button className="custom-register-button mt-5" onClick={handleBooking}>
+                    <Button variant="outlined" className="mt-3" onClick={handleBooking}>
                         BOOK
-                    </button>
+                    </Button>
                 </Modal.Body>
             </Modal>
         </>

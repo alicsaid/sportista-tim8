@@ -13,7 +13,7 @@ function Analytics({isAuthenticated,user}) {
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
-            <div className="renter-page">
+            <div className="page-margin">
                 <h1>Analytics</h1>
                 <h5>Statistics and graphs for your profile and fields.</h5>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./Admin.css";
 
 //components
@@ -9,7 +9,7 @@ function Renters() {
     return (
         <div style={{display: 'flex'}}>
             <AdminSidebar/>
-            <div className="admin-page">
+            <div className="page-margin">
                 <h1>Renters</h1>
                 <h5>Table of registered renters.</h5>
                 <RentersTable />

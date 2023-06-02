@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, TextField, Typography } from '@mui/material';
 import "../../pages/user/User.css";
+import Button from '@material-ui/core/Button';
 
 const ShuffleTeams = () => {
     const [playerNames, setPlayerNames] = useState('');
@@ -55,12 +56,12 @@ const ShuffleTeams = () => {
                         />
                     </Grid>
                 </Grid>
-                <Grid container spacing={2} justifyContent="center">
+                <Grid className="mt-3" container spacing={2} justifyContent="center">
                     <Grid item>
-                        <button className="custom-register-button" type="submit">Shuffle</button>
+                        <Button variant="outlined" type="submit">Shuffle</Button>
                     </Grid>
                     <Grid item>
-                        <button className="custom-register-button" onClick={handleClearInput}>Clear</button>
+                        <Button variant="outlined" onClick={handleClearInput}>Clear</Button>
                     </Grid>
                 </Grid>
             </form>
