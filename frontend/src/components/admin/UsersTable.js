@@ -9,9 +9,58 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import {Form} from "react-bootstrap";
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 function UsersTable() {
     const [users, setUsers] = useState([]);
+    const [counter, setCounter] = useState(1);
+    const [isOpen, setIsOpen] = useState(false);
+    const [warningMessage, setWarningMessage] = useState('');
+    const [selectedUser, setSelectedUser] = useState(null);
+
+    const openModal = (user) => {
+        setIsOpen(true);
+        setSelectedUser(user);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+        setSelectedUser(null);
+        setWarningMessage("");
+    };
+
+
+    const sendWarningMessage = () => {
+
+        const emailData = {
+            sender_email: 'foul.official2305@outlook.com', // Naša adresa e-pošte
+            recipient_email: selectedUser.email,
+            message: warningMessage,
+        };
+
+        axios
+            .post('http://127.0.0.1:8000/admin/users/send-email/', emailData)
+            .then((response) => {
+                console.log('Warning email sent successfully');
+                closeModal();
+
+            })
+            .catch((error) => {
+                console.error('Warning email sending failed:', error);
+            });
+
+        setIsOpen(false);
+
+    };
+
 
     useEffect(() => {
         getUsers();
@@ -54,7 +103,33 @@ function UsersTable() {
                                 <TableCell>{user.city}</TableCell>
                                 <TableCell>
                                     <div>
-                                        <Button variant="outlined">WARNING</Button>
+                                        <Button variant="outlined" onClick={() => openModal(user)}>WARNING</Button>
+                                        <Modal show={isOpen} onHide={closeModal}>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Send Warning Message</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <Form>
+                                                <Form.Group controlId="message">
+                                                    <Form.Label>Message</Form.Label>
+                                                    <Form.Control
+                                                        as="textarea"
+                                                        rows={4}
+                                                        value={warningMessage}
+                                                        onChange={(e) => setWarningMessage(e.target.value)}
+                                                    />
+                                                </Form.Group>
+                                            </Form>
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button variant="secondary" onClick={closeModal}>
+                                                Cancel
+                                            </Button>
+                                            <Button variant="primary" onClick={() => sendWarningMessage()} >
+                                                Send
+                                            </Button>
+                                        </Modal.Footer>
+                                    </Modal>
                                         <DeleteConfirmationModalUser user_id={user.id} getU={getUsers}/>
                                     </div>
                                 </TableCell>

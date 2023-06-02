@@ -15,7 +15,7 @@ function AdminLoginForm({login}) {
 
     const loginAdmin = (event) => {
         event.preventDefault()
-        login(adminEmail, adminPassword, false, false, false)
+        login(adminEmail, adminPassword, true, false, false)
     }
 
     return (
