@@ -91,7 +91,7 @@ const BookFieldModal = (props) => {
                 bookedDates.forEach((date) => {
                     date.start = new Date(date.start)
                     date.end = new Date(date.end)
-                    if(date.start.getDate() === selectedDate.getDate() && date.start.getHours() === i)
+                    if(date.start.getDate() === selectedDate.getDate() && date.start.getHours() <= i <= date.end.getHours())
                         validan = false
                 })
                 if(validan)
