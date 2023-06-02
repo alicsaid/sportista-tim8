@@ -1,5 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import React from "react";
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 /* components */
 import EditFieldModal from "./EditFieldModal";
@@ -17,7 +19,13 @@ function Field(props) {
             <div className="cardRow">
                 {props.fields.map((field) => (
                     <Card key={field.pk} style={{ width: '18rem', marginTop: "5rem" }}>
-                        <Card.Img variant="top" src={field.fields.images.split("SPLIT")[0]} alt={"teren"} />
+                        <Carousel showThumbs={false}>
+                            {field.fields.images.split("SPLIT").map((image) => (
+                                <div>
+                                    <img src={image} alt="Field photo" />
+                                </div>
+                            ))}
+                        </Carousel>
                         <Card.Body>
                             <Card.Title>{field.fields.name}</Card.Title>
                             <Card.Text>
