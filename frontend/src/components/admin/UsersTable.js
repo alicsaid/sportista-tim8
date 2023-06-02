@@ -10,6 +10,14 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import {Form} from "react-bootstrap";
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 function UsersTable() {
     const [users, setUsers] = useState([]);
@@ -95,8 +103,8 @@ function UsersTable() {
                                 <TableCell>{user.city}</TableCell>
                                 <TableCell>
                                     <div>
-                                        <Button variant="outlined" onClick={() => openModal(user)} >WARNING</Button>
-                                    <Modal show={isOpen} onHide={closeModal}>
+                                        <Button variant="outlined" onClick={() => openModal(user)}>WARNING</Button>
+                                        <Modal show={isOpen} onHide={closeModal}>
                                         <Modal.Header closeButton>
                                             <Modal.Title>Send Warning Message</Modal.Title>
                                         </Modal.Header>

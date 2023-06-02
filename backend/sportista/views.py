@@ -272,3 +272,29 @@ def sendEmail(request):
         return HttpResponse('Email sent successfully')
 
     return HttpResponse('Invalid request method')
+
+@api_view(['POST'])
+def book_field_solo(request):
+    team = Team(id_leader=SportistaUser.objects.get(id=request.data.get("id_usera")), plays_sport_id=request.data.get("id_sporta"))
+    team.save()
+    print(request.data)
+    field = Field.objects.get(id=request.data.get("id_fielda"))
+    field.has_teams.add(team, through_defaults={
+        'price': request.data.get("price"),
+        'beginning': request.data.get("start"),
+        'ending': request.data.get("ends")
+    })
+
+    return HttpResponse("Ok")
+
+@api_view(['GET'])
+def get_dates(request, field_id):
+    timovi = list(TeamRentsField.objects.all())
+    temp = []
+    for tim in timovi:
+        temp.append({
+            "start": str(tim.beginning),
+            "end": str(tim.ending)
+        })
+    res = json.dumps(temp)
+    return HttpResponse(res, content_type="text/json-comment-filtered")
