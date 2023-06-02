@@ -175,6 +175,7 @@ function EditFieldForm(props, { user, isAuthenticated } ) {
                     className="custom-input"
                     id="textarea"
                     rows={3}
+                    maxLength={60}
                     variant="outlined"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -182,8 +183,8 @@ function EditFieldForm(props, { user, isAuthenticated } ) {
             </Box>
 
             <Box textAlign="center">
-                <Button variant="contained" className="custom-register-button" onClick={callFuns}>
-                    Edit
+                <Button variant="outlined" className="mt-3" onClick={callFuns}>
+                    EDIT
                 </Button>
             </Box>
         </form>

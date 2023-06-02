@@ -10,7 +10,7 @@ function Dashboard() {
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
-            <div className="renter-page">
+            <div className="page-margin">
                 <h1>Dashboard</h1>
                 <h5>Table of your 10 next bookings.</h5>
                 <TableNext10Bookings />

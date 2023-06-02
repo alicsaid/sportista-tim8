@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {connect, useSelector} from 'react-redux';
 import "../../pages/user/User.css";
 import axios from "axios";
-import { TextField, Button, Box } from '@mui/material';
+import { TextField, Box } from '@mui/material';
+import Button from '@material-ui/core/Button';
 
 const UserAccountOverview = (props) => {
     const [userData, setUserData] = useState([]);
@@ -107,8 +108,8 @@ const UserAccountOverview = (props) => {
                     </Box>
                 </>
             )}
-            <Button className="custom-login-btn mt-4" onClick={callFuns} variant="contained">
-                Edit
+            <Button variant="outlined" className="mt-4" onClick={callFuns}>
+                EDIT
             </Button>
         </form>
     );

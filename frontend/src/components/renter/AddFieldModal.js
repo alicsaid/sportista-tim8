@@ -20,9 +20,8 @@ const AddFieldModal = (props) => {
                 <AddIcon />
             </Fab>
             <Modal show={isOpen} onHide={closeModal}>
-                <Modal.Header>
+                <Modal.Header closeButton>
                     <Modal.Title>ADD NEW FIELD</Modal.Title>
-                    <button className="btn-close" onClick={closeModal}></button>
                 </Modal.Header>
                 <Modal.Body>
                     <FieldFormAction

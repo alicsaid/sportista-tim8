@@ -1,6 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from "react-bootstrap/Button";
+import Button from '@material-ui/core/Button';
 import "./Navbar&Footer.css";
 
 function TopNavbar() {
@@ -16,8 +16,8 @@ function TopNavbar() {
                 <Navbar.Collapse className="justify-content-end">
                     <div className="offset-4 col-4">
                         <div className="d-flex justify-content-end">
-                            <a href="/login"><button className="scaler m-2 nav-btn">Login</button></a>
-                            <a href="/register"><button className="scaler m-2 nav-btn">Register</button></a>
+                            <a href="/login"><Button variant="outlined" className="scaler m-2 nav-btn">Login</Button></a>
+                            <a href="/register"><Button variant="outlined" className="scaler m-2 nav-btn">Register</Button></a>
                         </div>
                     </div>
                 </Navbar.Collapse>

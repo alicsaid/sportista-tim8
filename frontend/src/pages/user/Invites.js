@@ -4,7 +4,7 @@ import React from 'react';
 import UserSidebar from "../../components/navigation/UserSidebar";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
-import ShuffleTeams from "../../components/user/ShuffleTeams";
+import InvitesTable from "../../components/user/InvitesTable";
 
 function Invites({ user, isAuthenticated }) {
 
@@ -14,9 +14,10 @@ function Invites({ user, isAuthenticated }) {
     return (
         <div style={{ display: 'flex' }}>
             <UserSidebar />
-            <div className="user-page">
+            <div className="page-margin">
                 <h1>Invites</h1>
                 <h5>List of invites from other users.</h5>
+                <InvitesTable />
             </div>
         </div>
     );

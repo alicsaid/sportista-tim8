@@ -18,15 +18,15 @@ function MyReservations({ user, isAuthenticated }) {
     return (
         <div style={{ display: 'flex' }}>
             <UserSidebar />
-            <div className="user-page">
+            <div className="page-margin">
                 <h1>My Reservations</h1>
                 <h5>List of your bookings.</h5>
                 <div className="fieldCards">
                     <MyReservationCard />
                 </div>
                 <div>
-                    <h1 className="user-subpage">Stats</h1>
-                    <h5 className="user-subtitle">The ratio of scheduled and played reservations.</h5>
+                    <h1 className="mt-5">Stats</h1>
+                    <h5>The ratio of scheduled and played reservations.</h5>
                     <UserStats scheduled={scheduled} played={played} />
                 </div>
             </div>

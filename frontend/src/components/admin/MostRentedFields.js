@@ -27,7 +27,7 @@ function MostRentedFields() {
     ];
 
     return (
-        <div className="most-rented-fields">
+        <div className="mt-5">
             <div className="most-rented-fields-container">
                 {mostRentedFields.map((field, index) => (
                     <Card key={index} className="most-rented-field-card">
@@ -43,7 +43,7 @@ function MostRentedFields() {
                                 <ListItemText primary="Location: TBD" />
                             </ListItem>
                             <ListItem>
-                                <ListItemText primary="Availability: TBD" />
+                                <ListItemText primary="Price: TBD" />
                             </ListItem>
                         </List>
                     </Card>

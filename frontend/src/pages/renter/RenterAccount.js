@@ -8,7 +8,7 @@ function RenterAccount({user,isAuthenticated}) {
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
-            <div className="renter-page">
+            <div className="page-margin">
                 <h1>Account</h1>
                 <h5>Edit you account information here.</h5>
                 <RenterAccountOverview user={user}/>

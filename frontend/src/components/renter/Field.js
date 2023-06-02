@@ -1,46 +1,60 @@
-import Card from 'react-bootstrap/Card';
 import React from "react";
-
-/* components */
 import EditFieldModal from "./EditFieldModal";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
-import Button from "@mui/material/Button";
-import {Switch} from "@mui/material";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 import axios from "axios";
 import {SERVER_URL} from "../../auth/Consts";
 
 function Field(props) {
-
-
     return (
-        <div className="cardContainer">
+        <div className="cardContainer mt-5">
             <div className="cardRow">
                 {props.fields.map((field) => (
-                    <Card key={field.pk} style={{ width: '18rem', marginTop: "5rem" }}>
-                        <Card.Img variant="top" src={field.fields.images.split("SPLIT")[0]} alt={"teren"} />
-                        <Card.Body>
-                            <Card.Title>{field.fields.name}</Card.Title>
-                            <Card.Text>
+                    <Card key={field.pk} style={{ width: '18rem' }}>
+                        <CardMedia
+                            component="img"
+                            alt="teren"
+                            height="140"
+                            image={field.fields.images.split("SPLIT")[0]}
+                            title="teren"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {field.fields.name}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
                                 {field.fields.details}
-                            </Card.Text>
-                            <Card.Text>
+                            </Typography>
+                            <Divider className="mt-3 mb-3" />
+                            <Typography variant="body2" color="textSecondary" component="p">
                                 Price: {field.fields.price}
-                            </Card.Text>
-                            <Card.Text>
+                            </Typography>
+                            <Divider className="mt-3 mb-3" />
+                            <Typography variant="body2" color="textSecondary" component="p">
                                 Location: {field.fields.address}
-                            </Card.Text>
-                            <EditFieldModal field_id={field.pk} getf={props.getf}/>
-                            <DeleteConfirmationModal field_id={field.pk} getf={props.getf}/>
-                        </Card.Body>
-                        <Card.Footer className={"justify-content-between align-items-center d-flex"}>
-                            Lock:
+                            </Typography>
+                            <Divider className="mt-3 mb-3" />
+                            <Button>
+                                <EditFieldModal field_id={field.pk} getf={props.getf} />
+                            </Button>
+                            <Button>
+                                <DeleteConfirmationModal field_id={field.pk} getf={props.getf} />
+                            </Button>
+                            <Divider className="mt-3 mb-3" />
+                            <Typography component="span">AVAILABILITY:</Typography>
                             {field.fields.lock &&
                                 <Switch  defaultChecked={true} onChange={(event, checked) => {axios.post(`${SERVER_URL}/renter/lock_field/${field.pk}/${checked ? 1 : 0}/`)}} />
                             }
                             {!field.fields.lock &&
                                 <Switch onChange={(event, checked) => {axios.post(`${SERVER_URL}/renter/lock_field/${field.pk}/${checked ? 1 : 0}/`)}} />
                             }
-                        </Card.Footer>
+                        </CardContent>
                     </Card>
                 ))}
             </div>
