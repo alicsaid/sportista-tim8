@@ -1,6 +1,6 @@
 import React, { useState, useEffect  } from 'react';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Button from '@material-ui/core/Button';
 import "./RegisterForm.css";
 import {verify, register} from "../../auth/Auth";
 import {connect} from "react-redux";
@@ -231,9 +231,9 @@ const RenterRegisterForm = React.memo(({register, verify}) => {
                                 <h4>After that, you can proceed to login.</h4>
                             </div>
                             <div>
-                                <button onClick={handleLoginButtonClick} className="login-button custom-register-button">
+                                <Button onClick={handleLoginButtonClick} className="login-button">
                                     Login
-                                </button>
+                                </Button>
                             </div>
                         </>
                     );

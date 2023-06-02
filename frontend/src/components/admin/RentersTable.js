@@ -4,6 +4,16 @@ import Button from "react-bootstrap/Button";
 import "../../pages/admin/Admin.css";
 
 import axios from "axios";
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
+// components
 import DeleteConfirmationModalRenter from "./DeleteConfirmationModalRenter";
 import {Navigate} from "react-router-dom";
 import {Form, Modal} from "react-bootstrap";
@@ -67,35 +77,30 @@ function RentersTable(props) {
 
 
     return (
-
-        <div style={{display: 'flex'}}>
-            <div style={{marginLeft: '10px'}}>
-                <div className="table">
-                    <Table striped bordered hover size="sm"
-                           style={{border: '3px solid #ccc', boxShadow: '0 0 5px rgba(0,0,0,0.2)'}}>
-                        <thead>
-                        <tr>
-                            <th className="table-content">ID</th>
-                            <th className="table-content">Name</th>
-                            <th className="table-content">Email address</th>
-                            <th className="table-content">City</th>
-                            <th className="table-content">Phone number</th>
-                            <th className="table-content">Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {renters.map((renter, index=1) => (
-                            <React.Fragment key={renter.id}>
-                                <tr>
-                                    <td className="table-content">{counter + index}</td>
-                                    <td className="table-content">{renter.name}</td>
-                                    <td className="table-content">{renter.email}</td>
-                                    <td className="table-content">{renter.city}</td>
-                                    <td className="table-content">{renter.phone}</td>
-
-                                    <td className="table-content">
-                                        <div className="button-group">
-                                            <Button className="buttonView" onClick={() => openModal(renter)}  size="sm">Warn</Button>
+        <div className="mt-5">
+            <TableContainer component={Paper}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>#</TableCell>
+                            <TableCell>Full Name</TableCell>
+                            <TableCell>Email address</TableCell>
+                            <TableCell>City</TableCell>
+                            <TableCell>Phone number</TableCell>
+                            <TableCell>Action</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {renters.map((renter, index) => (
+                            <TableRow key={renter.id}>
+                                <TableCell>{index + 1}</TableCell>
+                                <TableCell>{renter.name}</TableCell>
+                                <TableCell>{renter.email}</TableCell>
+                                <TableCell>{renter.city}</TableCell>
+                                <TableCell>{renter.phone}</TableCell>
+                                <TableCell>
+                                    <div>
+                                         <Button variant="outlined" onClick={() => openModal(renter)} >WARNING</Button>
                                             <Modal show={isOpen} onHide={closeModal}>
                                                 <Modal.Header closeButton>
                                                     <Modal.Title>Send Warning Message</Modal.Title>
@@ -122,17 +127,14 @@ function RentersTable(props) {
                                                     </Button>
                                                 </Modal.Footer>
                                             </Modal>
-
-                                            <DeleteConfirmationModalRenter renter_id={renter.id} getR={getRenters} />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </React.Fragment>
+                                        <DeleteConfirmationModalRenter renter_id={renter.id} getR={getRenters} />
+                                    </div>
+                                </TableCell>
+                            </TableRow>
                         ))}
-                        </tbody>
-                    </Table>
-                </div>
-            </div>
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     );
 }

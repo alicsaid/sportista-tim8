@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
 
 const FieldDetailsModal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,7 @@ const FieldDetailsModal = (props) => {
 
     return (
         <>
-            <button className="custom-register-button" onClick={openModal}>Details</button>
+            <Button variant="outlined" onClick={openModal}>Details</Button>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>{props.name}</Modal.Title>
@@ -19,7 +20,7 @@ const FieldDetailsModal = (props) => {
                     <p>Details: {props.details}</p>
                     <p>Price: {props.price}</p>
                     <p>Posto u bazi nemamo vise podataka o terenu, ovdje mozemo dodati jos kad je koji dostupan</p>
-                    <button className="custom-register-button">Book</button>
+                    <Button variant="outlined" className="mt-3">BOOK</Button>
                 </Modal.Body>
             </Modal>
         </>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./LoginForm.css";
 import {connect} from "react-redux";
 import {login} from "../../auth/Auth";
+import Button from '@material-ui/core/Button';
 
 
 function LoginForm({login}) {
@@ -76,7 +77,7 @@ function LoginForm({login}) {
                     <input type="email" placeholder="Email address" onChange={handleUserEmail}/>
                         <input type="password" placeholder="Password" onChange={handleUserPassword}/>
                     <a href="http://localhost:3000/reset_password" className="forgot_password">Forgot password?</a>
-                            <button className="custom-login-btn mt-2" onClick={loginUser}>Login</button>
+                            <Button variant="outlined" className="mt-2" onClick={loginUser}>Login</Button>
                 </form>
             </div>
             <div className="form-container sign-in-container">
@@ -85,7 +86,7 @@ function LoginForm({login}) {
                     <input type="email" placeholder="Email address" onChange={handleRenterEmail}/>
                         <input type="password" placeholder="Password" onChange={handleRenterPassword}/>
                     <a href="http://localhost:3000/reset_password" className="forgot_password">Forgot password?</a>
-                            <button className="custom-login-btn mt-2" onClick={loginRenter}>Login</button>
+                            <Button variant="outlined" className="mt-2" onClick={loginRenter}>Login</Button>
                 </form>
             </div>
             <div className="overlay-container">
@@ -93,12 +94,12 @@ function LoginForm({login}) {
                     <div className="overlay-panel overlay-left">
                         <h1 className="loginh1">Are you a renter?</h1>
                         <p className="loginp">Click here to login as renter.</p>
-                        <button id="signUser" className="custom-login-btn" onClick={handleRenterButtonClick}>Login</button>
+                        <Button id="signUser" variant="outlined" className="" onClick={handleRenterButtonClick}>Login</Button>
                     </div>
                     <div className="overlay-panel overlay-right">
                         <h1 className="loginh1">Are you a user?</h1>
                         <p className="loginp">Click here to login as user.</p>
-                        <button id="signRenter" className="custom-login-btn" onClick={handleUserButtonClick}>Login</button>
+                        <Button id="signRenter" variant="outlined" className="" onClick={handleUserButtonClick}>Login</Button>
                     </div>
                 </div>
             </div>

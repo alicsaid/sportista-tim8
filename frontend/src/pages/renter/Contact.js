@@ -14,7 +14,7 @@ function Contact({ isAuthenticated,user }) {
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
-            <div className="renter-page">
+            <div className="page-margin">
                 <h1>Contact</h1>
                 <h5>Contact support team for any questions.</h5>
                 <ContactForm />

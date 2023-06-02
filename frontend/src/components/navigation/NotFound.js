@@ -1,4 +1,5 @@
 import "./NotFound.css";
+import Button from '@material-ui/core/Button';
 
 function NotFound() {
 
@@ -13,7 +14,7 @@ function NotFound() {
                 <h2 className="h2-404">UH OH! You're lost.</h2>
                 <p>The page you are looking for does not exist. How you got here is a mystery.</p>
                 <p>But you can click the button below to go back.</p>
-                <button className="custom-register-button" onClick={goBack}>GO BACK</button>
+                <Button variant="outlined" className="" onClick={goBack}>GO BACK</Button>
             </main>
         </div>
     );

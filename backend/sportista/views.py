@@ -9,7 +9,8 @@ from django.http import HttpResponse
 
 from sportista.models import Field, Sport, Renter, UserAccount, SportistaUser
 
-from sportista.models import Field, Sport, UserAccount, SportistaUser, Renter
+from sportista.models import Field, Sport, UserAccount, SportistaUser, Renter, Team, TeamRentsField
+
 
 from sportista.recomendation import train, create_user_field_model
 
@@ -150,6 +151,7 @@ def deleteRenterField(request, params):
     return HttpResponse("Ok")
 
 
+
 @api_view(['POST'])
 def spremi(request):
     objekat = Field(id_rentera_id=request.data.get("user"), name=request.data.get("name"),
@@ -171,6 +173,7 @@ def lock_field(request, id_field, state):
     else:
         Field.objects.filter(pk=id_field).update(lock=True)
     return HttpResponse("okej")
+
 
 
 @api_view(['GET'])
@@ -224,6 +227,32 @@ def deleteUser(request, params):
     SportistaUser.objects.filter(id_logina_id=params).delete()
     UserAccount.objects.filter(id=params).delete()
     return HttpResponse("Ok")
+
+@api_view(['POST'])
+def book_field_solo(request):
+    team = Team(id_leader=SportistaUser.objects.get(id=request.data.get("id_usera")), plays_sport_id=request.data.get("id_sporta"))
+    team.save()
+    print(request.data)
+    field = Field.objects.get(id=request.data.get("id_fielda"))
+    field.has_teams.add(team, through_defaults={
+        'price': request.data.get("price"),
+        'beginning': request.data.get("start"),
+        'ending': request.data.get("ends")
+    })
+
+    return HttpResponse("Ok")
+
+@api_view(['GET'])
+def get_dates(request, field_id):
+    timovi = list(TeamRentsField.objects.all())
+    temp = []
+    for tim in timovi:
+        temp.append({
+            "start": str(tim.beginning),
+            "end": str(tim.ending)
+        })
+    res = json.dumps(temp)
+    return HttpResponse(res, content_type="text/json-comment-filtered")
 
 
 @api_view(['POST'])
