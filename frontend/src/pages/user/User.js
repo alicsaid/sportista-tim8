@@ -38,7 +38,7 @@ function Dashboard({user, isAuthenticated}) {
                 <h1>Dashboard</h1>
                 <h5>List of available fields for booking.</h5>
                 <div className="fieldCards">
-                    <FieldCard fields={fields}/>
+                    <FieldCard fields={fields} user={user}/>
                 </div>
             </div>
         </div>
