@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c1a36c95-1093-41fe-8640-0d493f271060" name="Changes" comment="Mersa">
+      <change beforePath="$PROJECT_DIR$/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backendSportista/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backendSportista/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportista/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sportista/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportista/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sportista/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportista/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sportista/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/auth/ResetPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/auth/ResetPassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/auth/ResetPasswordConfirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/auth/ResetPasswordConfirm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/DashboardCharts.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/DashboardCharts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/DeleteConfirmationModalRenter.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/DeleteConfirmationModalRenter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/DeleteConfirmationModalUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/DeleteConfirmationModalUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/MostRentedFields.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/MostRentedFields.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/RentersTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/RentersTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/UsersTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/UsersTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/contact/Contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/contact/Contact.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/contact/ContactForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/contact/ContactForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/login/AdminLoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/login/AdminLoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/login/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/login/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/AdminSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/AdminSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/FAQFAB.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/FAQFAB.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/NotFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/NotFound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/register/RenterRegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/register/RenterRegisterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/AddFieldModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/AddFieldModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/DeleteConfirmationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/DeleteConfirmationModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/EditFieldForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/EditFieldForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/EditFieldModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/EditFieldModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/Field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/FieldFormAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/FieldFormAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/RenterAccountOverview.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/RenterAccountOverview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/TableNext10Bookings.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/TableNext10Bookings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/BookFieldModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/BookFieldModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/CancelBookingFieldModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/CancelBookingFieldModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/FieldCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/FieldCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/FieldDetailsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/FieldDetailsModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/ShuffleTeams.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/ShuffleTeams.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/UserAccountOverview.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/UserAccountOverview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/Admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/Admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/Renters.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/Renters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/Users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/renter/Analytics.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/renter/Analytics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/renter/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/renter/Contact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/renter/MyFields.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/renter/MyFields.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/renter/Renter.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/renter/Renter.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/renter/Renter.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/renter/Renter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/renter/RenterAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/renter/RenterAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/Contact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/Invites.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/Invites.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/MyReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/MyReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/ShuffleTeamsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/ShuffleTeamsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/User.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/User.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/UserAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/UserAccount.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2QbsrYQ8xtD3ukM9jJlzCREqt4X" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Python.DjangoServer" factoryName="Django server" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="backendSportista.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1a36c95-1093-41fe-8640-0d493f271060" name="Changes" comment="" />
+      <created>1685633821589</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685633821589</updated>
+      <workItem from="1685633822896" duration="11340000" />
+      <workItem from="1685711804091" duration="1540000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Mersa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mersa" />
+  </component>
+</project>
