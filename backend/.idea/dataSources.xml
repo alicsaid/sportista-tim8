@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="db" uuid="2a3c25a4-c443-437f-861c-093a7fd9ef43">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>e6498aea-0e44-4a8d-8bd5-1d02037e1207</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\eminm\OneDrive\Desktop\Projekti\Sportista\sportista-tim8\backend\db.sqlite3</jdbc-url>
@@ -21,6 +21,13 @@
       <jdbc-url>jdbc:sqlite:C:\Users\HP\Desktop\New folder (2)\sportista-tim8\backend\db.sqlite3</jdbc-url>
     </data-source>
     <data-source source="LOCAL" name="db.sqlite3" uuid="bd1de5e5-0cf2-4875-9b9e-44f5805bceba">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="db.sqlite3 [2]" uuid="0c961bb5-b63c-4a3e-b6ef-00d35f62fc3b">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
