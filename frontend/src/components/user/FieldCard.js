@@ -32,7 +32,7 @@ function FieldCard(props) {
                         </Typography>
                     </CardContent>
                     <CardActions className="d-flex justify-content-between">
-                        <BookFieldModal/>
+                        <BookFieldModal field={field} user={props.user}/>
                         <FieldDetailsModal name={field.fields.name} address={field.fields.address} details={field.fields.details} price={field.fields.price} />
                     </CardActions>
                     <CardActions className="float-end" disableSpacing>

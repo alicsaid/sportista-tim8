@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
 
 const CancelBookingFieldModal = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,16 +10,16 @@ const CancelBookingFieldModal = () => {
 
     return (
         <>
-            <button className="custom-register-button" onClick={openModal}>CANCEL</button>
+            <Button variant="outlined" onClick={openModal}>CANCEL</Button>
             <Modal show={isOpen} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Cancel booking?</Modal.Title>
+                    <Modal.Title>CANCEL BOOKING</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="d-flex flex-column align-items-center">
                     <h5>Are you sure you want to cancel this reservation?</h5>
-                    <button className="custom-register-button mt-5" >
+                    <Button className="mt-3" >
                         CANCEL
-                    </button>
+                    </Button>
                 </Modal.Body>
             </Modal>
         </>

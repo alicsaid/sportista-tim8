@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "../../pages/home/Home.css";
-import {Modal} from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 

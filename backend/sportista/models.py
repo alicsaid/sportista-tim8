@@ -72,7 +72,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
 class Team(models.Model):
     id_leader = models.ForeignKey(SportistaUser, on_delete=models.CASCADE, related_name="teams_leader_set")
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255, unique=False, null=True)
     users = models.ManyToManyField(SportistaUser, related_name="teams_users_set", blank=True)
     plays_sport = models.ForeignKey(Sport, on_delete=models.CASCADE, related_name="teams_sport_set")
 
@@ -113,6 +113,7 @@ class TeamRentsField(models.Model):
     id_fielda = models.ForeignKey(Field, on_delete=models.CASCADE)
     beginning = models.DateTimeField()
     ending = models.DateTimeField()
+    price = models.IntegerField(default=0, null=True)
 
 
 class RenterRatesUser(models.Model):

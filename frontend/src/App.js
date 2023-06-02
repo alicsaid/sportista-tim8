@@ -27,8 +27,8 @@ import Logout from './auth/Logout'
 import {Provider} from 'react-redux'
 import store from './store'
 import Authentification from "./auth/Authentification";
-import AdminLoginForm from "./components/login/AdminLoginForm";
 import AdminLogin from "./pages/AdminLogin";
+import AdminInbox from "./pages/admin/Inbox";
 import ShuffleTeamsPage from "./pages/user/ShuffleTeamsPage";
 
 function App() {
@@ -48,6 +48,7 @@ function App() {
               <Route path="/activate/:uid/:token" element={<Activate />} />
               <Route path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/admin/inbox" element={<AdminInbox />} />
               <Route path="/admin/renters" element={<Renters />} />
               <Route path="/admin/users" element={<Users />} />
               <Route path="/renter" element={<Renter />} />

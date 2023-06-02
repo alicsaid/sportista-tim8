@@ -28,6 +28,11 @@ const AdminSidebar = () => {
                                 Dashboard
                             </CDBSidebarMenuItem>
                         </NavLink>
+                        <NavLink to="/admin/inbox" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
+                            <CDBSidebarMenuItem icon='inbox'>
+                                Inbox
+                            </CDBSidebarMenuItem>
+                        </NavLink>
                         <NavLink to="/admin/renters" className={({ isActive }) => (isActive ? "activeClicked" : '')}>
                             <CDBSidebarMenuItem icon='user-tag'>
                                 Renters

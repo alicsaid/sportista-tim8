@@ -5,12 +5,12 @@ import "./Renter.css";
 import RenterSidebar from "../../components/navigation/RenterSidebar";
 import {connect} from "react-redux";
 import TableNext10Bookings from "../../components/renter/TableNext10Bookings";
-function Dashboard() {
+function Dashboard({isAuthenticated, user}) {
 
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
-            <div className="renter-page">
+            <div className="page-margin">
                 <h1>Dashboard</h1>
                 <h5>Table of your 10 next bookings.</h5>
                 <TableNext10Bookings />

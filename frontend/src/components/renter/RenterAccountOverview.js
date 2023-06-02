@@ -68,7 +68,7 @@ const RenterAccountOverview = (props) => {
                     <Box mb={2}>
                         <TextField
                             className="custom-input"
-                            label="Name"
+                            label="Full name"
                             value={name}
                             variant="outlined"
                             fullWidth
@@ -107,8 +107,8 @@ const RenterAccountOverview = (props) => {
                     </Box>
                 </>
             )}
-            <Button className="custom-login-btn mt-4" onClick={callFuns} variant="contained">
-                Edit
+            <Button className="mt-3" onClick={callFuns} variant="outlined">
+                EDIT
             </Button>
         </form>
     );

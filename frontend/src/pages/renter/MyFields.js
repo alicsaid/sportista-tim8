@@ -35,12 +35,12 @@ function MyFields({user,isAuthenticated}) {
     return (
         <div style={{ display: 'flex' }}>
             <RenterSidebar />
-            <div className="renter-page">
+            <div className="page-margin">
                 <h1>My Fields</h1>
                 <h5>List of all your fields.</h5>
                 <Field user={user} fields={fields} getf={getFields}/>
+                <AddFieldModal props={user} getf={getFields}/>
             </div>
-            <AddFieldModal props={user} getf={getFields}/>
         </div>
     );
 }

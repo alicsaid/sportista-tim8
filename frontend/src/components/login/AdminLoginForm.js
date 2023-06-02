@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./LoginForm.css";
+import Button from '@material-ui/core/Button';
 import {connect} from "react-redux";
 import {login} from "../../auth/Auth";
 
@@ -14,7 +15,7 @@ function AdminLoginForm({login}) {
 
     const loginAdmin = (event) => {
         event.preventDefault()
-        login(adminEmail, adminPassword, false, false, false)
+        login(adminEmail, adminPassword, true, false, false)
     }
 
     return (
@@ -25,7 +26,7 @@ function AdminLoginForm({login}) {
 
                 <input className="custom-input" type="password" id="password" placeholder="Password" onChange={(event)=>{setAdminPassword(event.target.value)}}/>
 
-                <button className="custom-register-button" type="submit" onClick={loginAdmin}>Login</button>
+                <Button variant="outlined" type="submit" className="mt-3" onClick={loginAdmin}>Login</Button>
             </form>
         </div>
     );

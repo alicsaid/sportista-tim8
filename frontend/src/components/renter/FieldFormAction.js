@@ -4,6 +4,8 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 import {SERVER_URL} from "../../auth/Consts";
+import Button from "@material-ui/core/Button";
+import {Box, FormControl, InputLabel, MenuItem, Select, TextareaAutosize, TextField} from "@mui/material";
 
 function FieldFormAction(props, { user, isAuthenticated } ) {
 
@@ -92,40 +94,80 @@ function FieldFormAction(props, { user, isAuthenticated } ) {
 
     return (
         <form encType="multipart/form-data">
-            <div className="mb-1">
-                <select className="custom-input" id="formBasicSport" aria-label="Default select example" onChange={(e) => { setSport(e.target.value) }}>
-                    <option>Select sport</option>
-                    {hasSports.map((sport) => (
-                        <option value={sport.pk}>{sport.fields.name}</option>
-                    ))}
-                </select>
-            </div>
+            <Box mb={1}>
+                <FormControl fullWidth>
+                    <InputLabel htmlFor="formBasicSport">Sport</InputLabel>
+                    <Select
+                        className="custom-input"
+                        aria-label="Select sport"
+                        variant="outlined"
+                        onChange={(e) => setSport(e.target.value)}
 
-            <div className="mb-1">
-                <input className="custom-input" type="text" id="formBasicName" placeholder="Enter name" onChange={(e) => { setName(e.target.value) }} />
-            </div>
+                    >
+                        <MenuItem value="">Select sport</MenuItem>
+                        {hasSports.map((sport) => (
+                            <MenuItem key={sport.pk} value={sport.pk}>
+                                {sport.fields.name}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            </Box>
 
-            <div className="mb-1">
-                <input className="custom-input" type="text" id="formBasicLocation" placeholder="Enter location" onChange={(e) => { setLocation(e.target.value) }} />
-            </div>
+            <Box mb={1}>
+                <TextField
+                    className="custom-input"
+                    label="Name"
+                    variant="outlined"
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </Box>
 
-            <div className="mb-1">
-                <input className="custom-input" type="number" id="formBasicPrice" placeholder="Enter price" onChange={(e) => { setPrice(e.target.value) }} />
-            </div>
+            <Box mb={1}>
+                <TextField
+                    className="custom-input"
+                    variant="outlined"
+                    label="Location"
+                    onChange={(e) => setLocation(e.target.value)}
+                />
+            </Box>
 
-            <div className="mb-1">
-                <input className="custom-input" type="file" id="formBasicImg" placeholder="Enter Image" multiple onChange={(e) => { setImages(e.target.files) }} />
-            </div>
+            <Box mb={1}>
+                <TextField
+                    className="custom-input"
+                    variant="outlined"
+                    label="Price"
+                    onChange={(e) => setPrice(e.target.value)}
+                />
+            </Box>
 
-            <div className="mb-3">
-                <textarea className="custom-input" id="ControlTextarea1" rows={3} onChange={(e) => { setDescription(e.target.value) }}></textarea>
-            </div>
+            <Box mb={1}>
+                <InputLabel htmlFor="formBasicImg">Image</InputLabel>
+                <TextField
+                    className="custom-input"
+                    type="file"
+                    id="formBasicImg"
+                    onChange={(e) => setImages(e.target.files) }
+                />
+            </Box>
 
-            <div style={{ textAlign: "center" }}>
-                <button type="button" className="custom-register-button" onClick={callFuns}>
+            <Box mb={3}>
+                <InputLabel htmlFor="textarea">Description</InputLabel>
+                <TextareaAutosize
+                    className="custom-input"
+                    id="textarea"
+                    rows={3}
+                    maxLength={60}
+                    variant="outlined"
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+            </Box>
+
+            <Box textAlign="center">
+                <Button variant="outlined" className="mt-3" onClick={callFuns}>
                     {props.action}
-                </button>
-            </div>
+                </Button>
+            </Box>
         </form>
     );
 }

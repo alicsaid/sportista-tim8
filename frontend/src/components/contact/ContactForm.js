@@ -1,9 +1,10 @@
 import React from "react";
 import "./Contact.css";
+import Button from "@material-ui/core/Button";
 
 function ContactForm() {
     return (
-        <form className="contact-form">
+        <form className="contact-form mt-5">
             <div className="mb-3">
                 <input type="text" className="custom-input" id="first_name" name="first_name" placeholder="First name" required />
                 <input type="email" className="custom-input" id="last_name" name="last_name" placeholder="Last name" required />
@@ -19,7 +20,7 @@ function ContactForm() {
             <div className="mb-3">
                 <textarea className="custom-input contact-input" placeholder="Message" id="message" name="message" rows={5} style={{ resize: "none" }} required></textarea>
             </div>
-            <button className="custom-register-button" type="submit">SEND</button>
+            <Button variant="outlined" className="mt-3" type="submit">SEND</Button>
         </form>
     );
 }

@@ -34,11 +34,11 @@ function Dashboard({user, isAuthenticated}) {
     return (
         <div style={{ display: 'flex' }}>
                 <UserSidebar />
-            <div className="user-page">
+            <div className="page-margin">
                 <h1>Dashboard</h1>
                 <h5>List of available fields for booking.</h5>
                 <div className="fieldCards">
-                    <FieldCard fields={fields}/>
+                    <FieldCard fields={fields} user={user}/>
                 </div>
             </div>
         </div>
