@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import DeleteConfirmationModalUser from "./DeleteConfirmationModalUser";
+
+import Button from '@material-ui/core/Button';
+import {Form, Modal} from "react-bootstrap";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,16 +11,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import {Form} from "react-bootstrap";
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 
 function UsersTable() {
     const [users, setUsers] = useState([]);
