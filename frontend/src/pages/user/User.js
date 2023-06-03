@@ -20,7 +20,6 @@ function Dashboard({user, isAuthenticated}) {
                 .get(`http://127.0.0.1:8000/user/dashboard`)
                 .then((response) => {
 
-                    console.log(fields.length, response.data.length)
 
                     if(fields.length !== response.data.length)
                         setFields(response.data.reverse())

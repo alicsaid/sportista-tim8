@@ -125,7 +125,8 @@ export const register = (email, password, is_admin, is_user, is_renter, DATA) =>
             password:password,
             is_user:is_user,
             is_renter:is_renter,
-            is_admin: is_admin
+            is_admin: is_admin,
+            city: DATA.city
         })
         if(is_renter){
             const encodedName = encodeURIComponent(DATA.name)

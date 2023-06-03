@@ -9,11 +9,11 @@ import axios from "axios";
 const BookFieldModal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedTimeFrom, setSelectedTimeFrom] = useState('NONE'); // Selected time slot
-    const [selectedTimeTo, setSelectedTimeTo] = useState('NON'); // Selected time slot
+    const [selectedTimeTo, setSelectedTimeTo] = useState('NONE'); // Selected time slot
     const [numSlots, setNumSlots] = useState(0); // Number of slots
     const [selectedDate, setSelectedDate] = useState(new Date())
     const [bookedDates, setBookedDates] = useState([])
-    console.log(props.field.fields)
+
 
     const handleTimeChangeFrom = (event) => {
         const newTimeFrom = event.target.value;
@@ -43,17 +43,13 @@ const BookFieldModal = (props) => {
         //TO DO sredi alertove za pogresan unos
         if(selectedTimeFrom === 'NONE' || selectedTimeTo === 'NONE')
             alert("UNESI DATUME")
-        console.log(props.user)
         if(selectedTimeFrom && selectedTimeTo){
-            console.log(selectedTimeFrom, selectedTimeTo, selectedDate)
             let start = new Date(selectedDate)
             let end = new Date(selectedDate)
             start.setHours(selectedTimeFrom.split(':')[0])
             start.setMinutes(selectedTimeFrom.split(':')[1])
             end.setHours(selectedTimeTo.split(':')[0])
             end.setMinutes(selectedTimeTo.split(':')[1])
-            console.log(start)
-            console.log(end)
             if(start >= end)
                 alert("POGRESNO IZABRANI DATUMI")
 
@@ -70,13 +66,12 @@ const BookFieldModal = (props) => {
     };
 
     // Generate time options from 8 AM to 12 PM
-    const generateTimeOptions = (start, end) => {
+    const generateTimeOptions = (start, end, id) => {
         const options = [];
         //TO DO - provjeri da li odgovara sa terminima u bazi
         if(start !== undefined && end !== undefined){
             let start_date = new Date(selectedDate)
             let end_date = new Date(selectedDate)
-            console.log(bookedDates)
             start_date.setHours(start.split(":")[0])
             end_date.setHours(end.split(":")[0])
             options.push(<option>NONE</option>)
@@ -91,8 +86,10 @@ const BookFieldModal = (props) => {
                 bookedDates.forEach((date) => {
                     date.start = new Date(date.start)
                     date.end = new Date(date.end)
-                    if(date.start.getDate() === selectedDate.getDate() && date.start.getHours() <= i <= date.end.getHours())
+                    if(date.start.getDate() === selectedDate.getDate() && date.start.getHours() <= i && i <= date.end.getHours() && date.id_field === id){
                         validan = false
+                    }
+
                 })
                 if(validan)
                     options.push(
@@ -122,10 +119,10 @@ const BookFieldModal = (props) => {
                 <Modal.Body className="d-flex flex-column align-items-center">
                     <input className="custom-input" type="date" value={selectedDate.toISOString().split('T')[0]} onChange={(event) => {setSelectedDate(new Date(event.target.value))}}/>
                         <select className="custom-input" value={selectedTimeFrom} onChange={handleTimeChangeFrom}>
-                            {generateTimeOptions(props.field.fields.starts, props.field.fields.ends)}
+                            {generateTimeOptions(props.field.fields.starts, props.field.fields.ends, props.field.pk)}
                         </select>
                         <select className="custom-input" value={selectedTimeTo} onChange={handleTimeChangeTo}>
-                            {generateTimeOptions(props.field.fields.starts, props.field.fields.ends)}
+                            {generateTimeOptions(props.field.fields.starts, props.field.fields.ends, props.field.pk)}
                         </select>
 
                     {/* cijena bi trebalo da se izračuna po slotu, a cijena slota se pravi kada se pravi teren, slot je pola sata */}

@@ -129,7 +129,8 @@ function UserRegisterForm({register}) {
             gender: userGender,
             date_of_birth: userDateOfBirth,
             sports: chosenSports,
-            user_availability: userAvailability
+            user_availability: userAvailability,
+            city: "Sarajevo"
         }
         register(userEmail, userPassword, false, true, false, DATA).then(() => {
             setFormSubmitted(true)

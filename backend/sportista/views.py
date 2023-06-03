@@ -230,7 +230,8 @@ def get_dates(request, field_id):
     for tim in timovi:
         temp.append({
             "start": str(tim.beginning),
-            "end": str(tim.ending)
+            "end": str(tim.ending),
+            "id_field": tim.id_fielda_id
         })
     res = json.dumps(temp)
     return HttpResponse(res, content_type="text/json-comment-filtered")

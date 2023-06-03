@@ -15,7 +15,7 @@ import DeleteConfirmationModalRenter from "./DeleteConfirmationModalRenter";
 function RentersTable() {
 
     const [renters, setRenters] = useState([]);
-
+    console.log(renters)
     useEffect(() => {
         getRenters();
     }, []);
