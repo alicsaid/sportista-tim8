@@ -9,7 +9,8 @@ import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 import FieldDetailsModal from "./FieldDetailsModal";
-import BookFieldModal from "./BookFieldModal";
+import BookFieldModal from "./BookFieldModal";import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 
 function FieldCard(props) {
@@ -18,12 +19,13 @@ function FieldCard(props) {
             <div className="cardRow">
             {props.fields.map((field) => (
                 <Card sx={{ maxWidth: 345 }}>
-                    <CardMedia
-                        component="img"
-                        height="140"
-                        image={field.fields.images.split("SPLIT")[0]}
-                        alt="Field"
-                    />
+                    <Carousel showThumbs={false}>
+                        {field.fields.images.split("SPLIT").map((image) => (
+                            <div>
+                                <img src={image} alt="Field photo" />
+                            </div>
+                        ))}
+                    </Carousel>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             {field.fields.name}

@@ -95,7 +95,9 @@ export const login = (email, password, is_admin, is_user, is_renter, handleError
             }
         })
 
-        if((res2.data.is_user === true && is_user === true) || (res2.data.is_renter === true && is_renter === true)){
+        if((res2.data.is_user === true && is_user === true) || (res2.data.is_renter === true && is_renter === true) || (res2.data.is_admin === true && is_admin === true)
+        ){
+            console.log(is_admin, res2.data)
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res1.data
