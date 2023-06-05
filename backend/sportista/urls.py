@@ -7,6 +7,9 @@ urlpatterns = [
 
     path("test/", views.test, name="index"),
 
+    path("admin/getRentersCount/", views.getRentersCount, name="getRentersCount"),
+    path("admin/getUsersCount/", views.getUsersCount, name="getUsersCount"),
+    path("admin/getRentalsData/", views.getRentalsData, name="getRentalsData"),
     path("admin/renters/getRenters/", views.getRenters, name="getRenters"),
     path("admin/renters/deleteRenter/<int:params>/", views.deleteRenter, name="deleteRenter"),
     path("admin/renters/send-email/", views.sendEmail, name="sendEmail"),
