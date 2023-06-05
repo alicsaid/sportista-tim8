@@ -47,7 +47,7 @@ def dajSportove(request):
 
 @api_view(['GET'])
 def getFields(request, params):
-    list_of_fields = Field.objects.filter(is_sport=params)
+    list_of_fields = Field.objects.filter(is_sport=params, lock=False)
     res = serializers.serialize('json', list_of_fields)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
@@ -74,7 +74,7 @@ def getRenterFields(request, params):
 
 @api_view(['GET'])
 def getUserFields(request):
-    list_of_fields = Field.objects.all()
+    list_of_fields = Field.objects.filter(lock=False)
     res = serializers.serialize('json', list_of_fields)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")

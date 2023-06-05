@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0ea36ce-8da6-46d3-87af-309736eeaae1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/admin/RentersTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/UsersTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/UsersTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/Field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportista/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sportista/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,13 +33,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/eminm/OneDrive/Desktop/Projekti/sportista-tim8/backend",
+    "last_opened_file_path": "C:/Users/User/Desktop/dws/sportista-tim8/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
   }
 }]]></component>
   <component name="RunManager">
@@ -48,8 +57,8 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="backendSportista.settings" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\eminm\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="SDK_HOME" value="C:\Users\User\Desktop\sportista\sportista-tim8\backend\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11 (backend)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -78,6 +87,7 @@
       <workItem from="1685701426191" duration="114000" />
       <workItem from="1685732634032" duration="70000" />
       <workItem from="1685801010016" duration="335000" />
+      <workItem from="1685956707111" duration="3135000" />
     </task>
     <servers />
   </component>
