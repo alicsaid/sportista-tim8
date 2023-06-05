@@ -144,7 +144,7 @@ function FieldFormAction(props) {
 
             {!images && (
                 <Box mb={1}>
-                    <img src={defaultImage} alt="Default" width="200" height="200" />
+                    <img src={defaultImage} alt="Default" width="200" height="200" style={{ display: "none" }} />
                 </Box>
             )}
 
