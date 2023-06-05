@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 
 
 function LoginForm({login}) {
-    const [isRightPanelActive, setRightPanelActive] = useState(false);
+    const [isRightPanelActive, setRightPanelActive] = useState(true);
     const [renterEmail, setRenterEmail] = useState('');
     const [renterPassword, setRenterPassword] = useState('');
     const [userEmail, setuserEmail] = useState('');

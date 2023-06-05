@@ -61,7 +61,7 @@ function Basketball(props) {
                                 </Typography>
                             </CardContent>
                             <CardActions className="d-flex justify-content-between">
-                                <BookFieldModal />
+                                <BookFieldModal field={field}/>
                                 <FieldDetailsModal />
                             </CardActions>
                         </Card>

@@ -53,7 +53,7 @@ function Field(props) {
                                 <DeleteConfirmationModal field_id={field.pk} getf={props.getf} />
                             </Button>
                             <Divider className="mt-3 mb-3" />
-                            <Typography component="span">AVAILABILITY:</Typography>
+                            <Typography component="span" >LOCK FIELD:</Typography>
                             {field.fields.lock &&
                                 <Switch  defaultChecked={true} onChange={(event, checked) => {axios.post(`${SERVER_URL}/renter/lock_field/${field.pk}/${checked ? 1 : 0}/`)}} />
                             }
