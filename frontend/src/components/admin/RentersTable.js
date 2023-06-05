@@ -52,10 +52,8 @@ function RentersTable() {
                                 <TableCell>{renter.city}</TableCell>
                                 <TableCell>{renter.phone}</TableCell>
                                 <TableCell>
-                                    <div>
-                                        <Button variant="outlined">WARNING</Button>
-                                        <DeleteConfirmationModalRenter renter_id={renter.id} getR={getRenters} />
-                                    </div>
+                                    <Button className="custom-button m-2">WARNING</Button>
+                                    <DeleteConfirmationModalRenter renter_id={renter.id} getR={getRenters} />
                                 </TableCell>
                             </TableRow>
                         ))}

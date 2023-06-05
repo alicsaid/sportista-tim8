@@ -5,9 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0ea36ce-8da6-46d3-87af-309736eeaae1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/admin/RentersTable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/user/RecomendedFields.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/user/Tab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/DeleteConfirmationModalRenter.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/DeleteConfirmationModalRenter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/DeleteConfirmationModalUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/DeleteConfirmationModalUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/RentersTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/RentersTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/admin/UsersTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/admin/UsersTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/Field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/login/AdminLoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/login/AdminLoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/login/LoginForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/login/LoginForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/login/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/login/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/AdminSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/AdminSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/Navbar&amp;Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/Navbar&amp;Footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/RenterSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/RenterSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/navigation/UserSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/navigation/UserSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/register/RegisterForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/register/RegisterForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/register/RenterRegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/register/RenterRegisterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/register/UserRegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/register/UserRegisterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/renter/DeleteConfirmationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/renter/DeleteConfirmationModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/BookFieldModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/BookFieldModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/FieldCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/FieldCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/InvitesTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/InvitesTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/MyReservationCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/MyReservationCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/user/UserAccountOverview.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/user/UserAccountOverview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/AdminLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/AdminLogin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/Inbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/Inbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/Renters.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/Renters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/Users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/home/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/home/SportsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/home/SportsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/Contact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/Invites.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/Invites.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/MyReservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/MyReservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/ShuffleTeamsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/ShuffleTeamsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/User.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/User.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/user/UserAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/user/UserAccount.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +75,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/eminm/OneDrive/Desktop/Projekti/sportista-tim8/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -37,10 +85,15 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="Python.DjangoServer" factoryName="Django server" nameIsGenerated="true">
+    <configuration name="DJANGO SERVER" type="Python.DjangoServer" factoryName="Django server">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -48,7 +101,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="backendSportista.settings" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\eminm\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\alics\AppData\Local\Programs\Python\Python311\python.exe" />
       <option name="SDK_NAME" value="Python 3.11" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -78,6 +131,7 @@
       <workItem from="1685701426191" duration="114000" />
       <workItem from="1685732634032" duration="70000" />
       <workItem from="1685801010016" duration="335000" />
+      <workItem from="1685964972463" duration="5368000" />
     </task>
     <servers />
   </component>

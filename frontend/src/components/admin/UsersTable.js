@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import DeleteConfirmationModalUser from "./DeleteConfirmationModalUser";
-
 import Button from '@material-ui/core/Button';
 import {Form, Modal} from "react-bootstrap";
 import Table from '@material-ui/core/Table';
@@ -12,9 +10,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+//components
+import DeleteConfirmationModalUser from "./DeleteConfirmationModalUser";
+
 function UsersTable() {
     const [users, setUsers] = useState([]);
-    const [counter, setCounter] = useState(1);
     const [isOpen, setIsOpen] = useState(false);
     const [warningMessage, setWarningMessage] = useState('');
     const [selectedUser, setSelectedUser] = useState(null);
@@ -96,11 +96,9 @@ function UsersTable() {
                                 <TableCell>{user.city}</TableCell>
                                 <TableCell>
                                     <div>
-                                        <Button variant="outlined" onClick={() => openModal(user)}>WARNING</Button>
+                                        <Button className="custom-button m-2" onClick={() => openModal(user)}>WARNING</Button>
                                         <Modal show={isOpen} onHide={closeModal}>
-                                        <Modal.Header closeButton>
-                                            <Modal.Title>Send Warning Message</Modal.Title>
-                                        </Modal.Header>
+                                        <Modal.Header closeButton></Modal.Header>
                                         <Modal.Body>
                                             <Form>
                                                 <Form.Group controlId="message">

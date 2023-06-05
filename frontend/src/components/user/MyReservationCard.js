@@ -30,10 +30,6 @@ function FieldCard() {
                 <CancelBookingFieldModal />
                 <FieldDetailsModal />
             </CardActions>
-            <CardActions className="float-end" disableSpacing>
-                <Typography component="span">4.5/5 </Typography>
-                <StarIcon color="primary" fontSize="small" />
-            </CardActions>
         </Card>
     );
 }

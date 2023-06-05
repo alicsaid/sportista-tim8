@@ -9,7 +9,8 @@ import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 import FieldDetailsModal from "./FieldDetailsModal";
-import BookFieldModal from "./BookFieldModal";import { Carousel } from 'react-responsive-carousel';
+import BookFieldModal from "./BookFieldModal";
+import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 
@@ -18,7 +19,7 @@ function FieldCard(props) {
         <div className="cardContainer">
             <div className="cardRow">
             {props.fields.map((field) => (
-                <Card sx={{ maxWidth: 345 }}>
+                <Card className="card" sx={{ maxWidth: 345 }}>
                     <Carousel showThumbs={false}>
                         {field.fields.images.split("SPLIT").map((image) => (
                             <div>
@@ -31,13 +32,9 @@ function FieldCard(props) {
                             {field.fields.name}
                         </Typography>
                     </CardContent>
-                    <CardActions className="d-flex justify-content-between">
+                    <CardActions className="d-flex justify-content-evenly">
                         <BookFieldModal field={field} user={props.user}/>
                         <FieldDetailsModal name={field.fields.name} address={field.fields.address} details={field.fields.details} price={field.fields.price} />
-                    </CardActions>
-                    <CardActions className="float-end" disableSpacing>
-                        <Typography component="span">4.5/5 </Typography>
-                        <StarIcon color="primary" fontSize="small" />
                     </CardActions>
                 </Card>
             ))}

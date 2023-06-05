@@ -21,7 +21,7 @@ function SportsPage() {
     const { sport } = useParams();
 
     return (
-        <div className="sportsPage">
+        <div className="background-grayish sportsPage">
             <TopNavbar />
             {sport === 'basketball' && <Basketball header="Basketball" />}
             {sport === 'paintball' && <Paintball header="Paintball" />}
