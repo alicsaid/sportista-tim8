@@ -1,4 +1,5 @@
 from django.core import serializers
+from django.db.models.functions import ExtractMonth
 from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
@@ -47,7 +48,7 @@ def dajSportove(request):
 
 @api_view(['GET'])
 def getFields(request, params):
-    list_of_fields = Field.objects.filter(is_sport=params)
+    list_of_fields = Field.objects.filter(is_sport=params, lock=False)
     res = serializers.serialize('json', list_of_fields)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
@@ -74,7 +75,7 @@ def getRenterFields(request, params):
 
 @api_view(['GET'])
 def getUserFields(request):
-    list_of_fields = Field.objects.all()
+    list_of_fields = Field.objects.filter(lock=False)
     res = serializers.serialize('json', list_of_fields)
 
     return HttpResponse(res, content_type="text/json-comment-filtered")
@@ -297,3 +298,43 @@ def get_dates(request, field_id):
         })
     res = json.dumps(temp)
     return HttpResponse(res, content_type="text/json-comment-filtered")
+
+@api_view(['GET'])
+def getUsersCount(request):
+    count = SportistaUser.objects.count()
+    data = {'broj_osoba': count}
+    json_data = json.dumps(data)
+    return HttpResponse(json_data, content_type='application/json')
+
+@api_view(['GET'])
+def getRentersCount(request):
+    count = Renter.objects.count()
+    data = {'broj_osoba': count}
+
+    json_data = json.dumps(data)
+    return HttpResponse(json_data, content_type='application/json')
+
+@api_view(['GET'])
+def getRentalsData(request):
+    rentals_per_month = []
+    months = {
+        'January': 1,
+        'February': 2,
+        'March': 3,
+        'April': 4,
+        'May': 5,
+        'June': 6,
+    }
+
+    # Logika za brojanje iznajmljenih terena po mjesecima
+    for month in months:
+        rentals_count = TeamRentsField.objects.annotate(rental_month=ExtractMonth('beginning')).filter(rental_month=months[month]).count()
+        rentals_per_month.append(rentals_count)
+
+    data = {
+        'rentals_per_month': rentals_per_month,
+    }
+    json_data = json.dumps(data)
+    return HttpResponse(json_data, content_type='application/json')
+
+

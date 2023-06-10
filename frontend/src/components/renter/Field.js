@@ -49,11 +49,11 @@ function Field(props) {
                             <div className="d-flex flex-row align-items-center justify-content-center">
                                 <Typography component="span">AVAILABILITY:</Typography>
                                 {field.fields.lock &&
-                                    <Switch  defaultChecked={true} onChange={(event, checked) => {axios.post(`${SERVER_URL}/renter/lock_field/${field.pk}/${checked ? 1 : 0}/`)}} />
-                                }
-                                {!field.fields.lock &&
-                                    <Switch onChange={(event, checked) => {axios.post(`${SERVER_URL}/renter/lock_field/${field.pk}/${checked ? 1 : 0}/`)}} />
-                                }
+                                <Switch  defaultChecked={true} onChange={(event, checked) => {axios.post(`${SERVER_URL}/renter/lock_field/${field.pk}/${checked ? 1 : 0}/`)}} />
+                            }
+                            {!field.fields.lock &&
+                                <Switch onChange={(event, checked) => {axios.post(`${SERVER_URL}/renter/lock_field/${field.pk}/${checked ? 1 : 0}/`)}} />
+                            }
                             </div>
                         </CardContent>
                     </Card>

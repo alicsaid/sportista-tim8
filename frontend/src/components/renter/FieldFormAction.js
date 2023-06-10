@@ -139,6 +139,7 @@ function FieldFormAction(props) {
                     type="file"
                     id="formBasicImg"
                     onChange={(e) => setImages(e.target.files)}
+                    inputProps={{ multiple: true }}
                 />
             </Box>
 
