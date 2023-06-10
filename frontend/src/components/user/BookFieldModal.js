@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
+import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import Button from '@material-ui/core/Button';
 import {SERVER_URL} from "../../auth/Consts";
@@ -47,6 +48,7 @@ const BookFieldModal = (props) => {
     };
 
     const handleBooking = () => {
+        //TO DO sredi alertove za pogresan unos
         if(selectedTimeFrom === 'NONE' || selectedTimeTo === 'NONE')
             alert("Please select time")
         if(selectedTimeFrom && selectedTimeTo){

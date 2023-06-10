@@ -6,3 +6,14 @@
     padding: 2rem;
     margin-top: 5rem;
 }
+
+.add-fab {
+    border-radius: 50% !important;
+    background: #2e424d !important;
+    color: white !important;
+}
+
+.add-fab:hover {
+    transition: transform 0.3s;
+    transform: scale(1.1);
+}

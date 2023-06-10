@@ -71,39 +71,39 @@ function LoginForm({login}) {
     return (
         <div className="login-form-page">
             <div className={isRightPanelActive ? 'dowebok right-panel-active' : 'dowebok'} id="dowebok">
-            <div className="form-container sign-up-container">
-                <form action="#">
-                    <h3 className="loginh1">USER LOGIN</h3>
-                    <input type="email" placeholder="Email address" onChange={handleUserEmail}/>
-                        <input type="password" placeholder="Password" onChange={handleUserPassword}/>
-                    <a href="http://localhost:3000/reset_password" className="forgot_password">Forgot password?</a>
-                            <Button variant="outlined" className="mt-2" onClick={loginUser}>Login</Button>
-                </form>
-            </div>
-            <div className="form-container sign-in-container">
-                <form action="#">
-                    <h3 className="loginh1">RENTER LOGIN</h3>
-                    <input type="email" placeholder="Email address" onChange={handleRenterEmail}/>
-                        <input type="password" placeholder="Password" onChange={handleRenterPassword}/>
-                    <a href="http://localhost:3000/reset_password" className="forgot_password">Forgot password?</a>
-                            <Button variant="outlined" className="mt-2" onClick={loginRenter}>Login</Button>
-                </form>
-            </div>
-            <div className="overlay-container">
-                <div className="overlay">
-                    <div className="overlay-panel overlay-left">
-                        <h1 className="loginh1">Are you a renter?</h1>
-                        <p className="loginp">Click here to login as renter.</p>
-                        <Button id="signUser" variant="outlined" className="" onClick={handleRenterButtonClick}>Login</Button>
-                    </div>
-                    <div className="overlay-panel overlay-right">
-                        <h1 className="loginh1">Are you a user?</h1>
-                        <p className="loginp">Click here to login as user.</p>
-                        <Button id="signRenter" variant="outlined" className="" onClick={handleUserButtonClick}>Login</Button>
+                <div className="form-container sign-up-container">
+                    <form action="#">
+                        <h3 className="loginh1">USER LOGIN</h3>
+                        <input type="email" placeholder="Email address" onChange={handleUserEmail}/>
+                            <input type="password" placeholder="Password" onChange={handleUserPassword}/>
+                        <a href="http://localhost:3000/reset_password" className="forgot_password">Forgot password?</a>
+                                <Button className="mt-2 custom-button" onClick={loginUser}>Login</Button>
+                    </form>
+                </div>
+                <div className="form-container sign-in-container">
+                    <form action="#">
+                        <h3 className="loginh1">RENTER LOGIN</h3>
+                        <input type="email" placeholder="Email address" onChange={handleRenterEmail}/>
+                            <input type="password" placeholder="Password" onChange={handleRenterPassword}/>
+                        <a href="http://localhost:3000/reset_password" className="forgot_password">Forgot password?</a>
+                                <Button className="mt-2 custom-button" onClick={loginRenter}>Login</Button>
+                    </form>
+                </div>
+                <div className="overlay-container">
+                    <div className="overlay">
+                        <div className="overlay-panel overlay-left">
+                            <h1 className="loginh1">Are you a renter?</h1>
+                            <p className="loginp">Click here to login as renter.</p>
+                            <Button id="signUser" className="custom-button2" onClick={handleRenterButtonClick}>Login</Button>
+                        </div>
+                        <div className="overlay-panel overlay-right">
+                            <h1 className="loginh1">Are you a user?</h1>
+                            <p className="loginp">Click here to login as user.</p>
+                            <Button id="signRenter" className="custom-button2" onClick={handleUserButtonClick}>Login</Button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     );
 }

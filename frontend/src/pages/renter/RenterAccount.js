@@ -6,7 +6,7 @@ import RenterAccountOverview from "../../components/renter/RenterAccountOverview
 
 function RenterAccount({user,isAuthenticated}) {
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="background-grayish" style={{ display: 'flex' }}>
             <RenterSidebar />
             <div className="page-margin">
                 <h1>Account</h1>

@@ -20,7 +20,7 @@ function ContactForm() {
             <div className="mb-3">
                 <textarea className="custom-input contact-input" placeholder="Message" id="message" name="message" rows={5} style={{ resize: "none" }} required></textarea>
             </div>
-            <Button variant="outlined" className="mt-3" type="submit">SEND</Button>
+            <Button className=" custom-button mt-3" type="submit">SEND</Button>
         </form>
     );
 }
