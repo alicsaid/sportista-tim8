@@ -35,4 +35,6 @@ urlpatterns = [
     path("user/getData/<int:params>/", views.getUserData, name="getUserData"),
     path("user/changeData/<int:params>/", views.changeUserData, name="changeUserData"),
 
+    path("inbox/message/", views.sendMessage, name="sendMessage"),
+
 ]
