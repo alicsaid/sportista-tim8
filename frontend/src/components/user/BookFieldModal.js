@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
-import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import Button from '@material-ui/core/Button';
 import {SERVER_URL} from "../../auth/Consts";

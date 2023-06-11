@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
-from sportista.models import Field, Sport, Renter, UserAccount, SportistaUser
+from sportista.models import Field, Sport, Renter, UserAccount, SportistaUser, Inbox
 
 from sportista.models import Field, Sport, UserAccount, SportistaUser, Renter, Team, TeamRentsField
 
@@ -337,4 +337,9 @@ def getRentalsData(request):
     json_data = json.dumps(data)
     return HttpResponse(json_data, content_type='application/json')
 
+@api_view(['POST'])
+def sendMessage(request):
+    message = Inbox(first_name = request.data.get("firstName"), last_name = request.data.get("lastName"), subject = request.data.get("subject"), text = request.data.get("message"))
+    message.save()
+    return HttpResponse("ok")
 
