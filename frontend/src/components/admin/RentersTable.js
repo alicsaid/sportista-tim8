@@ -92,7 +92,7 @@ function RentersTable() {
                                 <TableCell>{renter.phone}</TableCell>
                                 <TableCell>
                                     <div>
-                                        <Button variant="outlined" onClick={() => openModal(renter)}>WARNING</Button>
+                                        <Button className="custom-button m-2" onClick={() => openModal(renter)}>WARNING</Button>
                                         <Modal show={isOpen} onHide={closeModal}>
                                             <Modal.Header closeButton>
                                                 <Modal.Title>Send Warning Message</Modal.Title>

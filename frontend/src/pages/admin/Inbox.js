@@ -8,7 +8,7 @@ import MostRentedFields from "../../components/admin/MostRentedFields";
 
 function Inbox() {
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="background-grayish" style={{ display: 'flex' }}>
             <AdminSidebar />
             <div className="page-margin">
                 <h1>Inbox</h1>

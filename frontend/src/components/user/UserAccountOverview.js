@@ -108,7 +108,7 @@ const UserAccountOverview = (props) => {
                     </Box>
                 </>
             )}
-            <Button variant="outlined" className="mt-4" onClick={callFuns}>
+            <Button className="custom-button mt-3" onClick={callFuns}>
                 EDIT
             </Button>
         </form>
