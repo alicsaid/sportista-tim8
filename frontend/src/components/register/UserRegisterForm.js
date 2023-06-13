@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import Button from '@material-ui/core/Button';
 import "./RegisterForm.css";
 import {register} from "../../auth/Auth";
 import {connect} from "react-redux";
@@ -13,7 +12,7 @@ function UserRegisterForm({register}) {
     const [userLastName, setUserLastName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
-    const [userGender, setUserGender] = useState('Male');
+    const [userGender, setUserGender] = useState('Select gender');
     const [userDateOfBirth, setUserDateOfBirth] = useState('');
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [termsAccepted, setTermsAccepted] = useState(false);
@@ -164,7 +163,8 @@ function UserRegisterForm({register}) {
                             <div className="step"></div>
                             <div className="step"></div>
                         </div>
-                        <div className="form-group">
+                        <div className="text-center">
+                            <h5 className="mt-5 mb-5">Personal info</h5>
                             <input
                                 className="custom-input"
                                 type="text"
@@ -176,7 +176,7 @@ function UserRegisterForm({register}) {
                             />
                         </div>
 
-                        <div className="form-group">
+                        <div>
                             <input
                                 className="custom-input"
                                 type="text"
@@ -188,7 +188,7 @@ function UserRegisterForm({register}) {
                             />
                         </div>
 
-                        <div className="form-group">
+                        <div>
                             <input
                                 className="custom-input"
                                 type="email"
@@ -201,7 +201,7 @@ function UserRegisterForm({register}) {
                             {emailError && <div className="error">{emailError}</div>}
                         </div>
 
-                        <div className="form-group">
+                        <div>
                             <input
                                 className="custom-input"
                                 type="password"
@@ -213,9 +213,9 @@ function UserRegisterForm({register}) {
                             />
                         </div>
 
-                        <button onClick={handleNextStep} className="nextButton custom-register-button">
+                        <Button onClick={handleNextStep} className="nextButton custom-button">
                             Next
-                        </button>
+                        </Button>
 
                     </>
                 );
@@ -223,15 +223,26 @@ function UserRegisterForm({register}) {
                 return (
                     <>
                         <div className="steps">
-                            <div className="step"></div>
+                            <div className="step completed"></div>
                             <div className="step active"></div>
                             <div className="step"></div>
                             <div className="step"></div>
                             <div className="step"></div>
                         </div>
-                        <div className="form-group">
+                        <div className="text-center">
+                            <h5 className="mt-5 mb-5">More personal info</h5>
+
+                            <div>
+                                <input
+                                    className="custom-input"
+                                    type="text"
+                                    id="city"
+                                    placeholder="City"
+                                    required
+                                />
+                            </div>
                             <select
-                                className="custom-input gender"
+                                className="custom-input"
                                 value={userGender}
                                 onChange={handleUserGenderChange}
                                 required
@@ -255,12 +266,12 @@ function UserRegisterForm({register}) {
                         </div>
 
                         <div>
-                            <button onClick={handlePrevStep} className="previousButton custom-register-button">
+                            <Button onClick={handlePrevStep} className="previousButton custom-button">
                                 Previous
-                            </button>
-                            <button onClick={handleNextStep} className="nextButton custom-register-button">
+                            </Button>
+                            <Button onClick={handleNextStep} className="nextButton custom-button">
                                 Next
-                            </button>
+                            </Button>
                         </div>
 
                     </>
@@ -269,17 +280,17 @@ function UserRegisterForm({register}) {
                 return (
                     <>
                         <div className="steps">
-                            <div className="step"></div>
-                            <div className="step"></div>
+                            <div className="step completed"></div>
+                            <div className="step completed"></div>
                             <div className="step active"></div>
                             <div className="step"></div>
                             <div className="step"></div>
                         </div>
-                        <div className="d-flex flex-column">
-                            <label className="m-3">Which sports are you interested in?</label>
-                            <div>
+                        <div className="text-center">
+                            <h5 className="mt-5 mb-5">Which sports are you interested in?</h5>
+                            <div className="sports-container">
                                 {playsSports.map((sport) => (
-                                <div key={sport.pk}>
+                                <div key={sport.pk} className="sport-item">
                                     <input
                                         className="m-2"
                                         type="checkbox"
@@ -292,8 +303,8 @@ function UserRegisterForm({register}) {
                             ))}
                             </div>
                             <div className="d-flex justify-content-between mt-2">
-                                <button className="custom-register-button" onClick={handlePrevStep}>Previous</button>
-                                <button className="custom-register-button" onClick={handleNextStep}>Next</button>
+                                <Button className="custom-button previousButton" onClick={handlePrevStep}>Previous</Button>
+                                <Button className="custom-button nextButton" onClick={handleNextStep}>Next</Button>
                             </div>
                         </div>
                     </>
@@ -303,25 +314,22 @@ function UserRegisterForm({register}) {
                 return (
                     <>
                         <div className="steps">
-                            <div className="step"></div>
-                            <div className="step"></div>
-                            <div className="step"></div>
+                            <div className="step completed"></div>
+                            <div className="step completed"></div>
+                            <div className="step completed"></div>
                             <div className="step active"></div>
                             <div className="step"></div>
                         </div>
                         <div className="text-center">
-                            <label className="mb-5">When are you available?</label>
-                            <div className="d-flex justify-content-evenly">
-                                <label>FROM</label>
-                                <label>TO</label>
-                            </div>
-                            {daysOfWeek.map((day) => (
+                            <h5 className="mt-5 mb-5">When are you available?</h5>
+                            <div>
+                                {daysOfWeek.map((day) => (
                                 <div key={day} className="d-flex align-items-center">
                                     <div className="d-flex align-items-center col-2 m-2">
                                         <label>{day}</label>
                                     </div>
                                     <div className="col">
-                                            <div className="mb-3">
+                                            <div className="mb-1">
                                                 <input
                                                     type="time"
                                                     className="custom-time-input"
@@ -332,7 +340,7 @@ function UserRegisterForm({register}) {
                                             </div>
                                         </div>
                                     <div className="col">
-                                            <div className="mb-3">
+                                            <div className="mb-1">
                                                 <input
                                                     type="time"
                                                     className="custom-time-input"
@@ -344,9 +352,10 @@ function UserRegisterForm({register}) {
                                         </div>
                                 </div>
                             ))}
+                            </div>
                             <div className="d-flex justify-content-between mt-2">
-                                <button className="custom-register-button" onClick={handlePrevStep}>Previous</button>
-                                <button className="custom-register-button" onClick={handleNextStep}>Next</button>
+                                <Button className="custom-button previousButton" onClick={handlePrevStep}>Previous</Button>
+                                <Button className="custom-button nextButton" onClick={handleNextStep}>Next</Button>
                             </div>
                         </div>
                     </>
@@ -361,9 +370,9 @@ function UserRegisterForm({register}) {
                                 <h4>After that, you can proceed to login.</h4>
                             </div>
                             <div className="float-end mb-3">
-                                <button onClick={handleLoginButtonClick} className="custom-register-button">
+                                <Button onClick={handleLoginButtonClick} className="custom-button nextButton">
                                     Login
-                                </button>
+                                </Button>
                             </div>
                 </>
                     );
@@ -371,68 +380,69 @@ function UserRegisterForm({register}) {
                     return (
                         <>
                             <div className="steps">
-                                <div className="step"></div>
-                                <div className="step"></div>
-                                <div className="step"></div>
-                                <div className="step"></div>
+                                <div className="step completed"></div>
+                                <div className="step completed"></div>
+                                <div className="step completed"></div>
+                                <div className="step completed"></div>
                                 <div className="step active"></div>
                             </div>
                             <div className="mb-3">
-                                <label className="terms-and-conditions">
-          <pre>
-            {`
-Terms and Conditions
-
-Welcome to Sportista Field Rental!
-By using our platform, you agree to comply with the following terms and
-conditions:
-
-1. Use of the Platform
-   - You are responsible for maintaining the confidentiality of your
-   account.
-   - You agree not to use the platform for any illegal or unauthorized
-   purposes.
-
-2. Field Rental
-   - The platform facilitates the rental of sports fields.
-   - The availability and booking process may vary and are subject to
-   specific terms outlined on the platform.
-   - Any disputes or issues regarding field rental are the responsibility
-   of the field renter and user.
-
-3. Liability
-   - We are not responsible for any accidents, injuries, or damages that
-   may occur during field rental.
-   - Users and renters are advised to establish their own agreements
-   regarding liability and responsibilities.
-
-4. Privacy
-   - We collect and store user data in accordance with our privacy policy.
-   - We implement security measures to protect user information, but we
-   cannot guarantee complete security.
-
-5. Disclaimer
-   - The platform is provided "as is" and we do not make any warranties or
-   representations.
-   - We are not responsible for the accuracy or availability of the
-   platform's content.
-
-By using our platform, you agree to these terms and conditions.
-If you do not agree, please refrain from using the platform.
-            `}
-          </pre>
-                                </label>
+                                <h5 className="mt-5 mb-5">Terms and Conditions</h5>
+                                    <div>
+                                        <p>Welcome to Sportista Field Rental!</p>
+                                        <p>
+                                            By using our platform, you agree to comply with the following terms and
+                                            conditions:
+                                        </p>
+                                        <p>
+                                            1. Use of the Platform
+                                            - You are responsible for maintaining the confidentiality of your
+                                            account.
+                                            - You agree not to use the platform for any illegal or unauthorized
+                                            purposes.
+                                        </p>
+                                        <p>
+                                            2. Field Rental
+                                            - The platform facilitates the rental of sports fields.
+                                            - The availability and booking process may vary and are subject to
+                                            specific terms outlined on the platform.
+                                            - Any disputes or issues regarding field rental are the responsibility
+                                            of the field renter and user.
+                                        </p>
+                                        <p>
+                                            3. Liability
+                                            - We are not responsible for any accidents, injuries, or damages that
+                                            may occur during field rental.
+                                            - Users and renters are advised to establish their own agreements
+                                            regarding liability and responsibilities.
+                                        </p>
+                                        <p>
+                                            4. Privacy
+                                            - We collect and store user data in accordance with our privacy policy.
+                                            - We implement security measures to protect user information, but we
+                                            cannot guarantee complete security.
+                                        </p>
+                                        <p>
+                                            5. Disclaimer
+                                            - The platform is provided "as is" and we do not make any warranties or
+                                            representations.
+                                            - We are not responsible for the accuracy or availability of the
+                                            platform's content.
+                                        </p>
+                                        <p>
+                                            By using our platform, you agree to these terms and conditions.
+                                            If you do not agree, please refrain from using the platform.
+                                        </p>
+                                    </div>
                             </div>
                             <div className="mb-3">
-                                <label>
-                                    <input type="checkbox" required={true} onChange={handleTermsAcceptance} />
-                                    I agree to the terms and conditions and privacy policy
-                                </label>
+                                <input className="mt-4 mb-4" style={{ marginRight: "1rem" }} type="checkbox" required={true} onChange={handleTermsAcceptance} />
+                                <label>I agree to the terms and conditions and privacy policy</label>
                             </div>
                             <div className="mb-3">
-                                <button className="custom-register-button float-end" type="button" onClick={handleSubmit}>
+                                <Button className="custom-button nextButton" type="button" onClick={handleSubmit}>
                                     Register
-                                </button>
+                                </Button>
                             </div>
                         </>
                     );
@@ -443,7 +453,7 @@ If you do not agree, please refrain from using the platform.
     };
 
     return (
-        <div className="container" style={{ alignItems: 'center', justifyContent: 'center' }} onSubmit={handleSubmit} >
+        <div style={{ alignItems: 'center', justifyContent: 'center' }} onSubmit={handleSubmit} >
             {renderCurrentStepForm()}
         </div>
     );

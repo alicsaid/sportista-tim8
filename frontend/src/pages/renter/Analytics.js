@@ -11,7 +11,7 @@ function Analytics({isAuthenticated,user}) {
     //     return (<Navigate to={"/"}/>)
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="background-grayish" style={{ display: 'flex' }}>
             <RenterSidebar />
             <div className="page-margin">
                 <h1>Analytics</h1>

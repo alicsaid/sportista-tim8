@@ -12,7 +12,7 @@ function Contact({ user, isAuthenticated }) {
     //     return (<Navigate to={"/"}/>)
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="background-grayish" style={{ display: 'flex' }}>
             <UserSidebar />
             <div className="page-margin">
                 <h1>Contact</h1>

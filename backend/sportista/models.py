@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.utils import timezone
 
 
 # Create your models here.
@@ -134,3 +135,10 @@ class UserGradesFieldTemp(models.Model):
 class UserClicksFieldTemp(models.Model):
     id_usera = models.ForeignKey(SportistaUser, on_delete=models.CASCADE)
     id_fielda = models.ForeignKey(Field, on_delete=models.CASCADE)
+
+class Inbox(models.Model):
+    first_name = models.TextField(null=True)
+    last_name = models.TextField(null=True)
+    subject = models.TextField(null=True)
+    text = models.TextField(null=True)
+    time = models.DateTimeField(default=timezone.now)

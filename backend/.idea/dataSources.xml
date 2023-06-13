@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="db" uuid="eee60464-9424-4f20-9828-1804defd0284">
+    <data-source source="LOCAL" name="sportista" uuid="5cc0f3a5-f47d-462d-83f7-f00cc12de11f">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\eminm\OneDrive\Desktop\Projekti\sportista-tim8\backend\db.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\alics\OneDrive\Desktop\sportista-tim8-main\sportista-tim8\backend\db.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/sqlite-jdbc-3.40.1.jar</url>
-        </library>
-      </libraries>
     </data-source>
   </component>
 </project>

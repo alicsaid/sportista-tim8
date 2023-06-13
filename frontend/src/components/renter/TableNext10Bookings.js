@@ -35,8 +35,8 @@ function TableNext10Bookings({ isAuthenticated,user }) {
                                 <TableCell>Test</TableCell>
                                 <TableCell>
                                     <div>
-                                        <Button variant="outlined">CANCEL</Button>
-                                        <Button variant="outlined">CONFIRM</Button>
+                                        <Button className="custom-button m-2">CANCEL</Button>
+                                        <Button className="custom-button m-2">CONFIRM</Button>
                                     </div>
                                 </TableCell>
                             </TableRow>
